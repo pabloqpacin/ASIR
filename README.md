@@ -1,3 +1,3 @@
 # ASIR
 
-- [curriculum](/ASIR/curriculum.md)
+- [curriculum](/curriculum.md)
