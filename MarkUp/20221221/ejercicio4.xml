@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+
+<!-- DTD -->
+<!DOCTYPE cientificos_importantes [
+    <!ELEMENT cientificos_importantes (cientifico+)>
+    <!ELEMENT cientifico (fecha_nac)>
+    <!-- tema OBLIGATORIOS vs NO -->
+    <!ATTLIST cientifico nombre CDATA #REQUIRED>
+
+    <!ELEMENT fecha_nac (dia, mes, anho)>
+    <!ELEMENT dia (#PCDATA)>
+    <!ELEMENT mes (#PCDATA)>
+    <!ELEMENT anho (#PCDATA)>
+]
+
+
+<cientificos_importantes>
+
+    <cientifico nombre = "Albert Einstein">
+          <fecha_nac>
+            <dia>14</dia>
+            <mes>Marzo</mes>
+            <anho>1879</anho>
+        </fecha_nac>
+    </cientifico>
+
+    <cientifico nombre = "Isaac Newton">
+          <fecha_nac>
+            <dia>4</dia>
+            <mes>Enero</mes>
+            <anho>1643</anho>
+        </fecha_nac>
+    </cientifico>
+
+    <cientifico nombre="Galileo Galilei">
+          <fecha_nac>
+            <dia>15</dia>
+            <mes>Febrero</mes>
+            <anho>1564</anho>
+        </fecha_nac>
+    </cientifico>
+
+</cientificos_importantes>
