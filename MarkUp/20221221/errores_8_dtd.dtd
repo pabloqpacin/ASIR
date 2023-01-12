@@ -1,7 +1,0 @@
-<!ELEMENT texto (titulo, parrafo+, http)>
-<!-- <!ELEMENT parrafo (abreviatura?)> -->
-<!-- <!ELEMENT parrafo (#PCDATA) -->
-<!ELEMENT parrafo ANY>
-<!ELEMENT titulo (#PCDATA)>
-<!ELEMENT abreviatura (#PCDATA)>
-<!ELEMENT http (#PCDATA)>

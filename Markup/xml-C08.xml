@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE canciones [
+    <!ELEMENT canciones (cancion)*>
+    <!ELEMENT cancion (titulo, artista, compositores, productores, sello)>
+    <!ATTLIST cancion
+        duracion CDATA #REQUIRED
+        anyo CDATA #REQUIRED
+    >
+    <!ELEMENT titulo (#PCDATA)>
+    <!ELEMENT artista (#PCDATA)>
+    <!ELEMENT compositores (compositor)+>
+    <!ELEMENT compositor (nombre, apellidos)>
+    <!ELEMENT productores (productor)+>
+    <!ELEMENT productor (nombre, apellidos)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT apellidos (#PCDATA)>
+    <!ELEMENT sello (#PCDATA)>
+]>
+
+
+<canciones>
+
+    <cancion duracion="4:47" anyo="2008">
+        <titulo>Give it 2 me</titulo>
+        <artista>Madonna</artista>
+        <compositores>
+            <compositor>
+                <nombre>Pharrell</nombre>
+                <apellidos>Williams</apellidos>
+            </compositor>
+        </compositores>
+        <productores>
+            <productor>
+                <nombre>Pharrell</nombre>
+                <apellidos>Williams</apellidos>
+            </productor>
+        </productores>
+        <sello>Warner Bros. Records</sello>
+    </cancion>
+
+</canciones>
