@@ -7,17 +7,17 @@
   - [x] [Unix y su relación con los OSs](https://blogthinkbig.com/unix-el-padre-de-los-sistemas-operativos-actuales)
   - [x] [¿Qué es la Licencia Pública General de GNU?](https://youtu.be/7x7LGrVvYZ4)
   - [x] [Gestión de Memoria: Asignación](https://youtu.be/hMhPTWUJX_M)
-- [ ] GestionDeMemoria.pdf
-- [ ] GestionDeProcesos.pdf
-- [ ] EJER-GestionDeProcesos.pdf
+- [x] GestionDeMemoria.pdf
+- [x] GestionDeProcesos.pdf
+- [x] EJER-GestionDeProcesos.pdf
 - [ ] Instalación Ubuntu en Virtual Box
-- [ ] **AUTOEVALUACIÓN UD1**
+- [x] **AUTOEVALUACIÓN UD1**
 
 
 ### Material Complementario
 
 <details>
-<summary>Ver más</summary>
+<summary>Gestión de Memoria: Asignación</summary>
 
 
 1. Unix y su relación con los SOs
@@ -85,7 +85,7 @@ Memoria Virtual (**páginas**) VS Memoria Física (**marcos**)
 - El MMU determina que 010 se corresponde con 100 pongamos, así que la correspondencia física podría ser 0x100FA00C para la movida virtual 0x010FA00C.
 - RESUMEN: sistema permite 'desorganización'
 
-<img src="img/ISO/ud1-paginacion.png" alt="paginacion" width="500"/>
+<img src="/img/ISO/ud1-paginacion.png" alt="paginacion" width="500"/>
 
 PROBLEMA
 - dos [2] accesos a memoria
@@ -126,7 +126,7 @@ PROBLEMA
 ### Gestión de Memoria
 
 <details>
-<summary>Ver más</summary>
+<summary>Técnicas de Gestión de la Memoria</summary>
 
 Problemas
 - Reubicación // asignación de memoria distinta para cada ejecución del mismo programa
@@ -187,33 +187,68 @@ EJEMPLO
 
 </details>
 
-> CACHE?
 
 ### Gestión de Procesos .pdf
 
 > Ver [gestionDeProcesos.md](/ISO/UD1/gestionDeProcesos.md)
 
+Material complementario:
+- [ ] @[BirtLH: [Temario ASIR](https://ikastaroak.birt.eus/edu/argitalpen/backupa/20200331/1920k/es/ASIR/ISO/ISO01/es_ASIR_ISO01_Contenidos/website_312_procesos.html#)
+- [x] [Algoritmos planificación procesos](https://josecarreres.wordpress.com/2015/10/05/planificacion-y-procesos-en-windows-y-linux/)
+
 
 ### EJER - Gestión de Procesos
 
-<details>
-<summary>Ver más</summary>
 
-</details>
+#### Questions
+1. Se tienen 3 procesos `P1`, `P2`, y `P3` con tiempos de ejecución 85, 45 y 118. Si actúa el algoritmo SJF, determinar el orden en que se encuentran en la lista de preparados.
+2. Se tienen 2 procesos `P1` y `P2` con tiempo de ejecución de 25 y 30. Si actúa el algoritmo RR (q = 10) determinar el orden en que se encuentra en la lista de preparados.  
+3. Se dan dos procesos, `P1` con tiempo de ejecución de 20 y `P2` con tiempo de ejecución de 15. Según el algoritmo de rueda con quantum 10, indicar el tiempo de retorno, de respuesta y de espera. 
+4. Se tienen que realizar 5 trabajos, llegan en el orden descrito en la tabla. Realiza el ejercicio para todos los algoritmos que conozcas.
+
+| Trabajo (Proceso) | Tiempo uso CPU (Unidades) | Prioridad |
+| ---               | ---                       | ---       |
+| 1                 | 10                        | 3         |
+| 2                 | 1                         | 1         |
+| 3                 | 2                         | 3         |
+| 4                 | 1                         | 4         |
+| 5                 | 5                         | 2         |
 
 
+#### Answers
+1. Según SJF o 'Shortest Job First', el orden de ejecución será: `P2`, `P1` y `P3` (orden ascendente según tiempo de ejecución).
+2. `P1` se ejecutará durante 10 microsegundos, luego `P2`, `P1` otra vez, `P2` otra vez, `P1` volverá a ejecutarse solo durante 5 ms (duración total eran 25 ms) y finalmente `P2` se ejecutará durante sus 10 ms finales.
+3. (...)
+4. See below:
+
+- **FCFS**: se ejecutarán en orden de llegada: `P1`, `P2`, `P3`, `P4` y `P5`
+- **SJF**: se empezará ejecutando `P1` pero al llegar nuevos procesos más cortos, estos serán ejecutados; es razonable asumir que P1 será el primero y en último en ser ejecutado, pasando a estado listo conforme eventos más cortos van llegando
+- **Por-Prioridades**: empezará el P1, luego P2, P1, P3, P4 y quizá P5 empiece a ejecutarse antes de que P4 se haya completado
+- **RR**: si q=5 empezará P1, luego se ejecutará el resto y finalmente P1 será completado
 
 
+<!--
 ### Instalación Ubuntu en Virtual Box
 1. [Información básica de VirtualBox y los sistemas de virtualización](https://www.geeknetic.es/VirtualBox/que-es-y-para-que-sirve)
 2. [Enlace de descarga](https://www.virtualbox.org/wiki/Downloads)
 3. [Descarga de la ISO de Ubuntu](https://ubuntu.com/download/desktop)
 4. Instalar VirtualBox y crear maquina virtual de UBUNTU
-
+-->
 
 ### UD1.pdf
 
-<details>
-<summary>Ver más</summary>
 
-</details>
+
+
+### Autoevaluación
+
+1. Un proceso es: --> una secuencia de acciones derivadas de la ejecución de una serie de instrucciones
+2. Los procesos pueden estar en primer y segundo plano al mismo tiempo dependiendo del tipo de Algoritmo de planificacion --> FALSO
+3. Los tipos de procesos son: --> independientes, cooperativos e competitivos.
+4. Un proceso puede variar su estado por ejemplo de bloqueado a preparada infinitas veces independientemente del algoritmo de ejecución --> **FALSO**
+5. Los estados de los procesos son: --> Nuevo, preparado, en ejecución, bloqueado, terminado y suspendido.
+6. En el Algoritmo FIFO entrará primero el proceso más corto de la lista de procesos --> FALSO
+7. En en Algoritmo SJF una vez que el proceso entra en ejecución, se ejecuta por completo, aunque haya en cola procesos más cortos. --> **FALSO**
+8. Un demonio... --> es un proceso que se ejecuta en segundo plano sin necesidad alguna de interacción con el usuario para llevar a cabo su tarea.
+9. Se tienen 2 procesos P 1 y P 2 con tiempo de ejecución de 28 y 35. Si actúa el algoritmo RR (q = 10) determinar el orden en que se encuentra en la lista de preparados. --> p1,p2,p1,p2,p1,p2,p2 terminando en el momento 63.
+
