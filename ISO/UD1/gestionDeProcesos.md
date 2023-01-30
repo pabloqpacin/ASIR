@@ -69,7 +69,10 @@ El proceso puede cambiar de estado cuantas veces sea necesario (TRANSICIÓN).
 
 Sin embargo, un procesador sólo puede ejecutar un proceso a la vez. El OS establece los mecanismos necesarios para que los diferentes procesos que compiten por la CPU puedan hacerlo de la forma más eficiente y beneficiosa para el sistema.
 
-<img src="/img/ISO/ud1-estadosProcesos.png" alt="estadosProcesos" width="500"/>
+<!-- src: https://stackoverflow.com/questions/12090472/how-do-i-center-an-image-in-the-readme-md-file-on-github -->
+<p align="center">
+  <img src="/img/ISO/ud1-estadosProcesos.png" alt="estadosProcesos" width="600"/>
+</p>
 
 
 ## Creación de procesos
