@@ -1,0 +1,22 @@
+# Ignore 2022, ASIR+, CLASES & (all) test and bak 
+2022/
+ASIR+/
+CLASES/
+test/
+test*/
+bak/
+
+# Ignore all .pdf .log, .todo and test. files
+*.pdf
+*.log
+*.todo
+test*.*
+
+# Ignore powerpoint and word files  -    .odp??
+*.odp
+*.ppt
+*.pptx
+*.docx
+
+# Ignore GBD's Neptuno
+*.accdb

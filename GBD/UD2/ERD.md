@@ -1,5 +1,8 @@
 # UD2. Diseño Lógico de Bases de Datos
 
+<img src="/img/GBD/ud2-especializacion.png" alt="exclusiva=parcial..." width="500"/>
+<img src="/img/GBD/ud2-pieDeGallo.png" alt="notacion-pie de gallo" width="500"/>
+
 
 <details>
 <summary>Table of Contents</summary>
