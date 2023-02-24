@@ -1,6 +1,6 @@
-# Ignore 2022, ASIR+, CLASES & (all) test and bak 
+# Ignore 2022, ASIR+(Draft), CLASES & (all) test and bak 
 2022/
-ASIR+/
+ASIR+DRAFT/
 CLASES/
 test/
 test*/
@@ -20,3 +20,9 @@ test*.*
 
 # Ignore GBD's Neptuno
 *.accdb
+
+# Ignore Packet Tracer files
+*.pksz
+*.pka
+*.pkt
+*.pcapng
