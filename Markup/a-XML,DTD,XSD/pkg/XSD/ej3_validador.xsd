@@ -1,0 +1,13 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="dni" type="tipoDNI"/>
+
+<xs:simpleType name="tipoDNI">
+    <xs:restriction base="xs:string">
+    <xs:pattern value="[0-9]{8}[A-Z]{1}"/>
+
+    </xs:restriction>
+</xs:simpleType>
+
+
+</xs:schema>

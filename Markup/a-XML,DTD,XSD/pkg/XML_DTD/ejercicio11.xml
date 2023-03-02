@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<!DOCTYPE empresa [
+    <!ELEMENT empresa (empleado)+>
+    <!ELEMENT empleado (nombre, apellido, correo, direccion)>
+    <!ELEMENT direccion (ciudad, estado, zip)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT apellido (#PCDATA)>
+    <!ELEMENT correo (#PCDATA)>
+    <!ELEMENT ciudad (#PCDATA)>
+    <!ELEMENT estado (#PCDATA)>
+    <!ELEMENT zip (#PCDATA)>
+]>
+
+
+
+<empresa>
+
+    <!-- 1er empleado -->
+    <empleado>
+        <nombre>Ana</nombre>
+        <apellido>Perez</apellido>
+        <correo>ana@gmail.com</correo>
+        <direccion>
+            <ciudad>Coruña</ciudad>
+            <estado>España</estado>
+            <zip>12121</zip>
+        </direccion>
+    </empleado>
+
+    <!-- 2do empleado -->
+    <empleado>
+        <nombre>Angel</nombre>
+        <apellido>Rodriguez</apellido>
+        <correo>angel@gmail.com</correo>
+        <direccion>
+            <ciudad>Madrid</ciudad>
+            <estado>España</estado>
+            <zip>28000</zip>
+        </direccion>
+    </empleado>
+
+    <!-- 3er empleado -->
+    <empleado>
+        <nombre>Maria</nombre>
+        <apellido>Abad</apellido>
+        <correo>maria@gmail.com</correo>
+        <direccion>
+            <ciudad>Barcelona</ciudad>
+            <estado>España</estado>
+            <zip>12000</zip>
+        </direccion>
+    </empleado>
+    
+
+</empresa>

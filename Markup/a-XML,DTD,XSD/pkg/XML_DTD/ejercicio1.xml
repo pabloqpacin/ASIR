@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!-- DTD
+ <!DOCTYPE elemento_raiz [
+    <!ELEMENT elemento_raiz (elemento_1, elemento_2, ...elementoN)>
+    <!ELEMENT elemento_1 (#PCDATA)>
+    <!ELEMENT elemento_2 (#PCDATA)>
+  
+ ]>
+  -->
+
+  <!-- DTD -->
+<!DOCTYPE pedido [
+  <!ELEMENT pedido (destinatario, articulo, direccion, fecha)>
+  <!ELEMENT destinatario (#PCDATA)>
+  <!ELEMENT articulo (#PCDATA)>
+  <!ELEMENT direccion (#PCDATA)>
+  <!ELEMENT fecha (#PCDATA)>
+]>
+
+
+<pedido>
+  <destinatario>Juan Delgado Martinez  </destinatario>
+  <articulo> bicicleta A2023</articulo>
+  <direccion>calle Barco 4, tercer piso, letra A</direccion>
+  <fecha>19-5-2000</fecha>
+</pedido>

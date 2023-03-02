@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<!DOCTYPE ejemplo [
+    <!ELEMENT ejemplo (libro)+>
+    <!ELEMENT libro (#PCDATA)>
+    <!ATTLIST libro codigo ID #REQUIRED>
+]>
+<ejemplo>
+    <libro codigo="C2"></libro>
+    <libro codigo="topota"></libro>
+</ejemplo>

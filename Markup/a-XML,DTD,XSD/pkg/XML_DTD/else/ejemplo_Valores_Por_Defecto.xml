@@ -1,0 +1,9 @@
+<!DOCTYPE ejemplo [
+  <!ELEMENT ejemplo (#PCDATA)>
+  <!ATTLIST ejemplo color CDATA "verde">
+]>
+
+<!-- el atributo tiene un valor predeterminado -->
+<ejemplo color="verde">
+
+</ejemplo>

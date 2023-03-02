@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE cancion [
+    <!ELEMENT cancion (titulo, compositores, productores, sello, artista)>
+    
+    <!ATTLIST cancion duracion CDATA #REQUIRED>
+    <!ATTLIST cancion anio CDATA #REQUIRED>
+  
+    <!ELEMENT compositores (compositor)>
+    <!ELEMENT compositor (nombres, apellidos)>
+    <!ELEMENT productores (productor)>
+    <!ELEMENT productor (nombres, apellidos)>
+
+    <!ELEMENT titulo (#PCDATA)>
+    <!ELEMENT nombres (#PCDATA)>
+    <!ELEMENT apellidos (#PCDATA)>
+    <!ELEMENT sello (#PCDATA)>
+    <!ELEMENT artista (#PCDATA)>
+]>
+
+
+
+<cancion duracion="4:47" anio = "2008">
+
+    <titulo>Give it to me</titulo>
+    <compositores>
+        <compositor>
+            <nombres>Pharrell</nombres>
+            <apellidos>Wiliams</apellidos>
+        </compositor>
+    </compositores>
+    <productores>
+        <productor>
+            <nombres>Pharrell</nombres>
+            <apellidos>Wiliams</apellidos>
+        </productor>
+    </productores>
+    <sello>Warner Bros.Records</sello>
+    <artista>Madonna</artista>
+</cancion>

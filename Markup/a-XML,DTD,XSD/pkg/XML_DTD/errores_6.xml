@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE deportistas [
+    <!ELEMENT deportistas (deportista)+>
+    <!ELEMENT deportista (deporte, nombre)>
+    <!ELEMENT deporte (#PCDATA)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ATTLIST deporte nombre ID #REQUIRED>
+]>
+
+
+<deportistas>
+    <deportista>
+        <deporte nombre="Atletismo" />
+        <nombre>Jesse Owens</nombre>
+    </deportista>
+    <deportista>
+        <deporte nombre="Natación" />
+        <nombre>Mark Spitz</nombre>
+    </deportista>
+</deportistas>

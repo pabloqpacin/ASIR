@@ -1,0 +1,27 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="matriculaCoche" type="tipoMatriculaCoche"/>
+
+    <xs:complexType name="tipoMatriculaCoche">
+        <xs:simpleContent>
+            <xs:extension base="restriccionMC">
+                <xs:attribute name="color" type="xs:string" use="optional"/>
+                <xs:attribute name="numPuertas" type="restriccionNP" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="restriccionMC">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{4}-[A-Z]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="restriccionNP">
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="4"/>
+        </xs:restriction>
+
+    </xs:simpleType>
+
+</xs:schema>

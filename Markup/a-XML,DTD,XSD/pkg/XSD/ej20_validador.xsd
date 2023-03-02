@@ -1,0 +1,18 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="colegio" type="tipoColegio"/>
+
+    <xs:complexType name="tipoColegio">
+        <xs:complexContent>
+            <xs:restriction base="xs:anyType">
+                <xs:sequence>
+                    <xs:element name="director" type="xs:string"/>
+                    <xs:element name="jefeDeEstudios" type="xs:string"/>
+                    <xs:element name="profesor" type="xs:string" maxOccurs="unbounded" />
+                </xs:sequence>
+                <xs:attribute name="nombre" type="xs:string"/>
+                <xs:attribute name="numAlumnos" type="xs:integer"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

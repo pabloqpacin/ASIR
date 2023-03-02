@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+Elabora un documento XML que almacene la información de un cliente.
+Dicho cliente tiene un elemento nombre.
+Se desea crear un esquema que permita validar el documento XML.
+-->
+
+<cliente
+
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej17_validador.xsd"
+>
+    <nombre>Nelson</nombre>
+</cliente>

@@ -1,0 +1,17 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="cliente" type="tipoCliente"/>
+
+    <xs:complexType name="tipoCliente">
+        <xs:complexContent>
+            <xs:restriction base="xs:anyType"> <!--PORQUE NO TIENE CONTENIDO SINO HIJOS-->
+                <xs:sequence>
+                    <xs:element name="nombre" type="xs:string"/>
+                    <xs:element name="apellido1" type="xs:string"/>
+                    <xs:element name="apellido2" type="xs:string"/>
+                    <xs:element name="edad" type="xs:integer"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,23 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="mes" type="tipoMes"/>
+
+    <xs:simpleType name="tipoMes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Enero"/>
+            <xs:enumeration value="Febrero"/>
+            <xs:enumeration value="Marzo"/>
+            <xs:enumeration value="Abril"/>
+            <xs:enumeration value="Mayo"/>
+            <xs:enumeration value="Junio"/>
+            <xs:enumeration value="Julio"/>
+            <xs:enumeration value="Agosto"/>
+            <xs:enumeration value="Septiembre"/>
+            <xs:enumeration value="Octubre"/>
+            <xs:enumeration value="Noviembre"/>
+            <xs:enumeration value="Diciembre"/>
+            <xs:pattern value="(Enero|Febrero|Marzo|Diciembre)"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

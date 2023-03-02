@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Crea un esquema que permita validar un elemento pago
+en el cual puede haber cantidades
+enteras de entre 0 y 3000 euros (NO INCLUIDOS). -->
+
+<pago xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej4_validador.xsd"
+>2000</pago>

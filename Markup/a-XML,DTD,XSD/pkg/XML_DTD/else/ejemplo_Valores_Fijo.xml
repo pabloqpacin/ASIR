@@ -1,0 +1,9 @@
+<!DOCTYPE ejemplo [
+  <!ELEMENT ejemplo (#PCDATA)>
+  <!ATTLIST ejemplo color CDATA #FIXED "verde">
+]>
+
+<!-- #FIXED valor: el atributo tiene un valor fijo -->
+<ejemplo color="verde">
+
+</ejemplo>

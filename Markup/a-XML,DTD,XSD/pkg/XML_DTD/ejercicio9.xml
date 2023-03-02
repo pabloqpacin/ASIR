@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Crea un documento XML bien formado que almacene 
+    la bandeja de entrada de un programa de correo 
+    electrónico en el que cada correo posea la siguiente
+     información: remitente (con nombre e email), 
+     destinatario (con nombre e email), asunto y cuerpo 
+     (por párrafos). Todos los campos son obligatorios.
+      Debes añadir 3 correos, el primer correo contiene 
+      2 párrafos, el segundo correo 3 párrafos y el tercer 
+      correo tiene un párrafo vacío -->
+
+
+
+  <!-- DTD
+ <!DOCTYPE elemento_raiz [
+    <!ELEMENT elemento_raiz (elemento_1, elemento_2, ...elementoN)>
+    <!ELEMENT elemento_1 (#PCDATA)>
+    <!ELEMENT elemento_2 (#PCDATA)>
+  
+ ]>
+  -->
+
+<!DOCTYPE bandejaEntrada [
+
+<!ELEMENT bandejaEntrada (correo+)>
+<!ELEMENT correo (remitente, destinatario, asunto, cuerpo)>
+<!ELEMENT remitente (nombre, email)>
+<!ELEMENT destinatario (nombre, email)>
+<!ELEMENT cuerpo (parrafo+)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT asunto EMPTY>
+<!ELEMENT parrafo (#PCDATA)>
+
+]>
+
+
+
+
+
+<bandejaEntrada>
+
+    <!-- correo 1 -->
+    <correo>
+        <remitente>
+            <nombre>nelson</nombre>
+            <email>nelson@gmail.com</email>
+        </remitente>
+        <destinatario>
+            <nombre>angel</nombre>
+            <email>angel@gmail.com</email>
+        </destinatario>
+        <asunto></asunto>
+        <cuerpo>
+            <parrafo>Buenos dias</parrafo>
+            <parrafo>Enviame el presupuesto</parrafo>
+        </cuerpo>
+    </correo>
+
+    <!-- correo 2 -->
+    <correo>
+        <remitente>
+            <nombre>maria</nombre>
+            <email>maria@gmail.com</email>
+        </remitente>
+        <destinatario>
+            <nombre>ana</nombre>
+            <email>ana@gmail.com</email>
+        </destinatario>
+        <asunto></asunto>
+        <cuerpo>
+            <parrafo>Buenos dias</parrafo>
+            <parrafo>Enviame el horario</parrafo>
+            <parrafo>Un saludo</parrafo>
+        </cuerpo>
+    </correo>
+
+    <!-- correo 3 -->
+
+    <correo>
+        <remitente>
+            <nombre>jose</nombre>
+            <email>jose@gmail.com</email>
+        </remitente>
+        <destinatario>
+            <nombre>tania</nombre>
+            <email>tania@gmail.com</email>
+        </destinatario>
+        <asunto></asunto>
+        <cuerpo>
+            <parrafo />
+        </cuerpo>
+    </correo>
+
+
+</bandejaEntrada>

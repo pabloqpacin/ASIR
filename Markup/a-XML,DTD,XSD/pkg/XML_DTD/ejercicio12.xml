@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Elabora un XML relativo a tu horario de clase. 
+    El elemento padre debe de ser ASIGNATURAS. 
+    Cada asignatura tendrá elementos días de semana
+     (tantos elementos como días de la semana se 
+     repita la misma.) El elemento días de semana
+      contendrá el nombre del día y otro elemento 
+      con el horario, el cual se dividirá en hora 
+      y minutos. -->
+
+
+<!DOCTYPE asignaturas [
+    <!ELEMENT asignaturas (asignatura)+>
+    <!ELEMENT asignatura (nombre, diasSemana)>
+    <!ELEMENT diasSemana (dia)+>
+    <!ELEMENT dia (nombre, horario)>
+    <!ELEMENT horario (inicio, fin)>
+    <!ELEMENT inicio (hora, minutos)>
+    <!ELEMENT fin (hora, minutos)>
+    <!ELEMENT hora (#PCDATA)>
+    <!ELEMENT minutos (#PCDATA)>
+    <!ELEMENT nombre (#PCDATA)>
+]>
+
+
+<asignaturas>
+
+    <!-- entornos -->
+    <asignatura>
+        <nombre>Entornos</nombre>
+        <diasSemana>
+            <dia>
+                <nombre>Lunes</nombre>
+                <horario>
+                    <inicio>
+                        <hora>8</hora>
+                        <minutos>30</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>11</hora>
+                        <minutos>00</minutos>
+                    </fin>
+                </horario>
+            </dia>
+
+            <dia>
+                <nombre>Martes</nombre>
+                <horario>
+                    <inicio>
+                        <hora>10</hora>
+                        <minutos>10</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>11</hora>
+                        <minutos>00</minutos>
+                    </fin>
+                </horario>
+            </dia>
+        </diasSemana>
+    </asignatura>
+
+    <!-- fin entornos -->
+
+
+    <!-- fol -->
+    <asignatura>
+        <nombre>FOL</nombre>
+        <diasSemana>
+            <dia>
+                <nombre>Lunes</nombre>
+                <horario>
+                    <inicio>
+                        <hora>11</hora>
+                        <minutos>20</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>12</hora>
+                        <minutos>10</minutos>
+                    </fin>
+                </horario>
+            </dia>
+        </diasSemana>
+    </asignatura>
+
+    <!-- fin FOL -->
+
+    <!-- sistemas informaticos -->
+    <asignatura>
+        <nombre>Sistemas informáticos</nombre>
+        <diasSemana>
+            <dia>
+                <nombre>Lunes</nombre>
+                <horario>
+                    <inicio>
+                        <hora>13</hora>
+                        <minutos>00</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>14</hora>
+                        <minutos>40</minutos>
+                    </fin>
+                </horario>
+            </dia>
+
+            <dia>
+                <nombre>Martes</nombre>
+                <horario>
+                    <inicio>
+                        <hora>11</hora>
+                        <minutos>20</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>12</hora>
+                        <minutos>10</minutos>
+                    </fin>
+                </horario>
+            </dia>
+
+            <dia>
+                <nombre>Miercoles</nombre>
+                <horario>
+                    <inicio>
+                        <hora>11</hora>
+                        <minutos>20</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>14</hora>
+                        <minutos>40</minutos>
+                    </fin>
+                </horario>
+            </dia>
+
+        </diasSemana>
+    </asignatura>
+    <!-- fin sistemas informaticos -->
+
+    <!-- Programacion -->
+    <asignatura>
+        <nombre>Programación</nombre>
+        <diasSemana>
+            <dia>
+                <nombre>Martes</nombre>
+                <horario>
+                    <inicio>
+                        <hora>8</hora>
+                        <minutos>30</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>10</hora>
+                        <minutos>10</minutos>
+                    </fin>
+                </horario>
+            </dia>
+
+            <dia>
+                <nombre>Jueves</nombre>
+                <horario>
+                    <inicio>
+                        <hora>8</hora>
+                        <minutos>30</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>11</hora>
+                        <minutos>00</minutos>
+                    </fin>
+                </horario>
+            </dia>
+
+            <dia>
+                <nombre>Viernes</nombre>
+                <horario>
+                    <inicio>
+                        <hora>11</hora>
+                        <minutos>20</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>14</hora>
+                        <minutos>40</minutos>
+                    </fin>
+                </horario>
+            </dia>
+
+        </diasSemana>
+    </asignatura>
+    <!-- fin Programacion -->
+
+
+    <!-- Lenguajes de marcas -->
+    <asignatura>
+        <nombre>Lenguajes de marcas</nombre>
+        <diasSemana>
+            <dia>
+                <nombre>Martes</nombre>
+                <horario>
+                    <inicio>
+                        <hora>12</hora>
+                        <minutos>10</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>13</hora>
+                        <minutos>50</minutos>
+                    </fin>
+                </horario>
+            </dia>
+
+
+            <dia>
+                <nombre>Viernes</nombre>
+                <horario>
+                    <inicio>
+                        <hora>8</hora>
+                        <minutos>30</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>11</hora>
+                        <minutos>00</minutos>
+                    </fin>
+                </horario>
+            </dia>
+
+        </diasSemana>
+    </asignatura>
+    <!-- Fin Lenguajes de marcas -->
+
+
+    <!-- BD -->
+    <asignatura>
+        <nombre>Base de Datos</nombre>
+        <diasSemana>
+            <dia>
+                <nombre>Miercoles</nombre>
+                <horario>
+                    <inicio>
+                        <hora>8</hora>
+                        <minutos>30</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>11</hora>
+                        <minutos>00</minutos>
+                    </fin>
+                </horario>
+            </dia>
+
+
+            <dia>
+                <nombre>Jueves</nombre>
+                <horario>
+                    <inicio>
+                        <hora>11</hora>
+                        <minutos>20</minutos>
+                    </inicio>
+                    <fin>
+                        <hora>14</hora>
+                        <minutos>40</minutos>
+                    </fin>
+                </horario>
+            </dia>
+
+        </diasSemana>
+    </asignatura>
+    <!-- Fin BD -->
+
+
+</asignaturas>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+
+<!-- 
+Añade al ejercicio anterior el elemento apellido1, apellido2
+y edad del cliente 
+-->
+
+<cliente
+
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej18_validador.xsd"
+>
+    <nombre>Nelson</nombre>
+    <apellido1>Pérez</apellido1>
+    <apellido2>Varona</apellido2>
+    <edad>31</edad>
+</cliente>

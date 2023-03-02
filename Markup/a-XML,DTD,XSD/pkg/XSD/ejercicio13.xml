@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+Se desea crear un esquema que permita validar el elemento curso
+que debe tomar solo los valores "DAW", "DAM", "ASIR"
+y tiene el atributo obligatorio año (entero)
+-->
+
+<curso
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej13_validador.xsd"
+
+anyo="2023"
+>ASIR</curso>

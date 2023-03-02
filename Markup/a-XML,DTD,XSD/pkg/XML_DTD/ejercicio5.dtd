@@ -1,0 +1,8 @@
+<!ELEMENT equipo_de_basket (equipo+)>
+<!ELEMENT equipo (nombre, ciudad, entrenador, jugador+)>
+<!ELEMENT jugador (nombre, nacionalidad)>
+<!ATTLIST jugador posicion CDATA #REQUIRED>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT ciudad (#PCDATA)>
+<!ELEMENT entrenador EMPTY>
+<!ELEMENT nacionalidad (#PCDATA)>

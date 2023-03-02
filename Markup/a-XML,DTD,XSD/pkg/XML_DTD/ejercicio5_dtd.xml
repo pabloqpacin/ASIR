@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!--
+Un mayorista de productos de librería desea tener un formato
+de almacenamiento de datos para reflejar la información de su inventario.
+
+El elemento raíz debe ser <inventario>
+Dentro de inventario pueden ir
+elementos <lapiz> , <cuaderno> o <boligrafo> repetidos y en cualquier orden.
+
+Todo <lapiz> puede tener un elemento <dureza>
+Todo cuaderno debe llevar dos elementos: <numhojas> y <estilo>
+Todo boligrafo lleva un <precio> y
+puede o no llevar un elemento <color>
+-->
+
+<!DOCTYPE inventario [
+    <!ELEMENT inventario (lapiz | cuaderno | boligrafo)*>
+    <!ELEMENT lapiz (dureza)?>
+    <!ELEMENT cuaderno (numHojas, estilo)>
+    <!ELEMENT boligrafo (precio, color?)>
+
+    <!ELEMENT dureza (#PCDATA)>
+    <!ELEMENT numHojas (#PCDATA)>
+    <!ELEMENT estilo (#PCDATA)>
+    <!ELEMENT precio (#PCDATA)>
+    <!ELEMENT color (#PCDATA)>
+]>
+<inventario>
+    <lapiz></lapiz>
+    <cuaderno>
+        <numHojas></numHojas>
+        <estilo></estilo>
+    </cuaderno>
+    <boligrafo>
+        <precio></precio>
+    </boligrafo>
+</inventario>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+Se desea crear un esquema que permita validar el elemento codigoEmpleado
+que tiene el patrón de 2 dígitos que pueden ir del 3 al 6
+seguidos de la cadena AB. Además este elemento tiene
+los atributos cargo cuyo valor solo podrá ser "Junior", "Senior o "Analista"
+y el atributo numEmpleadosCargo haciendo referencia al numero de empleados
+que tiene ese empleado a su cargo, este atributo
+puede estar en el rango de valores de entre 0 y 10. 
+-->
+
+<codigoEmpleado
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej16_validador.xsd"
+
+cargo="Senior" numEmpleadosCargo="2"
+>36AB</codigoEmpleado>

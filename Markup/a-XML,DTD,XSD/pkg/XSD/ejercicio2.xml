@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- <peso>28.88</peso> -->
+<!--IE. Elemento Simple-->
+
+<!--ahora a validar-->
+
+
+<peso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ejer2.xsd"
+>28.88</peso>

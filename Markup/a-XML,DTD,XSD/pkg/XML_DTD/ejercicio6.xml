@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+    <!-- DTD
+ <!DOCTYPE elemento_raiz [
+    <!ELEMENT elemento_raiz (elemento_1, elemento_2, ...elementoN)>
+    <!ELEMENT elemento_1 (#PCDATA)>
+    <!ELEMENT elemento_2 (#PCDATA)>
+  
+ ]>
+  -->
+
+<!-- DTD -->
+
+<!DOCTYPE animales [
+  <!ELEMENT animales (cuadrupedo)>
+  <!ELEMENT cuadrupedo (herbivoros, ovniboros, carniboros)>
+  <!ELEMENT herbivoros (comida, ejemplo)>
+  <!ELEMENT ovniboros (comida, ejemplo)>
+  <!ELEMENT carniboros (comida, ejemplo)>
+  <!ELEMENT comida (#PCDATA)>
+  <!ELEMENT ejemplo (#PCDATA)>
+
+]>
+
+
+<animales>
+
+
+    <cuadrupedo>
+        <herbivoros>
+            <comida>PLantas</comida>
+            <ejemplo>Vaca</ejemplo>
+        </herbivoros>
+
+        <ovniboros>
+            <comida>Carne y PLantas</comida>
+            <ejemplo>Zorro</ejemplo>
+        </ovniboros>
+
+        <carniboros>
+            <comida>Carne</comida>
+            <ejemplo>Leon</ejemplo>
+        </carniboros>
+    </cuadrupedo>
+</animales>

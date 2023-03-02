@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<literales>
+
+    <!-- comillas dobles -->
+    <literal> &quot; hola mundo 1&quot;</literal>
+
+    <!-- comillas simples -->
+    <literal> &apos; hola mundo 2 &apos;</literal>
+
+    <!-- menor que -->
+    <literal> 7 &lt; 9</literal>
+
+    <!-- mayor que -->
+    <literal>9 &gt; 7</literal>
+
+</literales>
