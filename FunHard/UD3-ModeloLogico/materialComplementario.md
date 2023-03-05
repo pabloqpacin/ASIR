@@ -1,25 +1,23 @@
-# UD3 - Modelo Lógico
-
-
-
-
-## Intro (Campus Virtual *checklist*)
-
-- [x] 'material complementario'
-- [ ] docs
-- [ ] ejercicios
-<!-- - [ ] supdawg -->
-- [ ] Tareas
-- [ ] AutoEvaluación
-- [ ] Custionario
-
-
-## Material Complementario
+# Hardware UD3 Modelo Lógico — Material Complementario
 
 <details>
-<summary>Click to expand</summary>
+<summary>Table of Contents</summary>
 
-01. [ ] [¿Qué es y Cómo Funciona el CPU o Procesador?](https://www.youtube.com/watch_popup?v=vMS2n09X_sk)
+- [Hardware UD3 Modelo Lógico — Material Complementario](#hardware-ud3-modelo-lógico--material-complementario)
+  - [1. ¿Qué es y Cómo Funciona el CPU o Procesador?](#1-qué-es-y-cómo-funciona-el-cpu-o-procesador)
+  - [2. La Arquitectura del Procesador: ¿De qué se trata?](#2-la-arquitectura-del-procesador-de-qué-se-trata)
+  - [3. Núcleos vs GHz: ¿Qué es más Importante en el Procesador?](#3-núcleos-vs-ghz-qué-es-más-importante-en-el-procesador)
+  - [4. ¿El Overclocking, IPC, TDP, Turbo Boost y Turbo Core en el Procesador?](#4-el-overclocking-ipc-tdp-turbo-boost-y-turbo-core-en-el-procesador)
+  - [5. DIFERENCIA entre 32 Y 64 BITS](#5-diferencia-entre-32-y-64-bits)
+  - [6. La Memoria Caché: ¿Qué es y para qué sirve?](#6-la-memoria-caché-qué-es-y-para-qué-sirve)
+  - [7. Socket del Procesador: ¿Qué es y en qué influye?](#7-socket-del-procesador-qué-es-y-en-qué-influye)
+  - [8. Intel vs AMD: ¿Qué Procesador es Mejor?](#8-intel-vs-amd-qué-procesador-es-mejor)
+  - [9. ~~¿Cómo saber qué Procesador es mejor? | Comparador de CPU'S~~](#9-cómo-saber-qué-procesador-es-mejor--comparador-de-cpus)
+  - [10. ~~¿CÓMO SABER LA GENERACIÓN DE TU PROCESADOR?~~](#10-cómo-saber-la-generación-de-tu-procesador)
+
+</details>
+
+## 1. [¿Qué es y Cómo Funciona el CPU o Procesador?](https://www.youtube.com/watch_popup?v=vMS2n09X_sk)
 
 - nutshell
   - CPU: computar, ordenar y procesar; cálculos matemáticos y procesos de control
@@ -43,8 +41,7 @@
     - llevar info del cpu a la memoria y mostrarla al usuario
     - (hasta que detenga el proceso)
 
-
-02.  [ ] [La Arquitectura del Procesador: ¿De qué se trata?](https://www.youtube.com/watch_popup?v=kDKqKwk8VDY&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=2)
+## 2. [La Arquitectura del Procesador: ¿De qué se trata?](https://www.youtube.com/watch_popup?v=kDKqKwk8VDY&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=2)
 
 - nutshell
   - procesador coordina todas las tareas de un pc
@@ -62,8 +59,7 @@
   - potencia requerida DIRECTAMENTE PROPORCIONAL frecuencia velocidad
   - importancia REFRIGERACIÓN (+ límites por los fabricantes)
 
-
-03.  [x] [Núcleos vs GHz: ¿Qué es más Importante en el Procesador?](https://www.youtube.com/watch_popup?v=V0elByb5zEg&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=3)
+## 3. [Núcleos vs GHz: ¿Qué es más Importante en el Procesador?](https://www.youtube.com/watch_popup?v=V0elByb5zEg&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=3)
 
 - nutshell
   - "la arquitectura de un procesador define cómo está interconectado y qué bloques tiene internamente; más tareas al mismo tiempo, o más especializado"
@@ -78,8 +74,7 @@
   - bloques funcionan en PARALELO
   - *límites* para la frecuencia: consumo y temperatura
 
-
-04.  [x] [¿El Overclocking, IPC, TDP, Turbo Boost y Turbo Core en el Procesador?](https://www.youtube.com/watch_popup?v=li8JeyOnWoo&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=4)
+## 4. [¿El Overclocking, IPC, TDP, Turbo Boost y Turbo Core en el Procesador?](https://www.youtube.com/watch_popup?v=li8JeyOnWoo&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=4)
 
 - *overclocking*
   - 'desbloquear máxima velocidad' ie más operaciones por segundo
@@ -99,8 +94,7 @@
   - 'usando 4 de 6 núcleos... esos 4 reciben más potencia como para los que NO se están usando (en función del límite de temperatura)'
   - problema: siempre máxima potencia reduce vida útil 
 
-
-05.   [x] [DIFERENCIA entre 32 Y 64 BITS](https://www.youtube.com/watch_popup?v=1maB6dRCw7o&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=5)
+## 5. [DIFERENCIA entre 32 Y 64 BITS](https://www.youtube.com/watch_popup?v=1maB6dRCw7o&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=5)
 
 - nutshell
   - 64-bit procesa el doble de información en el mismo tiempo
@@ -108,8 +102,7 @@
   - 64-bit max RAM = 16 EB pero **OS** limita a 192 GB
   - (32-bit OSs run on 64-bit chips but FOOLERY-incompatibilities)
 
-
-06.   [x] [La Memoria Caché: ¿Qué es y para qué sirve?](https://www.youtube.com/watch_popup?v=85RqrLy7MGM&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=6)
+## 6. [La Memoria Caché: ¿Qué es y para qué sirve?](https://www.youtube.com/watch_popup?v=85RqrLy7MGM&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=6)
 
 - nutshell
   - dentro del procesador; acelera acceso a RAM
@@ -132,8 +125,7 @@
   - L3: mayor tamaño
   - L4: 'current trend' para tarjetas gráficas integradas
 
-
-07.   [x] [Socket del Procesador: ¿Qué es y en qué influye?](https://www.youtube.com/watch_popup?v=8GnvojtVZjU&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=7)
+## 7. [Socket del Procesador: ¿Qué es y en qué influye?](https://www.youtube.com/watch_popup?v=8GnvojtVZjU&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=7)
 
 - nutshell
   - CPU va en zócalo en placa base, evitando soldar
@@ -151,27 +143,14 @@
   - 1151: Intel Skyline
   - CONSTANTES RENOVACIONES para bien o para mal (placas bases fácilmente obsoletas con Intel, no tanto con AMD)
 
-
-08.   [x] [Intel vs AMD: ¿Qué Procesador es Mejor?](https://www.youtube.com/watch_popup?v=SB8y3ER9m94&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=8)
+## 8. [Intel vs AMD: ¿Qué Procesador es Mejor?](https://www.youtube.com/watch_popup?v=SB8y3ER9m94&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=8)
 
 - nutshell
   - Intel processors 10% más potente que AMD (procesadores)
   - AMD más económico
   - distintas **frecuencias** & arquitecturas
 
+## 9. ~~[¿Cómo saber qué Procesador es mejor? | Comparador de CPU'S](https://www.youtube.com/watch_popup?v=55aDNEfXfmI&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=9)~~
 
-09.   [x] ~~[¿Cómo saber qué Procesador es mejor? | Comparador de CPU'S](https://www.youtube.com/watch_popup?v=55aDNEfXfmI&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=9)~~
+## 10. ~~[¿CÓMO SABER LA GENERACIÓN DE TU PROCESADOR?](https://www.youtube.com/watch_popup?v=00cgQQrdYGQ&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=10)~~
 
-
-10.   [x] ~~[¿CÓMO SABER LA GENERACIÓN DE TU PROCESADOR?](https://www.youtube.com/watch_popup?v=00cgQQrdYGQ&list=PL4Wdg-psRY0aDSAFAH2ckqqMV88BFF8eH&index=10)~~
-
-</details>
-
-
-## Docs
-
-### Unidad III
-
-### Tema 3.1
-
-### Tema 3.3
