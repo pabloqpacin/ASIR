@@ -11,6 +11,7 @@ bak/
 *.log
 *.todo
 test*.*
+bak*.*
 
 # Ignore powerpoint and word files  -    .odp??
 *.odp
