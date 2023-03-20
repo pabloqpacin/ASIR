@@ -59,7 +59,6 @@
 | A7    | — **Inicio/configuración.** <br> ~~Inicio/usuarios.~~ // ~~Inicio/sistema.~~
 | Q8    | Queremos modificar los permisos NTFS asignados por defecto a un archivo,  pero no podemos porque salen las casillas de permitir desactivadas ¿por qué ocurre esto?
 | A8    | — Porque no tenemos permisos para cambiarlos. + *Porque los permisos son heredados y la herencia esta activa.* <br> ~~Porque no hay forma de cambiar los permisos por defecto.~~
-| but   | WAITING FOR **FORO DE DUDAS**
 | Q9    | Los permisos NTFS se aplican:
 | A9    | — Independientemente del tipo de acceso. <!--Local VS Remoto-->
 | Q10   | Los permisos que se propagan a un objeto desde un objeto primario se conoce como:

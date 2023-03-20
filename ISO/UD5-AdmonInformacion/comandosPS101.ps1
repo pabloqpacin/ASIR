@@ -12,6 +12,7 @@ Copy-Item helloWorld.txt copyWorld.txt          # cp
 Rename-Item copyWorld.txt deleteCopy.txt        # mv
 Move-Item deleteCopy.txt ..
 Remove-Item ../deleteCopy.txt                   # rm
+    # OJO '/' VS '\' 
 
 attrib helloWorld.txt
 Start-Process https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/attrib
