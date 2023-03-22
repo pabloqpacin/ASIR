@@ -6,12 +6,14 @@ test/
 test*/
 bak/
 
-# Ignore all .pdf .log, .todo and test. files
+# Ignore all .pdf .log, .todo and .tree files
 *.pdf
 *.log
+# !ASIR+/man-pages/*
 *.todo
 test*.*
 bak*.*
+*.tree
 
 # Ignore powerpoint and word files  -    .odp??
 *.odp
@@ -27,3 +29,6 @@ bak*.*
 *.pka
 *.pkt
 *.pcapng
+
+# Except all 'exceptions'
+!EXC*
