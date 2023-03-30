@@ -9,7 +9,7 @@
   <!-- - [enlace PacketTracer](https://packettracer.network/cisco-packet-tracer-descargue-su-version/) -->
 - Actividades
   - [x] Subnetting
-  - [ ] PacketTracer#1
+  - [x] PacketTracer#1
 - [x] Cuestionario
 
 
@@ -17,7 +17,7 @@
 
 > [apuntes-ud3-PT.md](/Redes/UD3-ArquitecturaRedes/apuntes-ud3.md)
 > 
-> [practicals-ud3](/Redes/UD3-ArquitecturaRedes/practicals-ud3.md) (Subnetting OK, PacketTracer NOT OK —BS—)
+> [practicals-ud3](/Redes/UD3-ArquitecturaRedes/practicals-ud3.md)
 
 
 ### Cuestionario UD3
