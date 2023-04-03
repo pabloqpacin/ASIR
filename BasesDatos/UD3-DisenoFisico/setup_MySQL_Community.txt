@@ -1,0 +1,18 @@
+1. [MySQL-Community==8.0.18.0](https://cdn.mysql.com//archives/mysql-installer/mysql-installer-community-8.0.18.0.msi)
+2. Custom Setup
+- MySQL Server 8.0.18 x64
+- ~ Workbench ~
+- ~ Notifier 1.1.8
+- ~ For Excel 1.3.8 --> DON'T --> needs https://learn.microsoft.com/en-us/visualstudio/vsto/visual-studio-tools-for-office-runtime-overview?view=vs-2022
+- ~ Shell ~
+- ~ Router ~
+- ~ Documentation ~
+- Samples and Examples ~
+    ?? Connectors ?? (ODBC || C++ || J || NET || Python)
+3. Config Server (Defaults + ...)
+- Show Advanced and Logging Options
+- Root Passwd
+- [ ] USER...
+4. Config Router (NULL)
+5. Config Samples
+- Enter Root Passwd
