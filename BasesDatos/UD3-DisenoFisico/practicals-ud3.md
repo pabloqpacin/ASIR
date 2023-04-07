@@ -1,17 +1,19 @@
 # BasesDatos — UD3: DDL // PRÁCTICAS
 
-- MySQL warning '1681': ~~`TINYINT(9)`~~ > `TINYINT`
-- `CHECK` (ejer2) &emsp; [...]
-
----
 
 - [BasesDatos — UD3: DDL // PRÁCTICAS](#basesdatos--ud3-ddl--prácticas)
   - [1. "CATERING"](#1-catering)
   - [2. "JUGUETERIA"](#2-jugueteria)
   - [3. Índices "JUGUETERIA"](#3-índices-jugueteria)
 
+```markdown
+- [x] MySQL warning '1681': ~~`TINYINT(9)`~~ > `TINYINT`
+- [ ] `CHECK` (EJ2)
+```
 
 ## 1. "CATERING"
+
+<details>
 
 - Crear la Base de Datos "CATERING" siguiendo el Modelo Relacional proporcionado
   - <b>TRABAJADOR</b> (<u>DNI</u>, Nombre, Apellidos, TelFijo, TelMovil, NumSS)
@@ -26,8 +28,9 @@
 
 ![ERD-ejer1](/img/BasesDatos/ud3-ejer1.png)
 
+</details>
 
-> [MySQL-ejer1.sql](/BasesDatos/UD3-DisenoFisico/ud3-ej1.sql)
+> [MySQL-ejer1.sql](/BasesDatos/UD3-DisenoFisico/ud3-CATERING.sql)
 
 ```sql
 CREATE SCHEMA IF NOT EXISTS CATERING;
@@ -115,6 +118,8 @@ CREATE TABLE Plato_Cocinero (
 
 ## 2. "JUGUETERIA"
 
+<details>
+
 - Tenemos el siguiente modelo Relacional de una Base de Datos "JUGUETERIA":
   - <b>TIENDA</b> (<u>CodTienda</u>, Nombre, Direccion, Telefono, Localidad)
   - <b>CLIENTE</b> (<u>CodCliente</u>, Nombre, Apellidos, Telefono, Direccion, CodTienda) donde CodTienda referencia TIENDA
@@ -123,8 +128,6 @@ CREATE TABLE Plato_Cocinero (
   - <b>JUGUETE</b> (<u>Nombre</u>, Marca, Precio, Categoria) donde Categoria referencia CATEGORIA
   - <b>VENTA</b> (<u>CodCliente</u>, <u>NombreJuguete</u>, Cantidad, Fecha) donde CodCliente referencia CLIENTE y NombreJuguete referencia JUGUETE
 - Hemos creado la Base de Datos lanzando las siguientes sentencias:
-
-<details>
 
 ```sql
 CREATE SCHEMA JUGUETERIA;
@@ -176,8 +179,6 @@ FOREIGN KEY (CodCliente) REFERENCES CLIENTE(CodCliente),
 FOREIGN KEY (NombreJuguete) REFERENCES JUGUETE(Nombre));
 ```
 
-</details>
-<br>
 
 - Realizar ahora las siguientes modificaciones utilizando la sentencia **ALTER TABLE**:
   - ~~Cambiar el nombre de todas las tablas de la Base de Datos a plural (en una única sentencia). Eg: Tabla JUGUETE -> JUGUETES~~
@@ -191,6 +192,7 @@ FOREIGN KEY (NombreJuguete) REFERENCES JUGUETE(Nombre));
   - ~~Añadir el campo Edad (INTEGER) a la tabla JUGUETES detrás del campo Precio.~~
   - Añadir un 1 como valor por defecto para el campo Cantidad de la tabla VENTAS.
 
+</details>
 
 ```sql
 ALTER TABLE TIENDA

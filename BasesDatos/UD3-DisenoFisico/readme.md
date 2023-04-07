@@ -7,7 +7,7 @@
 - Teoría
   - ud3-teoria
   - ud3-presentacion
-- Ejercicios DDL [3]
+- Actividades (DDL) [3]
 - Cuestionario
 
 > [apuntes-ud3](/BasesDatos/UD3-DisenoFisico/apuntes-ud3.md)
