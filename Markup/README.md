@@ -1,13 +1,20 @@
-# Markup Langs
+# 1º ASIR — Lenguajes de Marcas
 
-| UD  | [A](/Markup/a-XML%2CDTD%2CXSD/readme.md)   
-| :-: | :-: 
-| 1.  | XML  
-| 2.  | DTD  
-| 3.  | XSD  
 
-| UD  | [B](/Markup/b-HTML%2CCSS%2CJS/readme.md)
-| :-: | ---
-| 4.  | HTML
-| 5.  | CSS
-| 6.  | JavaScript
+> aka `Markup`
+
+| pkg                             | Temas     | Contenidos
+| :-:                             | :-:       | ---
+| [A](/Markup/a-XML%2CDTD%2CXSD/) | UDs 1 2 3 | XML DTD XSD
+| [B](/Markup/b-HTML%2CCSS%2CJS/) | UDs 4 5 6 | HTML CSS Javascript
+
+
+
+<!-- | pkg | UDs               | Contenidos
+| :-: | ---               | ---
+| A   | **1**. XML        | -
+|     | **2**. DTD        | -
+|     | **3**. XML        | -
+| B   | **4**. HTML       | -
+|     | **5**. CSS        | -
+|     | **6**. Javascript | - -->

@@ -1,5 +1,3 @@
-
-
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="numero" type="tipoNumero"/>
 
@@ -10,6 +8,5 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-
 
 </xs:schema>

@@ -5,8 +5,7 @@ que valide el patrón de 8 cifras + letra que suelen tener los DNI en España. -
 
 <dni xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="ej3_validador.xsd"
->
-12345678H
-</dni>
+
+>12345678H</dni>
 
 <!-- xsd = elemento SIMPLE -->

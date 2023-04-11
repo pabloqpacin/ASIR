@@ -8,5 +8,5 @@
 
 
 <peso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="ejer2.xsd"
+xsi:noNamespaceSchemaLocation="ej2_validador.xsd"
 >28.88</peso>

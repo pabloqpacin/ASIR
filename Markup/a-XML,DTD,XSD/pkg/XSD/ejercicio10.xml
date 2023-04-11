@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <!--
 Se desea crear un esquema que permita validar la fecha de un aniversario.
 Donde el elemento es aniversario y el atributo fecha.
