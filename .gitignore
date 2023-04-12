@@ -1,27 +1,25 @@
-# Ignore 2022, ASIR+(Draft), CLASES & (all) test and bak 
+# Ignore dirs and filenames 
 2022/
-ASIR+DRAFT/
 CLASES/
-test/
-test*/
 bak/
+mocks/
+*-mock/
+test*/
+*test/
+*test*.*
+*mock*.*
+*bak*.*
 
-# Ignore all .pdf .log, .todo and .tree files
+# Ignore filetypes
 *.pdf
-*.log
-# !ASIR+/man-pages/*
 *.todo
-test*.*
-bak*.*
 *.tree
 
-# Ignore powerpoint and word files  -    .odp??
+# Ignore Office suite
 *.odp
 *.ppt
 *.pptx
 *.docx
-
-# Ignore GBD's Neptuno
 *.accdb
 
 # Ignore Packet Tracer files
@@ -30,5 +28,5 @@ bak*.*
 *.pkt
 *.pcapng
 
-# Except all 'exceptions'
+# Allow exceptions
 !EXC*
