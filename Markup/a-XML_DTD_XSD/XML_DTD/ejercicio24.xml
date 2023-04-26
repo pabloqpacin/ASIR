@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Un fabricante de tractores (...)
+Un pedido consta de uno o más tractores.
+Un tractor consta de uno o más componentes.
+Un componente tiene los siguientes elementos:
+nombre del fabricante (atributo obligatorio),
+fecha de entrega (si es posible, aunque puede que no aparezca;
+si aparece el dia es optativo, pero el mes y el año son obligatorios).
+También se necesita saber del componente si es frágil o no.
+También debe aparecer un elemento peso del componente
+y dicho elemento peso tiene un atributo unidad del peso (kilos o gramos),
+un elemento número de serie
+y puede que aparezca o no un elemento kmmaximos indicando
+que el componente debe sustituirse tras un cierto número de kilómetros. -->
+
+<!DOCTYPE pedidos [
+    <!ELEMENT pedidos (tractor)+>
+    <!ELEMENT tractor (componente)+>
+    <!ATTLIST componente nombreFabricante CDATA #REQUIRED>
+    <!ELEMENT componente (numSerie, (fragil|noFragil),
+        pesoComponente, fechaEntrega?, kilometrosMaximos)>
+    <!ELEMENT fechaEntrega (dia?, mes, anyo)>
+    <!ELEMENT dia (#PCDATA)>
+    <!ELEMENT mes (#PCDATA)>
+    <!ELEMENT anyo (#PCDATA)>
+    <!ELEMENT kilometrosMaximos (#PCDATA)>
+    <!ELEMENT pesoComponente (#PCDATA)>
+    <!ATTLIST pesoComponente unidadPeso (kg|g) #REQUIRED>
+    <!ELEMENT fragil (#PCDATA)>
+    <!ELEMENT noFragil (#PCDATA)>
+    <!ELEMENT numSerie (#PCDATA)>
+]>
+
+<pedidos>
+    <tractor>
+        <componente nombreFabricante="supdawg">
+            <numSerie></numSerie>
+            <noFragil/>
+            <pesoComponente unidadPeso="kg"></pesoComponente>
+            <fechaEntrega>
+                <mes></mes>
+                <anyo></anyo>
+            </fechaEntrega>
+            <kilometrosMaximos></kilometrosMaximos>
+        </componente>
+    </tractor>
+</pedidos>

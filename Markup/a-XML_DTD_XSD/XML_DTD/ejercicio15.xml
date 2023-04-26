@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+Un supermercado desea tener un formato de ficheros para que 
+sus distintas APPs puedan saber las transacciones llevadas a cabo.
+El acuerdo al que han llegado es que su XML debería tener esta estructura:
+El elemento raíz será <transacciones>.
+Toda <transacciones> tiene una o más <transaccion>.
+Toda <transaccion> tiene los siguientes datos:
+Importe, Comprador, Vendedor, Fecha (optativa) y Un codigo de factura. -->
+
+<!DOCTYPE transacciones [
+    <!ELEMENT transacciones (transaccion)+>
+    <!ELEMENT transaccion (importe, comprador, vendedor, fecha?, codFactura)>
+    <!ELEMENT importe (#PCDATA)>
+    <!ELEMENT vendedor (#PCDATA)>
+    <!ELEMENT comprador (#PCDATA)>
+    <!ELEMENT codFactura (#PCDATA)>
+    <!ELEMENT fecha (#PCDATA)>
+]>
+
+<transacciones>
+    <transaccion>
+        <importe></importe>
+        <comprador></comprador>
+        <vendedor></vendedor>
+        <fecha/>
+        <codFactura></codFactura>
+    </transaccion>
+</transacciones>

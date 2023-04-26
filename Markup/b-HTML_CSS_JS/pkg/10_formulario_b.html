@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10_formulario_b</title>
+    <link rel="stylesheet" href="css/10_formulario_b.css">
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+        #pass {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>inputs inputs inputs</h2>
+    <form action="">
+        <!-- NOMBRE -->
+        <p>Nombre: <input type="text" required size="23"></p>
+        <!-- PASS - REQUIRED -->
+        <p>Contraseña: <input type="password" required minlength="8" id="pass"> </p>
+        <!-- URL -->
+        <p>URL: <input type="url" placeholder="Escribe la URL" size="26"> </p>
+        <hr>
+        <!-- HORA -->
+        <p>Hora: <input type="time" value="16:20"></p>
+        <!-- FECHA - DEFAULT W/ PHP -->
+        <p>Fecha: <input type="date" value="2023-03-29" min="1959-01-01" max="2029-12-31" ></p>
+        <!-- SEMANA -->
+        <p>Semana: <input type="week" value="2023-W36" min="2023-W10" max="2023-W40"></p>
+        <!-- MES -->
+        <p>Mes: <input type="month" value="2023-04" min="2023-01" max="2023-03"></p>
+        <hr>
+        <!-- TELEFONO - PREFIX?! -->
+        <p>Telefono: <input type="tel" maxlength="9" size="22"></p>
+        <!-- NUMERO -->
+        <p>Numero: &emsp; <input type="number" value="7" min="-10" max="10"></p>
+        <!-- COLOR -->
+        <p>Color favorito: <input type="color" value="#456C31"></p>
+        <hr>
+        <!-- BOTONES -->
+        <div id="button_list">   
+            <p>
+                <input type="submit" value="Enviar">
+                <input type="reset" value="Borrar">
+            </p>
+        </div>
+    </form>
+</body>
+<footer>
+    <hr>
+    <div>
+        &ensp; by @pabloqpacin oi &ensp;
+        <a data-attr="img" href="https://github.com/pabloqpacin" target="_blank"><img src="github-mark.png" style="width:21px;height:21px"></a>
+    </div>
+</footer>
+</html>
+
+
+<!-- HOW TO change UI *FORMAT* for ALL BROWSERS?!-->

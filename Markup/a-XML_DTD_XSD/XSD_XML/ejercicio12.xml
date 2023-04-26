@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Validar el elemento coche con los atributos color y kilometros. -->
+
+<coche
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej12_validador.xsd"
+color="rojo" kilometros="50000"
+>Corsa</coche>

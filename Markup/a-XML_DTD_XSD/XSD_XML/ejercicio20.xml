@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Añade al ejercicio anterior el atributo numero de alumnos
+y que el elemento profesor se pueda repetir más de una vez
+(como mínimo se debe repetir una vez) -->
+
+<colegio
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej20_validador.xsd"
+nombre="" numAlumnos="50"
+>   <director/>
+    <jefeDeEstudios/>
+    <profesor/>
+    <profesor/>
+</colegio>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Valida si un número es primo.
+El elemento es número y el atributo es primo.
+Tomará los valores verdadero o falso. -->
+
+<numero
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej09_validador.xsd"
+primo="true"
+>13</numero>

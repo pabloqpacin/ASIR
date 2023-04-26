@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Valida la edad de una persona, donde
+'persona' es el elemento y la 'edad' su atributo. -->
+
+<persona
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej08_validador.xsd"
+edad="28"
+>Pablo</persona>

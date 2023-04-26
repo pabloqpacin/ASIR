@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE precios [
+    <!ELEMENT precios (condicionMenor, condicionMayor, condicionIgual, ampersand)>
+    <!ELEMENT condicionIgual (condicion)+>
+    <!ELEMENT condicionMenor (#PCDATA)>
+    <!ELEMENT condicionMayor (#PCDATA)>
+    <!ELEMENT condicion (#PCDATA)>
+    <!ELEMENT ampersand (#PCDATA)>
+]>
+
+<precios>
+    <condicionMenor>6&#8364; &lt; 10&#8364;</condicionMenor>
+    <condicionMayor>10&#8364; &gt; 8&#8364;</condicionMayor>
+    <condicionIgual>
+        <condicion>10&#8364;  &#61;  &quot;10&#8364;&quot;</condicion>
+        <condicion>6&#8364;  &#61;  &apos;6&#8364;&apos;</condicion>
+    </condicionIgual>
+    <ampersand>13&#8364; &amp; 8&#8364;</ampersand>
+</precios>

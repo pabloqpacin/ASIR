@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE eventos [
+    <!ELEMENT eventos (evento)+>
+    <!ELEMENT evento (senhal, puntoKM,
+        nombreVia, sentido, corteVia?,
+        fechaHora?, retencion, kmRetencion)>
+    <!ELEMENT senhal (#PCDATA)>
+    <!ELEMENT puntoKM (#PCDATA)>
+    <!ELEMENT nombreVia (#PCDATA)>
+    <!ELEMENT sentido (#PCDATA)>
+    <!ELEMENT corteVia (#PCDATA)>
+    <!ELEMENT fechaHora (#PCDATA)>
+    <!ELEMENT retencion (#PCDATA)>
+    <!ELEMENT kmRetencion (#PCDATA)>
+]>
+
+<eventos>
+    <!-- evento 1 -->
+    <evento>
+        <senhal>Accidente</senhal>
+        <puntoKM>545</puntoKM>
+        <nombreVia>A-6</nombreVia>
+        <sentido>Lugo</sentido>
+        <corteVia>1 carril</corteVia>
+        <fechaHora/>
+        <retencion>si</retencion>
+        <kmRetencion>1.5</kmRetencion>
+    </evento>
+    <!-- evento 2 -->
+    <evento>
+        <senhal>Retencion</senhal>
+        <puntoKM>3,5</puntoKM>
+        <nombreVia>AC-10</nombreVia>
+        <sentido>Coruña</sentido>
+        <fechaHora/>
+        <retencion>si</retencion>
+        <kmRetencion>1</kmRetencion>
+    </evento>
+</eventos>

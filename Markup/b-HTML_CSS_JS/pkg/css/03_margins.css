@@ -1,0 +1,20 @@
+div{
+    background-color: coral;
+
+    padding-left: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    /* padding-right: ; */
+
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+
+    padding: 30px; /*para todos, sobreescribe lo anterior*/
+    margin: 30px;
+
+    padding: 30px 20px; /*vertical + horizontal*/
+    margin: 20px 0px 30px; /*arriba + horizontal + abajo */
+
+}

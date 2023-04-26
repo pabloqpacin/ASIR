@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Unos programadores (...).
+Los ficheros deben tener un elemento <listafacturas>
+Dentro de la lista debe haber una o más facturas.
+Las facturas tienen un atributo fecha que es optativo.
+Toda factura tiene:
+un emisor, que es un elemento obligatorio
+y que debe tener un atributo cif (el emisor) que es obligatorio.
+Dentro de emisor debe haber un elemento obligatorio nombre
+y puede o no haber un elemento volumenventas.
+Toda factura debe tener un elemento pagador,
+con exactamente la misma estructura que emisor.
+Toda factura tiene un elemento importe. -->
+
+<!DOCTYPE listaFacturas [
+    <!ELEMENT listaFacturas (factura)+>
+    <!ELEMENT factura (emisor, pagador, importe)>
+    <!-- <!ATTLIST factura fecha CDATA #IMPLIED> -->
+    <!ATTLIST factura fecha (2023|2024) #IMPLIED>
+    <!ELEMENT emisor (nombre, volumenVentas?)>
+    <!ATTLIST emisor cif NMTOKEN #REQUIRED>
+    <!ELEMENT pagador (nombre, volumenVentas?)>
+    <!ATTLIST pagador cif NMTOKENS #REQUIRED>
+    <!ELEMENT volumenVentas (#PCDATA)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT importe (#PCDATA)>
+]>
+
+<listaFacturas>
+    <factura fecha="2023">
+        <emisor cif="sup">
+            <nombre></nombre>
+        </emisor>
+        <pagador cif="sup dawg">
+            <nombre></nombre>
+            <volumenVentas></volumenVentas>
+        </pagador>
+        <importe></importe>
+    </factura>
+</listaFacturas>

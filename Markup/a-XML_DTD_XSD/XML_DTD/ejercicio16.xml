@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Crear un XML de ejemplo y la DTD asociada para unos
+diseñadores que realizan una aplicación de compras donde
+hay una lista de compras con 0 o más compras.
+Cada compra tiene un número de serie, una cantidad y 
+un peso que puede ser opcional. -->
+
+<!DOCTYPE listaCompras [
+    <!ELEMENT listaCompras (compra)*>
+    <!ELEMENT compra (numSerie, cantidad, peso?)>
+    <!ELEMENT numSerie (#PCDATA)>
+    <!ELEMENT cantidad (#PCDATA)>
+    <!ELEMENT peso (#PCDATA)>
+]>
+
+<listaCompras>
+    <compra>
+        <numSerie></numSerie>
+        <cantidad></cantidad>
+        <peso/>
+    </compra>
+</listaCompras>

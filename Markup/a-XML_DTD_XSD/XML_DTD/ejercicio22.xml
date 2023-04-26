@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Un mayorista informático (...).
+Una entrega consta de uno o más lotes.
+Un lote tiene uno o más palés.
+Todo palé tiene una serie de elementos: 
+número de cajas, contenido, peso
+y forma de manipulación que puede ser optativa.
+El contenido consta de una serie de elementos: 
+nombre del componente,
+procedencia que es opcional y contiene 0, 1 o más países, 
+número de serie del componente, peso del componente individual
+y unidad de peso que puede aparecer o no. -->
+
+<!DOCTYPE entregas [
+    <!ELEMENT entregas (lote)+>
+    <!ELEMENT lote (pale)+>
+    <!ELEMENT pale (numCajas, contenido, peso, formaManipulacion?)>
+    <!ELEMENT contenido (nombreComponente, procedencia*,
+        numSerieComponente, pesoComponente, unidadPeso?)>
+    <!ELEMENT unidadPeso (#PCDATA)>
+    <!ELEMENT pesoComponente (#PCDATA)>
+    <!ELEMENT numSerieComponente (#PCDATA)>
+    <!ELEMENT procedencia (#PCDATA)>
+    <!ELEMENT nombreComponente (#PCDATA)>
+    <!ELEMENT formaManipulacion (#PCDATA)>
+    <!ELEMENT peso (#PCDATA)>
+    <!ELEMENT numCajas (#PCDATA)>
+]>
+
+<entregas>
+    <lote>
+        <pale>
+            <numCajas></numCajas>
+            <contenido>
+                <nombreComponente></nombreComponente>
+                <numSerieComponente></numSerieComponente>
+                <pesoComponente></pesoComponente>
+            </contenido>
+            <peso></peso>
+        </pale>
+    </lote>
+</entregas>

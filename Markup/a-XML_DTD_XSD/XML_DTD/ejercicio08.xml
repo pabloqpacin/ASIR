@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Elabora un documento XML que almacene la
+información de 2 clientes. Cada cliente almacena
+un nombre, apellidos (el cual está formado por
+apellido1 y apellido2) y un nif. 
+El segundo cliente tiene el campo apellido2 vacío. -->
+
+<!DOCTYPE clientes [
+  <!ELEMENT clientes (cliente)+>
+  <!ELEMENT cliente (nombre, apellidos, nif)>
+  <!ELEMENT apellidos (apellido1, apellido2?)>
+  <!ELEMENT apellido1 (#PCDATA)>
+  <!ELEMENT apellido2 (#PCDATA)>
+  <!ELEMENT nombre (#PCDATA)>
+  <!ELEMENT nif (#PCDATA)>
+]>
+
+<clientes>
+    <cliente>
+        <nombre>Daniel</nombre>
+        <apellidos>
+            <apellido1>Ruiz</apellido1>
+            <apellido2>Avarez</apellido2>
+        </apellidos>
+        <nif>44444444A</nif>
+    </cliente>
+    <cliente>
+        <nombre>Pablo</nombre>
+        <apellidos>
+            <apellido1>Quevedo</apellido1>
+            <apellido2/>
+        </apellidos>
+        <nif>111111111A</nif>
+    </cliente>
+</clientes>

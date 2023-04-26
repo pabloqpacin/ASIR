@@ -1,0 +1,20 @@
+/* li {
+    color: green
+} */
+
+.listaDes li {
+    color: green;
+    list-style: none;
+    display: inline-block;
+    padding: 5px;
+    font: bold 14px impact;
+}
+
+.listaDes a {
+    text-decoration: none;
+    color: green;
+}
+
+.cursor {
+    cursor: pointer;
+}

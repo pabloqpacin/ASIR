@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Valida un elemento compra que contiene un elemento número de serie,
+una cantidad que no puede tomar valores negativos,
+los nombres de repartidores (varios o ninguno)
+y un atributo peso que que puede ser de 0 a 50. -->
+
+<compra
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej22_validador.xsd"
+peso="20">
+    <numSerie>A5920</numSerie>
+    <cantidad>1337</cantidad>
+    <nombreRepartidor>Sup</nombreRepartidor>
+    <nombreRepartidor>Dawg</nombreRepartidor>
+</compra>

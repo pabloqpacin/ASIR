@@ -1,0 +1,19 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="factura" type="tipoFactura"/>
+    <xs:simpleType name="restrictCodigo">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{3}[0-9]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="tipoFactura">
+        <xs:complexContent>
+            <xs:restriction base="xs:anyType">
+                <xs:sequence>
+                    <xs:element name="codigo" type="restrictCodigo"/>
+                    <xs:element minOccurs="0" name="fechaFactura" type="xs:date"/>
+                    <xs:element name="precio" type="xs:double"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

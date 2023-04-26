@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Valida la fecha en formato dd/mm/aaaa, estando
+el dia entre 1-31, el mes 1-12 y año 1000-2999 -->
+
+<fecha
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej07_validador.xsd"
+>2012-12-12</fecha>
+<!-- >12/12/2012</fecha> -->
+
+<!-- REWORKED WRONGFUL EXERCISE -->

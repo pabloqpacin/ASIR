@@ -1,0 +1,22 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="compra" type="tipoCompra"/>
+    <xs:simpleType name="restrictPeso">
+        <xs:restriction base="xs:double">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="tipoCompra">
+        <xs:complexContent>
+            <xs:restriction base="xs:anyType">
+                <xs:sequence>
+                    <xs:element name="numSerie" type="xs:string"/>
+                    <xs:element name="cantidad" type="xs:positiveInteger"/>
+                    <xs:element name="nombreRepartidor" type="xs:string"
+                        minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+                <xs:attribute name="peso" type="restrictPeso"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Una multinacional que opera en bolsa (...)
+En el listado aparecen siempre uno o varios futuros,
+después una o varias divisas,
+después uno o varios bonos y una o varias letras.
+Todos ellos tienen un atributo precio que es obligatorio.
+Las divisas y los bonos tienen un atributo optativo 'estable'.
+Un futuro es un valor esperado que tendrá un cierto producto en el futuro...
+Se debe incluir este producto en forma de elemento.
+También puede aparecer un elemento mercado.
+Todo bono tiene un elemento país_de_procedencia. También debe tener
+«valor_deseado», «valor_mínimo» y «valor_máximo».
+Las divisas tienen siempre un nombre, además pueden incluir
+uno o más tipos de cambio para otras monedas.
+Las letras tienen siempre un tipo de interés y un país emisor.
+El país emisor también debe existir
+y puede ser siempre «España», «EEUU», «Alemania» y «Japón» -->
+
+<!DOCTYPE listado [
+    <!ELEMENT listado (futuro+, divisa+, bono+, letra+)>
+    <!ATTLIST futuro precio CDATA #REQUIRED>
+    <!ATTLIST divisa precio CDATA #REQUIRED>
+    <!ATTLIST divisa estable CDATA #IMPLIED>
+    <!ATTLIST bono precio CDATA #REQUIRED>
+    <!ATTLIST bono estable CDATA #IMPLIED>
+    <!ATTLIST letra precio CDATA #REQUIRED>
+    <!ELEMENT futuro (producto, mercado?)>
+    <!ELEMENT bono (paisProcedencia, valorDeseado, valorMinimo, valorMaximo)>
+    <!ELEMENT divisa (nombre, tiposCambio*)>
+    <!ELEMENT letra (tipoInteres, paisEmisor)>
+    <!ELEMENT paisEmisor (Espanya|EEUU|Alemania|Japon)>
+    <!ELEMENT Japon (#PCDATA)>
+    <!ELEMENT Alemania (#PCDATA)>
+    <!ELEMENT EEUU (#PCDATA)>
+    <!ELEMENT Espanya (#PCDATA)>
+    <!ELEMENT tipoInteres (#PCDATA)>
+    <!ELEMENT tiposCambio (#PCDATA)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT valorDeseado (#PCDATA)>
+    <!ELEMENT valorMaximo (#PCDATA)>
+    <!ELEMENT valorMinimo (#PCDATA)>
+    <!ELEMENT paisProcedencia (#PCDATA)>
+    <!ELEMENT mercado (#PCDATA)>
+    <!ELEMENT producto (#PCDATA)>
+]>
+
+<listado>
+    <futuro precio="100">
+        <producto></producto>
+        <mercado/>
+    </futuro>
+    <divisa precio="200" estable="1">
+        <nombre></nombre>
+        <tiposCambio></tiposCambio>
+    </divisa>
+    <bono precio="300" estable="1">
+        <paisProcedencia></paisProcedencia>
+        <valorDeseado></valorDeseado>
+        <valorMinimo></valorMinimo>
+        <valorMaximo></valorMaximo>
+    </bono>
+    <letra precio="400">
+        <tipoInteres></tipoInteres>
+        <paisEmisor>
+            <Alemania></Alemania>
+        </paisEmisor>
+    </letra>
+</listado>

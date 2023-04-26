@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Valida el elemento codigoEmpleado que tiene el patrón
+de 2 dígitos que pueden ir del 3 al 6 seguidos de la cadena AB.
+Atributos 'cargo' ("Junior", "Senior o "Analista") 
+y 'numEmpleadosCargo' entre 0 y 10. -->
+
+<codigoEmpleado
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej16_validador.xsd"
+cargo="Senior" numEmpleadosCargo="2"
+>63AB</codigoEmpleado>

@@ -1,0 +1,60 @@
+/* global stuff */
+body {
+    background-color: lightgray;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+hr {
+    color: aquamarine;
+}
+
+/* header 1*/
+.h1 {
+    font-size: 40px;
+    padding-left: 45px;
+}
+
+/* nav bar */
+.nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav li {
+    list-style: none;
+    display: inline-block;
+    padding: 5px;
+    font: bold 14px Verdana;
+}
+
+/* text boxes */
+.seccion {
+    width: 1300px;
+    padding: 20px;
+    float: left;
+}
+
+.art {
+    background-color: lightslategray;
+    border: 5px double #333;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: justify;    
+}
+
+.art footer {
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* unresponsive tho */
+.aside {
+    float: right;
+    margin-right: 30px;
+}
+
+/* footer */
+.piePagina {
+    clear: both;
+    text-align: center;
+}

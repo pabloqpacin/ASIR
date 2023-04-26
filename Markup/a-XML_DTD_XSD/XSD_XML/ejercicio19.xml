@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Valida información de los trabajadores de un colegio.
+Elemento director, jefe de estudios y profesor.
+Además tiene un atributo nombre. -->
+
+<colegio
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej19_validador.xsd"
+nombre=""
+>   <director/>
+    <jefeDeEstudios/>
+    <profesor/>
+</colegio>

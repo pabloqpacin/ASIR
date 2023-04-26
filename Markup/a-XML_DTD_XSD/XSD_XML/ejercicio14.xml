@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!-- Validar un solo elemento llamado codigo. Dentro hay
+una cadena rígida: 2 mayúsculas, 2 cifras, 3 letras.
+Atributo "sede" que será de tipo cadena. -->
+
+<codigo
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej14_validador.xsd"
+sede="Budapest"
+>AB12xyZ</codigo>

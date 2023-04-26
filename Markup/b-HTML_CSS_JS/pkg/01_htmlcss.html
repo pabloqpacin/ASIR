@@ -1,0 +1,68 @@
+<html>
+
+<!--NOTA font-families:: deben de estar instalados en el navegador, ergo 3 opciones o default-->
+
+<head>
+    <title>01_html_css</title>
+
+    <!--Resto elementos en HEAD son info para el navegador... NO RENDERING-->
+    <!--all 'p' ;; in-line == validez solo si CONTRADICCION (prevalecería in-line)-->
+
+    <style>
+        /* Comment CSS */
+        h1, h2{
+            color: pink;
+        }
+        p{
+            color: red;
+            font-size: 40px;
+        }
+        /* # == IDs */
+        #parrafo1{
+            font-weight: bold;
+        }
+        .parrafo02{
+            font-family: 'Courier New', Courier, monospace;
+        }
+        </style>
+</head>
+
+<body>
+    <h1>Header 1</h1>
+    <h2>Header 2</h2>
+    <h3>Header 3</h3>
+    <h4>Header 4</h4>
+    <h5>Header 5</h5>
+    <h6>Header 6</h6>
+    <h7>Header 7 - nem!</h7>
+
+    <hr>
+    <p style="color:red">Hola Mundo!</p>
+    <p style="color:green; font-size: 30px;">Hola Mundo!</p>
+    <p style="color:yellowgreen; font-style: italic; font-weight: bold">Hola Mundo!</p>
+
+    <hr>
+    <p id="parrafo01">Parrafo 01</p>
+    <p class="parrafo02">Parrafo 02</p>
+    <p class="parrafo02">Parrafo 03</p>
+
+</body>
+
+<footer>
+    <hr><br>
+    <div>
+        &emsp; by @pabloqpacin with love &ensp;
+        <a data-attr="img" href="https://github.com/pabloqpacin" target="_blank"><img src="github-mark.png" style="width:21px;height:21px"></a>
+    </div>
+</footer>
+
+<!--
+    NOTAS
+        - ID = preferible para casos aislados, únicos
+        - clases = varias instancias
+
+    CONCLUSIÓN (CSS):
+        - in-line VS <style>
+-->
+
+</html>

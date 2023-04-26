@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Un instituto (...).
+Tiene que haber un elemento raíz listacursos. 
+Tiene que haber uno o más cursos.
+Un curso tiene uno o más alumnos.
+Todo alumno tiene un DNI, un nombre y un apellido, 
+puede que tenga segundo apellido o no
+y tiene una lista de asignaturas donde habrá
+una o más asignaturas.
+Toda asignatura tiene un nombre, un profesor y un atributo código.
+Un profesor tiene un NRP (Número de Registro Personal),un nombre
+y un apellido (también puede tener o no un segundo apellido). -->
+
+<!DOCTYPE listaCursos [
+    <!ELEMENT listaCursos (curso)+>
+    <!ELEMENT curso (alumno)+>
+    <!ELEMENT alumno (DNI, nombre, apellido, segApellido?, listaAsignaturas)>
+    <!ELEMENT listaAsignaturas (asignatura)+>
+    <!ELEMENT asignatura (nombre, profesor)>
+    <!ATTLIST asignatura codigo ID #REQUIRED>
+    <!ELEMENT profesor (NRP, nombre, apellido, segApellido?)>
+    <!ELEMENT segApellido (#PCDATA)>
+    <!ELEMENT apellido (#PCDATA)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT NRP (#PCDATA)>
+    <!ELEMENT DNI (#PCDATA)>
+]>
+
+<listaCursos>
+    <curso>
+        <alumno>
+            <DNI></DNI>
+            <nombre></nombre>
+            <apellido></apellido>
+            <listaAsignaturas>
+                <asignatura codigo="ye">
+                    <nombre></nombre>
+                    <profesor>
+                        <NRP></NRP>
+                        <nombre></nombre>
+                        <apellido></apellido>
+                    </profesor>
+                </asignatura>
+            </listaAsignaturas>
+        </alumno>
+    </curso>
+</listaCursos>

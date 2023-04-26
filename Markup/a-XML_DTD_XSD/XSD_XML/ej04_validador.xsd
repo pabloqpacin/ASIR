@@ -1,0 +1,9 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="pago" type="tipoPago"/>      
+    <xs:simpleType name="tipoPago">
+        <xs:restriction base="xs:integer">
+            <xs:minExclusive value="0"/>
+            <xs:maxExclusive value="3000"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

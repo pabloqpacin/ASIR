@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Valida la fecha de un aniversario.
+El elemento es aniversario y el atributo fecha. -->
+
+<aniversario
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej10_validador.xsd"
+fecha="2023-02-14"
+>San Valentin</aniversario>

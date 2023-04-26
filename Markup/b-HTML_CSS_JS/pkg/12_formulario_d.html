@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12_formulario_d</title>
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <h2>Formulariado</h2>
+    <form action="">
+        <!-- Block 1 -->
+        <p>Seleccione el pais:
+            <select>
+                <option value="">
+                    <optgroup label="Europa">
+                        <option value="">España</option>
+                        <option value="">Francia</option>
+                        <option value="">Portugal</option>
+                    </optgroup>
+                    <optgroup label="America">
+                        <option value="">Mexico</option>
+                        <option value="">Cuba</option>
+                        <option value="">Peru</option>
+                    </optgroup>
+                </option>
+            </select>
+        </p>
+        <p>Seleccione la provincia
+            <select>
+                <option value="">Coruña</option>
+                <option value="" disabled>Lugo</option>
+                <option value="" selected>Ourense</option>
+                <option value="">Pontevedra</option>
+            </select>
+        </p>
+        <hr>
+        <!-- Block 2 -->
+        <p>Introduce texto: <input type="text" disabled></p>
+        <p>Introduce nombre: <input type="text" value="supdawg" readonly></p>
+        <p>Introduce apellido: <input type="text" placeholder="whoami"></p>
+        <p>Subir volumen: <input type="range" value="66"></p>
+        <hr>
+        <!-- Eaz -->
+        <p><input type="submit" value="Enviar" disabled></p>
+    </form>
+    <footer>
+        <hr>
+        <div>
+            &ensp; by @pabloqpacin &ensp;
+            <a data-attr="img" href="https://github.com/pabloqpacin" target="_blank"><img src="github-mark.png" style="width:21px;height:21px"></a>
+        </div>
+    </footer>
+</body>
+</html>

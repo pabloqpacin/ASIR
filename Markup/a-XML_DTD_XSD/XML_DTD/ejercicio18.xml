@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- En una tienda (...).
+La raíz debe ser el elemento <compras>.
+Dentro debe haber uno o más elementos <venta>.
+Una venta puede llevar dentro uno de estos dos elementos: 
+<ventaacredito> o <ventainmediata>
+Un elemento <ventaacredito> consta de:
+un elemento <fechafinpago> que es optativo
+y un elemento <cantidad> que es obligatorio.
+Un elemento <ventainmediata> lleva dentro dos cosas: 
+un elemento <cantidad> que es obligatorio
+y un elemento <divisa> que también es obligatorio. -->
+
+<!DOCTYPE compras[
+    <!ELEMENT compras (venta+)>
+    <!ELEMENT venta (venta_a_Credito|venta_Inmediata)>
+    <!ELEMENT venta_a_Credito (fechaFinPago?, cantidad)>
+    <!ELEMENT venta_Inmediata (cantidad, divisa)>
+    <!ELEMENT fechaFinPago (#PCDATA)>
+    <!ELEMENT cantidad (#PCDATA)>
+    <!ELEMENT divisa (#PCDATA)>
+]>
+
+<compras>
+    <venta>
+        <venta_a_Credito>
+            <fechaFinPago/>
+            <cantidad></cantidad>
+        </venta_a_Credito>
+    </venta>
+</compras>

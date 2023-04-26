@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09_formulario_a</title>
+    <link rel="stylesheet" href="css/09_formulario_a.css">
+</head>
+<body>
+    <h1>Formulario de registro</h1>
+    <form>
+        <!-- Block 1 -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" size="30"
+            title="Introduce 3 letras mayúsculas"
+            minlength="3" maxlength=""
+            pattern="[A-Z]{3}">
+        <br><br>
+        <!-- Block 2 -->
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" name="" size="60">
+        <br>
+        <!-- Block 3 (inline-block...) -->
+        <p>Sexo:</p>
+        <input type="radio" name="sexo" id="">
+        <label for="sexo-h">Hombre</label>
+        <input type="radio" name="sexo" id="">
+        <label for="sexo-m">Mujer</label>
+        <br><br>
+        <!-- Block 4 -->
+        <label for="correo">Correo:</label>
+        <input type="email">
+        <br><br>
+        <!-- Block 5 -->
+        <label for="poblacion">Población:</label>
+        <select>
+            <option>Madrid</option>
+            <option>Galicia</option>
+            <option>Andalucía</option>
+        </select>
+        <br><br>
+        <!-- Block 6 -->
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion"
+                cols="30" rows="10" placeholder="Escribe aquí tu queja"></textarea>
+        </div>
+        <br>
+        <!-- Block 7 -->
+        <input type="checkbox" checked>
+        <label for="condiciones">Declaro haber leído toda la info</label>
+        <br>
+        <input type="checkbox">
+        <label for="informacion">Deseo recibir info de las ofertas</label>
+        <br><br>
+        <!-- Block 8 -->
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Borrar todo">
+        <br>
+    </form>
+</body>
+</html>
+
+
+<!--
+To make the input box extend if the user keeps typing, you can use the input event in JavaScript to listen for changes in the input field and adjust its width accordingly. Here's an example:
+```
+<label for="nombre">Nombre:</label>
+<input type="text" id="nombre" size="30"
+       minlength="3" pattern="[A-Z]{3}"
+       title="Introduce 3 letras mayúsculas">
+<script>
+  const input = document.getElementById('nombre');
+  input.addEventListener('input', () => {
+    input.style.width = `${input.value.length * 8}px`;
+  });
+</script>
+```
+In this example, we've added an id attribute to the input field so that we can select it in JavaScript. We've also removed the maxlength attribute to allow the user to type as much as they want.
+In the JavaScript code, we've selected the input field using its id attribute and added an event listener for the input event. Whenever the user types in the input field, the event listener function will be called, which sets the width of the input field based on the length of its current value. We've multiplied the length by 8 to create some padding and make it look more natural.
+Note that this is just a basic example and you may need to adjust the calculation of the width and the CSS styling to fit your specific design.
+-->

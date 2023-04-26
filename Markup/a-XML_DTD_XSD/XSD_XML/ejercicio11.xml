@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Valida el elemento persona
+con los atributos nombre y sexo. -->
+
+<persona
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej11_validador.xsd"
+nombre="Müge" sexo="F"
+>aquella mujer</persona>

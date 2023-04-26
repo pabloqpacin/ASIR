@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE equipos [
+  <!ELEMENT equipos (equipo+)>
+  <!ELEMENT equipo (futbolista, entrenador?, presidente)>
+  <!ELEMENT futbolista (#PCDATA)>
+  <!ELEMENT entrenador (#PCDATA)>
+  <!ELEMENT presidente (#PCDATA)>
+]>
+
+<equipos>
+    <!-- equipo 1 -->
+    <equipo>
+        <futbolista>Messi</futbolista>
+        <entrenador/>
+        <presidente>Bartomeu</presidente>
+    </equipo>
+    <!-- equipo 2 -->
+    <equipo>
+        <futbolista>Ronaldo</futbolista>
+        <entrenador>Sarri</entrenador>
+        <presidente>Agnelli</presidente>
+    </equipo>
+    <!-- equipo 3 -->
+    <equipo>
+        <futbolista>Silva</futbolista>
+        <entrenador>Guardiola</entrenador>
+        <presidente>Mubarak</presidente>
+    </equipo>
+</equipos>

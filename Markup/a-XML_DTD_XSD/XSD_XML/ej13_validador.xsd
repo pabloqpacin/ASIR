@@ -1,0 +1,18 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="curso" type="tipoCurso"/>
+    <xs:simpleType name="restrictCurso">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(ASIR|DAW|DAM)"/>
+            <!-- <xs:enumeration value="ASIR"/>
+            <xs:enumeration value="DAW"/>
+            <xs:enumeration value="DAM"/> -->
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="tipoCurso">
+        <xs:simpleContent>
+            <xs:extension base="restrictCurso">
+                <xs:attribute name="anyo" type="xs:integer"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Almacenes de productos de librería (...)
+Debe haber un elemento raíz pedido que puede constar de
+libros, cuadernos o lápices. Pueden aparecer repetidos y en cualquier orden.
+Podrían aparecer 4 libros, 2 lápices y luego 4 lápices de nuevo.
+Todo libro tiene un atributo obligatorio título.
+Los elementos cuaderno tiene un atributo optativo num_hojas.
+Todo elemento lápiz debe tener dentro un elemento obligatorio número. -->
+
+<!DOCTYPE pedido [
+    <!ELEMENT pedido (libro|cuaderno|lapiz)+>
+    <!ATTLIST libro titulo CDATA #REQUIRED>
+    <!ATTLIST cuaderno num_hojas CDATA #IMPLIED>
+    <!ELEMENT lapiz (numero)>
+    <!ELEMENT numero (#PCDATA)>
+    <!ELEMENT cuaderno (#PCDATA)>
+    <!ELEMENT libro (#PCDATA)>
+]>
+
+<pedido>
+    <libro titulo=""></libro>
+    <cuaderno num_hojas=""></cuaderno>
+    <lapiz>
+        <numero></numero>
+    </lapiz>
+</pedido>

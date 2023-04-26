@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08_blogJS</title>
+    <link rel="stylesheet" href="css/08_blogJS.css">
+</head>
+<body>
+    <header>
+        <h1 class="h1">Mi Blog</h1>
+    </header>
+    <nav class="nav">
+        <ul>
+            <li><a href="#" id="principal" onclick="pulsarEnlace('principal')">principal |</a></li>
+            <li><a href="#" id="ayuda" onclick="pulsarEnlace('ayuda')">ayuda |</a></li>
+            <li><a href="#" id="contacto" onclick="pulsarEnlace('contacto')">contacto |</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <!--ARTÍCULOS-->
+    <section class="seccion">
+        <div class="art">
+            <article>
+                <time datetime="10/07/2023">Domingo, 10 de Julio de 2011</time>
+                <h2>Primer artículo</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corporis officia ipsam voluptates fugiat maxime asperiores accusantium laborum tempora non et earum nesciunt totam sapiente illo fugit consequuntur, architecto dolores cupiditate, odit consequatur debitis vero. Vel similique nisi sapiente sit accusamus. Nisi culpa recusandae amet ea nemo blanditiis sint totam saepe dolorum rem perspiciatis, vero voluptatum corporis natus, perferendis quos tempora nam assumenda dignissimos ut aspernatur officiis alias. Repellendus amet cum corporis veniam deleniti beatae animi consequatur ad, alias eveniet nostrum quos ab est ratione illo iusto ut quam adipisci quae natus quasi! Laborum doloremque expedita pariatur, consectetur commodi assumenda?</p>
+                <footer>
+                    <p>Comentarios (10)</p>
+                </footer>
+            </article>
+        </div>
+        <div>
+            <article class="art">
+                <time datetime="08/07/2023">Viernes, 08 de Julio de 2011</time>
+                <h2>Segundo artículo</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel deserunt modi repudiandae debitis eum magni nemo magnam saepe? Atque ipsa facere a reprehenderit incidunt illum consectetur in, maiores voluptates et reiciendis hic laborum aliquid culpa libero similique aspernatur, sint assumenda inventore fuga quo cum harum? Nobis, nisi! Nulla asperiores sequi quidem officia odit id! Laboriosam nihil temporibus aperiam sapiente, officia sit, necessitatibus ratione dignissimos rerum quasi cumque eum officiis in ex tempore! Autem quos maiores fugiat beatae minima aut repudiandae nostrum id cupiditate dolore earum quisquam ea suscipit labore, placeat voluptate dolorem blanditiis culpa tempore ipsum. Non quod possimus sequi.</p>
+                <footer>
+                    <p>Comentarios (6)</p>
+                </footer>
+            </article>
+        </div>
+    </section>
+    <!--LATERAL-->
+    <aside class="aside">
+        <h3>Archivo</h3>
+        <h3>Acerca de</h3>
+    </aside>
+    <script>
+        function pulsarEnlace(IdElemento){
+            alert(IdElemento);
+            console.log(document.getElementById(IdElemento).text);
+        }
+    </script>
+</body>
+    <footer class="piePagina">
+        <hr>
+        <p>Derechos reservados 2010-2011</p>
+    </footer>
+</html>

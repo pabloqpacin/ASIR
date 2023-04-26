@@ -1,0 +1,11 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="coche" type="tipoCoche"/>
+    <xs:complexType name="tipoCoche">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="color" type="xs:string"/>
+                <xs:attribute name="kilometros" type="xs:integer"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

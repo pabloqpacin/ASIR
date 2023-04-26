@@ -1,0 +1,27 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="codigoEmpleado" type="tipoCodigo"/>
+    <xs:simpleType name="restrictCodigo">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[3-6]{2}AB"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="tipoCodigo">
+        <xs:simpleContent>
+            <xs:extension base="restrictCodigo">
+                <xs:attribute name="cargo" type="restrictCargo"/>
+                <xs:attribute name="numEmpleadosCargo" type="restrictNumEmpleados"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="restrictCargo">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="Junior|Senior|Analista"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="restrictNumEmpleados">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

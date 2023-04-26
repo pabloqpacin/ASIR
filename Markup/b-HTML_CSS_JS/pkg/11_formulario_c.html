@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11_formulario_c</title>
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <h3>Completa estos campos</h3>
+    <form action="">
+        <!-- Block 1 -->
+        <fieldset>
+            <legend><b>Datos personales</b></legend>
+            <p>Nombre: <input type="text"></p>
+            <p>Edad: <input type="number"></p>
+        </fieldset>
+        <!-- Block 2 - NAME so that UNIQUE choice -->
+        <fieldset>
+            <legend><b>Cultura general</b></legend>
+            <p>Capital de España:
+                <input type="radio" name="capital">Madrid
+                <input type="radio" name="capital">Lisboa
+                <input type="radio" name="capital">Paris
+            </p>
+            <p>Fecha Revolucion Francesa:
+                <input type="radio" name="revolucion">1482
+                <input type="radio" name="revolucion">1789
+                <input type="radio" name="revolucion">2023
+            </p>
+        </fieldset>
+        <!-- Block 3  -->
+        <p>Subir el fichero: <input type=file></p>
+        <p>Finalizar: <input type="submit" value="Enviar"></p>
+    </form>
+    <footer>
+        <hr>
+        <div>
+            &ensp; by @pabloqpacin ey &ensp;
+            <a data-attr="img" href="https://github.com/pabloqpacin" target="_blank"><img src="github-mark.png" style="width:21px;height:21px"></a>
+        </div>
+    </footer>
+</body>
+</html>

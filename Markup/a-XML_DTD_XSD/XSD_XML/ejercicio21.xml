@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Valora el elemento factura, que contiene
+un elemento precio que puede almacenar decimales,
+un elemento fechaFactura que es optativo y
+un elemento codigo (3 mayúsculas seguidas de dos digitos. -->
+
+<factura
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="ej21_validador.xsd"
+>   <codigo>ABC12</codigo>
+    <fechaFactura>2023-02-22</fechaFactura>
+    <precio>2.99</precio>
+</factura>

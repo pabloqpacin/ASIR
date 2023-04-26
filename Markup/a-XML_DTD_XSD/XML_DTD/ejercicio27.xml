@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Tenemos una empresa que tiene trabajores.
+Un trabajador puede ser jefe o empleado
+y todo empleado debe tener asignado uno o varios jefes -->
+
+<!DOCTYPE empresa [
+    <!ELEMENT empresa (trabajadores)>
+    <!ELEMENT trabajadores (jefes | empleados)*>
+    <!ELEMENT jefes (#PCDATA)>
+    <!ELEMENT empleados (#PCDATA)>
+    <!ATTLIST jefes codigo ID #REQUIRED>
+    <!ATTLIST empleados codigo IDREFS #REQUIRED>
+]>
+
+<empresa>
+    <trabajadores>
+        <jefes codigo="C001">Manuel</jefes>
+        <jefes codigo="C002">Paco</jefes>
+        <empleados codigo="C001 C002">Jose</empleados>
+    </trabajadores>
+</empresa>

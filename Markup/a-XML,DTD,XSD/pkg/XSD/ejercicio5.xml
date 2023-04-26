@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!-- Crea un esquema que permita validar una matricula
-de un coche que valide el patrón de
-4 dígitos seguidos de 3 letras mayúsculas . -->
-
-<matricula xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="ej5_validador.xsd"
->1234ABC</matricula>
