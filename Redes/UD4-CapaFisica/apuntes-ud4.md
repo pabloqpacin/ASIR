@@ -78,6 +78,8 @@
 
 <!-- ![Cats...](/img/Redes/ud4-twisted_pair_cable_types.png) -->
 
-<p align="center">
-  <img src="/img/Redes/ud4-twisted_pair_cable_types.png" alt="Cable Cats" width="400"/>
-</p>
+<!-- <p align="center"> -->
+  <!-- <img src="/img/Redes/ud4-twisted_pair_cable_types.png" alt="Cable Cats" width="400"/> -->
+<!-- </p> -->
+
+![Cable Cats](/img/Redes/ud4-twisted_pair_cable_types.png)

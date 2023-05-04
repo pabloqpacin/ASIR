@@ -81,8 +81,8 @@
 
 <hr>
 
-| index | cuestionario |
-| ---   | --- |
+| index | cuestionario_UD3 |
+| ---   | :-- |
 | Q1    | La sintaxis `required` en referencia a los atributos significa que el atributo es:
 | A1    | — "Obligatorio."
 | Q2    | Un elemento de tipo `string` se utiliza para almacenar:
