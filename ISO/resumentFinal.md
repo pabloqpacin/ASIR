@@ -24,7 +24,10 @@
       - [3.2 Particionado GPT](#32-particionado-gpt)
     - [4. Administración Discos](#4-administración-discos)
   - [UD6: Administración Dominio](#ud6-administración-dominio)
+    - [1. Intro](#1-intro-1)
+    - [2. Dominios WindowsServer/ActiveDirectory](#2-dominios-windowsserveractivedirectory)
   - [UD7: Administración Acceso Dominio](#ud7-administración-acceso-dominio)
+    - [2. RelacionesConfianza, UnidadesOrganizativas, Directivas...](#2-relacionesconfianza-unidadesorganizativas-directivas)
   - [UD8: Linux: Intro](#ud8-linux-intro)
   - [UD9: Linux: usuarios, grupos y permisos](#ud9-linux-usuarios-grupos-y-permisos)
 
@@ -254,7 +257,81 @@
 
 ## UD6: Administración Dominio
 
+### 1. Intro
+
+- **Estructura cliente-servidor**
+  - *Características:* protocolos asimétricos, oferta recursos/servicios, integridad/escalabilidad
+  - *Elementos:* servidor (archivos/impresión/email/web/FTP...) + cliente
+  - *Funcionamiento:* cliente -> servidor -> cliente
+  - *Ventajas | Inconvenientes:* adminCentralizada, seguridad, escalabilidad | coste, dependenciaServidor
+- **LDAP - Lightweight Directory Access Protocol**
+  - *Directorio:* Estructura jerárquica que almacena info de objetos en red (eg. usuarios, equipos, recursos)
+  - *LDAP:* acceso (~~gestión~~) info directorio anivel cliente; ofrece:
+    - métodos conexión/desconexión/búsqueda/introducir-eliminarInformación
+    - mecanismos cifrado + auth
+    - presentación jerárquica - árbol objetos
+
+### 2. Dominios WindowsServer/ActiveDirectory
+
+- **Conceptos**
+  - *Dominio:* conjunto ordenadores conectados 'en red'
+  - *Estructura Lógica:* estructura cliente-servidor :: auth
+  - *Servicios:*
+    - *ADDS:* Microsoft => LDAP & DNS
+    - *ControladorDominio:* servidor ADDS: recursos + seguridad/auth
+    - *EstructuraLógica:* !=? física
+    - *MiembrosDominio:* clientes ADDS => usuarios = !ordenadores
+  - *Funciones ADDS:* resoluciónNombresMAC->IP, espacioNombresDNS/Dominios, búsquedaComponentes(viaControladorDom)
+  - OTROS:
+    - *Objeto:* usuarios | recursos | servicios
+    - *ÁrbolDominios:* conjunto de dos o más dominios en un 'bosque', con esquema/catálogo/DNS comunes
+    - *CatálogoGlobal:* resumen conjunto recursos
+    - *Bosque:* conjunto 'árboles' con esquema/catálogo comunes PERO NO DNS (EspacioNombres)
+    - *UnidadOrganizativa:* contenedor jerárquico de objetos
+- **Instalación/WindowsServer**
+  - ...
+  - asignar rol => ADDS
+  - promover pc a ControladorDom => dominioExistente | nuevoDomBosqueExistente | nuevoBosque
+  - adminADDS => servicios | usuarios/equipos | dominios/confianzas | directivasGrupo
+- **Cuentas de Usuario** (!equipos)
+  - *Funciones:* auth | accesoRecursos | seguridad | auditarAcciones
+  - *Tipos:* globales_ADDS (en ControladorDominio) | predefinidas (admin | invitados) | ...
+  - *Creación:* ... // opciones: cambiarContraseñaInicio | noPuedeCambiar | nuncaCaduca | deshabilitada
+  - *Propiedades:* cuenta (cifrado,Kerberos,caducidad, ..., horasInicioSesión) | perfil | miembroDe (grupos) | controlRemoto | sesiones...
+  - *Acciones:* deshabilitar | eliminar
+<!--- **Perfiles de Red**
+  - *Tipos:* móvil | obligatorio | ...-->
+- **Grupos de Usuarios**
+  - *Tipos:* distribución (!SID->!ACL) | seguridad (SID->ACL)
+  - *Ámbito:* locales (dominio) | globales (dominio/bosque) | universales (bosque)
+  - Anidamiento, predeterminados, ...
+
 ## UD7: Administración Acceso Dominio
+
+- **Cuentas Equipos**
+  - *Tipos/Equipos:* clientes | controladorDominio (computers|domainControllers)
+  - *Creación:* manual | autoConexión
+  - *Proceso/Conexión:* redCliente -> pingServidor -> ... -> loginUsuarioContraseña (admin)
+  - *Modificar/CuentaEquipo:* Propiedades: general, OS, miembroDE, administradoPor, objeto, seguridad, ...
+  - Agregar a Grupo // Eliminar // Mover // Habilitar/Deshabilitar
+- **Relaciones De Confianza:**
+  - Comunicar recursos/dominios
+  - *Tipos:* unidireccional | bidireccional (default en Bosque!) | transitiva
+  - *Proceso:* Config DNS WindowsServer -> Dominios y confianzas
+- **UnidadesOrganizativas**
+  - Exclusivas/Dominio; unidad mínima gestión Derechos/ControlAdministrativo/Usuarios...
+  - *Funciones:* configDirectivasGrupo, asignarUsuariosGrupos, delegaciónAutoridad
+  - ...
+- **Permisos Recursos Compartidos**
+  - NTFS...
+- **Directivas Seguridad**
+  - *Tipos:* local (equipo) | dominio (equiposDominio) | controladorDominio (equipoCD)
+- **Directivas Grupos**
+  - *Tipos GPO:* locales (equipos) | no-locales (sitio,dominio,UO,usuarios...)
+  - ...
+  - *OrdenAplicación:* (herencia!) GPO Local > Sitio > Dominio > UnidadOrganizativa
+
+### 2. RelacionesConfianza, UnidadesOrganizativas, Directivas...
 
 <hr>
 

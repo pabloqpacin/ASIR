@@ -367,7 +367,43 @@
 ### 2. Capa de Transporte
 
 - **Puertos:**
+  - *16 bit (65536):* conocidos (0-1023) | registrados (1024-49151) | privados (49152-65535)
+    - 0-1023: 20/21-FTP 25-SMTP  53-DNS 67/68-DHCP 80-HTTP 110-POP3
+  - `netstat`: ...
 - **Protocolo UDP:**
+  - NO CONFIABLE
+  - *datagrama*: cabecera (puertos emisor/receptor) + datos
 - **Protocolo TCP:**
+  - CONFIABLE
+  - *segmento:* cabecera + datos
+    - puertos origen/destino
+    - numSecuencia (bytes orden datos) + acuseRecibo (siguiente byte)
+    - HLEN + reservado
+    - Bits código/indicadores: URG | ACK | PSH | RST | SYN | FIN
+    - Ventana: ...
+    - Checksum
+    - Puntero de urgencia
+    - Opciones + relleno + datos
+  - *Técnicas fiabilidad:* paradaEspera + ventanaDeslizante
+  - *Conexiones:* escucha + conexión
+    - *inicio:* SYN -> SYN ACK -> ACK
+    - *cierre:* FIN -> ACK ; FIN -> ACK
+
+<hr>
 
 ## UD8: Enrutamiento
+
+- **Conceptos:**
+  - métrica: num saltos entre dispositivos (routers) | anchoBanda, latencia
+  - distancia administrativa: menor métrica
+- **Tipos:**
+  - *directo:* `route` ...
+  - *estático:* ...
+  - *dinámico:* routers comparten info
+    - *categorías:* IGP | EGP (local|remote)
+    - **Protocolos Enrutamiento Dinámico:**
+      - tipos: classful | classless (noMask | Masks=redDistintaClase)
+      - *Vector-Distancia:* mejor ruta = más corta (numSaltos) // envíoTablaEnrutamiento completa // RIP
+        - intercambio cada 30s, max 15 saltos, omunicación UDP puerto 520, posible encriptamiento... RIPv1 | v2 (ful|less)
+      - *Estado Enlace:* saltos + otrosFactores (router memoria importante) // 3 tablasEnrutamiento, topologíaCompleta // OSPF
+

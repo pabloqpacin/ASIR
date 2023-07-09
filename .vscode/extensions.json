@@ -8,6 +8,7 @@
         "bierner.markdown-footnotes",
         "jamiewoodio.cisco",
         "yzane.markdown-pdf",
-        "ritwickdey.liveserver"
+        "ritwickdey.liveserver",
+        "mtxr.sqltools"
     ]
 }

@@ -30,3 +30,6 @@ test*/
 
 # Allow exceptions
 !EXC*
+
+# ISO ud10
+ISO/UD10*/
