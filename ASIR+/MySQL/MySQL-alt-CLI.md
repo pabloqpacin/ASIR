@@ -9,6 +9,8 @@ More importantly tho, the CLI works everywhere and [SQLTools](https://github.com
 
 - [MySQL - alt - CLI](#mysql---alt---cli)
   - [WSL](#wsl)
+    - [Windows Client](#windows-client)
+    - [WSL Client](#wsl-client)
   - [Termux](#termux)
   - [Ubuntu box](#ubuntu-box)
   - [VSCode Tools](#vscode-tools)
@@ -22,6 +24,8 @@ More importantly tho, the CLI works everywhere and [SQLTools](https://github.com
 -->
 
 ## WSL
+
+### Windows Client
 
 - As **MySQL Server** and **Shell** were installed on Windows, the commands below require the `.exe` file extension.
 - Notice the connection port seems to be `33060` ([documentation](https://stackoverflow.com/questions/63556825/what-is-the-port-33060-for-mysql-server-ports-in-addition-to-the-port-3306)).
@@ -50,6 +54,19 @@ SELECT DATABASE() FROM DUAL;
 
 - It seems `mysqlsh.exe` was automatically added to the Windows PATH during installation. Unaware, [I added `mysql.exe` to the PATH](((https://dev.mysql.com/doc/mysql-windows-excerpt/5.7/en/mysql-installation-windows-path.html))) since running `mysql` wouldn't be recognized in neither CMD, PowerShell or the Linux terminal. <!--([see more]) ??-->
 
+### WSL Client
+
+```bash
+sudo apt install mysql-client
+```
+```sql
+-- Still different password than normal root...
+CREATE USER 'root'@'192.168.1.%' IDENTIFIED BY 'malakia22talcual;'; GRANT ALL PRIVILEGES ON *.* TO 'root'@'192.168.1.%' WITH GRANT OPTION;
+```
+```mysql
+mysql -h 192.168.1.42 -P 3306 -u root -p
+\P batcat
+```
 
 ## Termux
 

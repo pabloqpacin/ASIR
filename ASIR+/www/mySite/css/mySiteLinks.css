@@ -1,0 +1,59 @@
+body {
+    background-color: lightsteelblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    /* text-align: center; */
+    padding-left: 10px;
+}
+
+h1 {
+    background-color: darkslateblue;
+    color: ghostwhite;
+    padding: 20px;
+}
+
+h3 {
+    /* margin-left: 20px; */
+    padding-left: 40px;
+    padding-top: 12px;
+    box-shadow: 2px 0px 2px 0px midnightblue;
+
+}
+
+h4 {
+    padding-left: 50px;
+    margin-bottom: 0px;
+}
+
+
+div {
+    background-color: lavender;
+    padding-bottom: 2px;
+    /* box-shadow: 0px 0px 2px midnightblue; */
+}
+
+
+
+a:hover:not([data-attr="img"]) {
+    background-color: beige;
+    /* font-weight: bold; */
+}
+
+
+p {
+    background-color: midnightblue;
+}
+
+
+
+/* 
+- Colors (https://www.w3schools.com/cssref/css_colors.php)
+- Background color (https://www.w3schools.com/cssref/pr_background-color.php)
+- Fonts (https://www.w3schools.com/css/css_font.asp)
+- Correct hover on nav-bar (https://stackoverflow.com/questions/53241566/how-to-make-exceptions-to-css-rules)
+
+- HTML images (https://www.w3schools.com/html/html_images.asp)
+- Image as link in HTML (https://www.tutorialspoint.com/How-to-use-an-image-as-a-link-in-HTML)
+*/

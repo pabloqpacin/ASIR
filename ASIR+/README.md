@@ -1,8 +1,8 @@
 # ASIR+
 
-Custom research and documentation.
+Custom code, documentation and project drafts.
 
-Besides this repo, also working on:
+Besides this repo, also working on...
 
 - [dotfiles](https://github.com/pabloqpacin/dotfiles)
 - [C programming](https://github.com/pabloqpacin/C-eazy)
