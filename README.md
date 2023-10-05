@@ -2,22 +2,34 @@
 
 <!-- - English version [hereo](/readme_en.md) -->
 
-## Materias
+- [Universidad Europea: Curriculum](https://universidadeuropea.com/tecnico-superior-sistemas-informaticos-online/)
 
-- Primer curso
-  - [Formación y orientación laboral](/1º/FOL/)
+<details>
+<summary>1º</summary>
+
+  - [FOL](/1º/FOL/)
   - [Fundamentos de Hardware](/1º/FunHard/)
-  - [Gestión de Bases de Datos](/1º/BasesDatos/): SQL
-  - [Implantación de Sistemas Operativos](/1º/ISO/): VMs Bash
-  - [Lenguajes de Marcas y sistemas de gestión de información](/1º/Markup/): XML HTML CSS JS
-  - [Planificación y administración de Redes](/1º/Redes/): PacketTracer
-- Segundo curso
-  - Administración de Sistemas Gestores de Bases de Datos
-  - Administración de Sistemas Operativos
-  - Empresa e iniciativa emprendedora
-  - Implantación de Aplicaciones Web
-  - Inglés técnico para grado superior
-  - Seguridad y Alta Disponibilidad
-  - Servicios de Red e Internet
-  - Proyecto de Administración de Sistemas Informáticos en Red
-  - Formación en Centros de Trabajo
+  - [Gestión de Bases de Datos](/1º/BasesDatos/)
+  - [Implantación de Sistemas Operativos](/1º/ISO/)
+  - [Lenguajes de Marcas](/1º/Markup/) (XML HTML CSS JS)
+  - [Planificación y Administración de Redes](/1º/Redes/) <!--PacketTracer-->
+
+</details>
+
+
+<details>
+<summary>2º</summary>
+
+> See [readme](/2º/)
+
+- Inglés
+- Empresa
+- Administración de Sistemas Gestores de Bases de Datos
+- Administración de Sistemas Operativos
+- Implantación de Aplicaciones Web
+- Seguridad y Alta Disponibilidad
+- Servicios de Red e Internet
+- PROYECTO ASIR
+- FCT - Internship
+
+</details>
