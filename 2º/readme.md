@@ -1,6 +1,70 @@
 # 2º ASIR - Administración de Sistemas Informáticos en Red
 
-## Sistemas
+
+<details>
+<summary>Inglés</summary>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan=2>Inglés Técnico para Grado Superior</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=2>TR1</td>
+            <td>1. Locating People. Forms, envelopes and letters. Reading Skills.</td>
+        </tr>
+        <tr><td>2. People at work. Requests. Describing qualities.</td></tr>
+        <tr>
+            <td rowspan=2>TR2</td>
+            <td>3. Dealing with numbers. Quotations and Orders. Office duties.</td>
+        </tr>
+        <tr><td>4. Taking and giving messages. CVs and application letters. Office equipment</td></tr>
+        <tr>
+            <td rowspan=1>TR3</td>
+            <td>5. Receiving visitors. Inter-office memos. Working with computers</td>
+        </tr>
+    </tbody>
+</table>
+
+</details>
+
+
+<details>
+<summary>Empresa</summary>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan=2>Empresa e Iniciativa Emprendedora</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=2>TR1</td>
+            <td>1. Incentivación del espíritu emprendedor</td>
+        </tr>
+        <tr><td>2. El mercado y los clientes</td></tr>
+        <tr>
+            <td rowspan=2>TR2</td>
+            <td>3. El entorno y la competencia</td>
+        </tr>
+        <tr><td>4. Creación y puesta en marcha de la empresa</td></tr>
+        <tr>
+            <td rowspan=2>TR3</td>
+            <td>5. La administración de la empresa</td>
+        </tr>
+        <tr><td>6. Plan de marketing</td></tr>
+    </tbody>
+</table>
+
+</details>
+
+---
+
+<details>
+<summary>Sistemas</summary>
 
 |       | Administración de Sistemas Operativos
 | ---   | ---
@@ -11,8 +75,43 @@
 | UD5   | Administración de servicio de directorio en sistemas libres, OpenLDAP en Ubuntu - Linux
 | UD6   | Integración de sistemas operativos en red libres y propietarios
 
+</details>
 
-## BasesDatos
+
+<details>
+<summary>Seguridad</summary>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan=3>Seguridad y Alta Disponibilidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=4>UF1</td>
+            <td rowspan=4>Fundamentos de Seguridad</td>
+            <td>1. Introducción a la Seguridad Informática</td>
+        </tr>
+        <tr><td>2. Seguridad Lógica</td></tr>
+        <tr><td>3. Seguridad Activa</td></tr>
+        <tr><td>4. Seguridad en Redes</td></tr>
+        <tr>
+            <td rowspan=4>UF2</td>
+            <td rowspan=4>Seguridad Perimetral</td>
+            <td>5. Instalación y configuración: Firewalls</td>
+        </tr>
+        <tr><td>6. Instalación y configuración: servidores proxy</td></tr>
+        <tr><td>7. Técnicas de Acceso Remoto</td></tr>
+        <tr><td>8. Alta Disponibilidad</td></tr>
+    </tbody>
+</table>
+
+</details>
+
+
+<details>
+<summary>BasesDatos</summary>
 
 <table>
     <thead>
@@ -48,8 +147,41 @@
     </tbody>
 </table>
 
+</details>
 
-## Redes
+
+<details>
+<summary>AppsWeb</summary>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan=2>Implantación de Aplicaciones Web</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=1>TR1</td>
+            <td>1. Servidores de Aplicaciones Web</td>
+        </tr>
+        <tr>
+            <td rowspan=2>TR2</td>
+            <td>2. Gestores de Contenidos</td>
+        </tr>
+        <tr><td>3. Aplicaciones de Ofimática Web</td></tr>
+        <tr>
+            <td rowspan=2>UD1</td>
+            <td>4. Programación PHP</td>
+        </tr>
+        <tr><td>5. PHP con Bases de Datos</td></tr>
+    </tbody>
+</table>
+
+</details>
+
+
+<details>
+<summary>Redes</summary>
 
 <table>
     <thead>
@@ -77,58 +209,21 @@
     </tbody>
 </table>
 
-
+</details>
 
 ---
 
-<!--
+<details>
+<summary>Proyecto</summary>
 
-|       | Administración de Sistemas Gestores de Bases de Datos
-| ---   | ---
-| UD1   | SGBD: conceptos, instalación y gestión
-| UD2   | 
-| UD3   | 
-| UD4   | 
-| UD5   | 
-| UD6   | 
+...
+
+</details>
 
 
-|       | Administración de Sistemas Operativos
-| ---   | ---
-| UD1   | Introducción a la Administración de Sistemas Operativos
-| UD2   | Scripts para la administración de sistemas GNU/LINUX
-| UD3   | Aplicación de lenguajes de scripting (PowerShell) para la administración
-| UD4   | Administración de servicio de Active Directory en Windows (PowerShell)
-| UD5   | Administración de servicio de directorio en sistemas libres, OpenLDAP en Ubuntu - Linux
-| UD6   | Integración de sistemas operativos en red libres y propietarios
+<details>
+<summary>Internship</summary>
 
+...
 
-|       | Administración de Sistemas Operativos
-| ---   | ---
-| UD1   | Introducción a la Administración de Sistemas Operativos
-| UD2   | Scripts para la administración de sistemas GNU/LINUX
-| UD3   | Aplicación de lenguajes de scripting (PowerShell) para la administración
-| UD4   | Administración de servicio de Active Directory en Windows (PowerShell)
-| UD5   | Administración de servicio de directorio en sistemas libres, OpenLDAP en Ubuntu - Linux
-| UD6   | Integración de sistemas operativos en red libres y propietarios
-
-
-|       | Administración de Sistemas Operativos
-| ---   | ---
-| UD1   | Introducción a la Administración de Sistemas Operativos
-| UD2   | Scripts para la administración de sistemas GNU/LINUX
-| UD3   | Aplicación de lenguajes de scripting (PowerShell) para la administración
-| UD4   | Administración de servicio de Active Directory en Windows (PowerShell)
-| UD5   | Administración de servicio de directorio en sistemas libres, OpenLDAP en Ubuntu - Linux
-| UD6   | Integración de sistemas operativos en red libres y propietarios
-
-
-|       | Administración de Sistemas Operativos
-| ---   | ---
-| UD1   | Introducción a la Administración de Sistemas Operativos
-| UD2   | Scripts para la administración de sistemas GNU/LINUX
-| UD3   | Aplicación de lenguajes de scripting (PowerShell) para la administración
-| UD4   | Administración de servicio de Active Directory en Windows (PowerShell)
-| UD5   | Administración de servicio de directorio en sistemas libres, OpenLDAP en Ubuntu - Linux
-| UD6   | Integración de sistemas operativos en red libres y propietarios
-
+</details>

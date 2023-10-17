@@ -20,7 +20,9 @@
 <details>
 <summary>2º</summary>
 
-> See [readme](/2º/)
+<br>
+
+> See [readme](https://github.com/pabloqpacin/ASIR/tree/main/2%C2%BA)
 
 - Inglés
 - Empresa
