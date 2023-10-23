@@ -162,7 +162,7 @@
     </thead>
     <tbody>
         <tr>
-            <td rowspan=4>UF1</td>
+            <td rowspan=4>T1</td>
             <td rowspan=4>SGBD: Conceptos, instalación y gestión</td>
             <td>1. Introducción a los sistemas gestores de BBDD</td>
         </tr>
@@ -170,7 +170,7 @@
         <tr><td>3. Administración de un SGBD</td></tr>
         <tr><td>4. Gestión de cuentas de usuarios y permisos</td></tr>
         <tr>
-            <td rowspan=4>UF2</td>
+            <td rowspan=4>T2</td>
             <td rowspan=4>Automatización, optimización y monitorización</td>
             <td>5. Automatización de tareas</td>
         </tr>
@@ -178,7 +178,7 @@
         <tr><td>7. Optimización</td></tr>
         <tr><td>8. Monitorización</td></tr>
         <tr>
-            <td rowspan=4>UF3</td>
+            <td rowspan=4>T3</td>
             <td rowspan=4>Administración de BBDD y big data en la nube</td>
             <td>9. Servicios de computación en la nube</td>
         </tr>
@@ -232,18 +232,19 @@
     </thead>
     <tbody>
         <tr>
-            <td rowspan=2>TR1</td>
-            <td>1. Servicios de configuración automática de red (DHCP)</td>
+            <td rowspan=3>T1</td>
+            <td>0. INTRO: Arquitectura TCP/IP</td>
         </tr>
-        <tr><td>2. Servicio de nombres de dominio (DNS)</td></tr>
+        <tr><td>1. Servicio de nombres de dominio (DNS)</td></tr>
+        <tr><td>2. Servicios de configuración automática de red (DHCP)</td></tr>
         <tr>
-            <td rowspan=3>TR2</td>
+            <td rowspan=3>T2</td>
             <td>3. Servidores Web (HTTP)</td>
         </tr>
         <tr><td>4. Servicios de transferencia de ficheros (FTP)</td></tr>
         <tr><td>5. Servicio de correo electrónico</td></tr>
         <tr>
-            <td rowspan=2>UD3</td>
+            <td rowspan=2>T3</td>
             <td>6. Servicios de audio y vídeo</td>
         </tr>
         <tr><td>7. Servicios de Red, Internet y telefonía IP en la nube</td></tr>

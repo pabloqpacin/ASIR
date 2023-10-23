@@ -225,10 +225,10 @@ RELATE human:jeff -> drive -> car:nash
 
 <!-- En vista de la extensión de este documento, optamos por no incluir este apartado. -->
 
-<style>
+<!-- <style>
   td { text-align: center }
   th { text-align: center }
-</style>
+</style> -->
 <table style="margin: 0 auto;">
   <thead>
     <tr>

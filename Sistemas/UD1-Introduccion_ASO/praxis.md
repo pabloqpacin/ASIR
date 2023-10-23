@@ -7,9 +7,9 @@
     - [Ponte a prueba: PowerShell files](#ponte-a-prueba-powershell-files)
     - [Ejercicios: PowerShell](#ejercicios-powershell)
   - [2. Sistemas de Virtualización](#2-sistemas-de-virtualización)
-    - [Caso práctico: Proxmox tutorial](#caso-práctico-proxmox-tutorial)
+    - [~~Caso práctico: instalación Proxmox~~](#caso-práctico-instalación-proxmox)
     - [Ponte a prueba: KVM/QEMU](#ponte-a-prueba-kvmqemu)
-    - [Estudio de caso: virtualización anidad en Proxmox VE](#estudio-de-caso-virtualización-anidad-en-proxmox-ve)
+    - [Estudio de caso: virtualización anidada en Proxmox VE](#estudio-de-caso-virtualización-anidada-en-proxmox-ve)
     - [Ejercicios:](#ejercicios)
   - [3. Componentes virtualizados del HW (Proxmox VE)](#3-componentes-virtualizados-del-hw-proxmox-ve)
     - [Caso práctico: creación VM](#caso-práctico-creación-vm)
@@ -71,9 +71,9 @@ psrc:  espacio ejecución; ...
 
 ## 2. Sistemas de Virtualización
 
-### Caso práctico: Proxmox tutorial
+### ~~Caso práctico: instalación Proxmox~~
 
-- TODO: EX2511
+> [Proxmox en hardware](https://github.com/pabloqpacin/dotfiles/blob/main/docs/Proxmox_VE.md)
 
 ### Ponte a prueba: KVM/QEMU
 
@@ -85,9 +85,9 @@ virsh - https://www.libvirt.org/manpages/virsh.html
 virt-manager
 ```
 
-### Estudio de caso: virtualización anidad en Proxmox VE
+### Estudio de caso: virtualización anidada en Proxmox VE
 
-- TODO: ...
+- Vídeo: creación de contenedor LXC Ubuntu dentro de una VM de Proxmox en VirtualBox <!-- WTF -->
 
 
 ### Ejercicios: 
