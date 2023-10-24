@@ -1,19 +1,13 @@
-# Ignore dirs and filenames 
-2022/
+# Ignore dirs and filetypes
+private/
 CLASES/
-bak/
-mocks/
-*-mock/
-test*/
-*test/
-*test*.*
-*mock*.*
-*bak*.*
-
-# Ignore filetypes
+*mock*
+*test*
+*bak*
+*.zip
 *.pdf
 *.todo
-*.tree
+canvas.log
 
 # Ignore Office suite
 *.odp
@@ -30,10 +24,3 @@ test*/
 
 # Allow exceptions
 !EXC*
-
-# ISO ud10
-ISO/UD10*/
-
-# Universidad Europea
-private/
-canvas.log

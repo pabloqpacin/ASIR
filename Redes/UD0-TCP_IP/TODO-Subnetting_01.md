@@ -17,7 +17,7 @@ X Hosts:
 ## Resolución
 
 ```yaml
-# 192.168.100.0: 4 subredes
+# 192.168.100.-0: 4 subredes
 2^n >= 8:
     2³ >= 8:
         /24 + 3 = /27:
@@ -27,28 +27,28 @@ X Hosts:
             192.168.100.-011-00000      # 4: 192.168.100.96
 ```
 
-```ps1
+```yaml
 # 1
-Direccion red: 192.168.100.0/27
-Primer host: 192.168.100.1
-Ultimo host: 192.168.100.30
-Broadcast: 192.168.100.31
+Direccion red:  192.168.100.0/27
+Primer host:    192.168.100.1
+Ultimo host:    192.168.100.30
+Broadcast:      192.168.100.31
 
 # 2
-Direccion red: 192.168.100.32/27
-Primer host: 192.168.100.33
-Ultimo host: 192.168.100.62
-Broadcast: 192.168.100.63
+Direccion red:  192.168.100.32/27
+Primer host:    192.168.100.33
+Ultimo host:    192.168.100.62
+Broadcast:      192.168.100.63
 
 # 3
-Direccion red: 192.168.100.64/27
-Primer host: 192.168.100.65
-Ultimo host: 192.168.100.94
-Broadcast: 192.168.100.95
+Direccion red:  192.168.100.64/27
+Primer host:    192.168.100.65
+Ultimo host:    192.168.100.94
+Broadcast:      192.168.100.95
 
 # 4
-Direccion red: 192.168.100.96/27
-Primer host: 192.168.100.97
-Ultimo host: 192.168.100.126
-Broadcast: 192.168.100.127
+Direccion red:  192.168.100.96/27
+Primer host:    192.168.100.97
+Ultimo host:    192.168.100.126
+Broadcast:      192.168.100.127
 ```

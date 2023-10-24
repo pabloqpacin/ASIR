@@ -1,4 +1,4 @@
-# Bases de Datos - Tema 1 <br> SGBD: Conceptos, instalación y gestíón
+# Bases de Datos - T1 <br> SGBD: Conceptos, instalación y gestíón
 
 > CUSTOM: [DebUbu-services.sh](https://github.com/pabloqpacin/dotfiles/blob/main/scripts/autosetup/DebUbu-services.sh) (instalación y cnofiguración de MySQL + WordPress en Ubuntu en 2 minutos)
 

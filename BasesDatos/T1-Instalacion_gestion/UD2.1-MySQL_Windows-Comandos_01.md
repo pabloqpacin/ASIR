@@ -2,6 +2,8 @@
 
 ## 1. Instalación MySQL en Windows
 
+> Empleando **PowerShell 7.3.8** y el gestor de paquetes **[WinGet](https://github.com/microsoft/winget-cli) 1.6.2771**
+
 <!-- En este ejercicio, tu tarea es aprender a instalar y configurar un servidor MySQL en tu sistema Windows. Sigue los siguientes pasos para completar la instalación:
 - Descarga la última versión de MySQL para Windows desde el sitio oficial de MySQL.
 - Ejecuta el archivo de instalación y sigue las instrucciones del asistente.
@@ -20,48 +22,41 @@ like "foo%" -- sí entiende la wildcard
 
 
 ```ps1
-# Instalar mysql mediante powershell
-winget install Microsoft.VCRedist.2015+.x64
-winget install oracle.mysql
+# Instalar mysql mediante winget
+winget upgrade --all && winget install Microsoft.VCRedist.2015+.x64
+winget install oracle.mysql #mysql-installer-community-8.0.33.0.msi
 ```
 
+<!-- ```ps1
+# Iniciar configuración servidor
+# Start-Process 'C:\Program Files (x86)\MySQL\MySQL Installer for Windows\MySQLInstaller.exe'
+Start-Process 'C:\PROGRAMDATA\Mysql\MySQL Installer for Windows\Product Cache\mysql-8.0.33-winx64.msi'
+``` -->
+
 ```yaml
-# Configurar servidor, usuario, etc.
-Mysql_installer: complete
+# Start Menu > MySQL Installer - Community
+Setup Type: Developer   # Server Shell Router Workbench
+MySQL Server Configuration:
+  - Add User: $env:USERNAME All_Hosts DB_Admin Password
+  - ...
 ```
 
-<!--
-```yaml
-# Mysql_installer
-Setup: Full             # TODO: for sure????????????????????????????????????????
-Type and Networking:
-    Config Type: Development Computer
-    Connectivity: TCP/IP 3306 33060
-        # Open Windows Firewall ports for network access: yes
-Authentication Method:
-    Strong Password:
-    Add User:
-        Username: pabloqpacin
-        Host: All Hosts (%)
-        Role: DB Admin
-        Password:
-Windows Service:
-    Configure MySQL Server as a Windows Server: yes
-    Windows Service Name: MySQL80
-    Start the MySQL Server at System Startup: no
-    Run Windows Service as ...: Standard System Account
-Server File Permissions:
-    Directory: C:\ProgramData\MySQL\MySQL Server 8.0\Data
-    Update the server file permissions for you: Yes     # probably shouldn't
-
-# Router
-Configuration: Finish       # InnoDB Cluster: 6446 6447 6448 6449
-
-# Server
+<!-- ```yaml
+# Start Menu > MySQL Installer - Community
+Setup Type: Developer   # includes Server Shell Router Workbench Examples_Tutorials_Documentation   # Enterprise_Backup Connectors
 Configuration:
-    Username + Password: root
-```
--->
+  MySQL Server:
+    - Type and Networking: Development Computer -- TCP/IP 3306 33060 Open_Firewall
+    - Strong Password: yes
+    - Root Password: ...
+    - Add User: $env:USERNAME All_Hosts DB_Admin Password
+    - Windows Service: yes MySQL80 Startup_YES/NO/??
+    - File Permissions: default   # C:\ProgramData\MySQL\MySQL Server 8.0\Data
+  MySQL Router:
+    - Bootstrap MySQL Router for use with InnoDB Cluster: no
+  Samples and Examples:
+    - Connect as: $env:USERNAME
+``` -->
 
 
 ```ps1
@@ -75,30 +70,38 @@ foreach ($path in $pathsToAdd) {
     $env:PATH += ";$path"
   }
 }
+
+# Configurar el prompt (como Administrador)
+"[mysql]`nprompt = '[\R:\m]\_\U\_(\d\T)>\_'" | Out-File 'C:\Program Files\MySQL\MySQL Server 8.0\my.ini'
 ```
 
 ```ps1
-# Iniciar sesión en el servidor
+# Restaurar 'tienda.sql' y conectarse al servidor
 Set-Location $env:HOMEPATH\Downloads
-mysql -u pabloqpacin -p
+mysql -u pabloqpacin -p -e "source tienda.sql"
+mysql -u pabloqpacin -p -D tienda
 ```
 ```sql
--- Desde la terminal mysql.exe, restaurar tienda.sql
-SOURCE tienda.sql
-SHOW DATABASES;
-\! cls
-USE tienda;
+-- Manipulación de 'tienda'
 SHOW TABLES;
-SELECT * FROM fabricante;
-SELECT * FROM producto;
-\q
+\! cls
 ```
 
-<!-- --- -->
+<!-- ```sql
+SELECT
+  CONSTRAINT_NAME, TABLE_NAME, COLUMN_NAME,
+  REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME
+FROM
+  INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE
+  REFERENCED_TABLE_SCHEMA = 'tienda';
+``` -->
 
-<br>
-<br>
-<br>
+<!-- ```ps1
+# Actualizar MySQL a v 8.1.1
+winget upgrade --all
+``` -->
+
 
 ## 2.- Primeros ejercicios sobre la Base de Datos
 

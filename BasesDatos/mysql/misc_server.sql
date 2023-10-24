@@ -13,3 +13,15 @@ GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER ON foo.* TO whoami@loc
 
 -- Print currently selected/using database
 select database();
+
+
+/* TABLES */
+
+-- Print existing PK/FKs (edit 'database')
+SELECT
+  CONSTRAINT_NAME, TABLE_NAME, COLUMN_NAME,
+  REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME
+FROM
+  INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE
+  REFERENCED_TABLE_SCHEMA = 'database';

@@ -38,16 +38,16 @@
 
 - **Host OS**:
   - Pop!_OS 22.04 LTS (NVIDIA)
-  - Proxmox VE 8.0
 - **Hipervisores**:
   - VirtualBox 7.0
+  - Proxmox VE 8.0
   - QEMU 6.2.0 + virt-manager 4.0.0
 - **Máquinas virtuales**: 
 
 <table>
   <thead>
     <tr>
-      <th>:⁾</th>
+      <th>: ⁾</th>
       <th>Servidores</th>
       <th>Clientes</th>
     </tr>
@@ -63,12 +63,14 @@
       <td style="vertical-align: top;">
         Ubuntu Server 22.04.3 LTS <br>
         <!-- openSUSE Leap 15.5        <br> -->
+        <!-- Rocky -->
         <!-- BSD ... -->
       </td>
       <td>
         Ubuntu 22.04.3 LTS  <br>
         Debian 12 (X95)     <br>
         Pop!_OS 22.04 LTS   <br>
+        <!-- Fedora ...          <br> -->
         Arch -- Kernel 6.5.7
       </td>
     </tr>
