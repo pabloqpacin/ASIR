@@ -124,7 +124,7 @@ SELECT nombre FROM fabricante WHERE ID = 3;
 3. ¿Cuál es el precio del "Monitor 24 LED Full HD"?
 
 ```sql
-SELECT precio FROM producto WHERE name LIKE '%24 LED%';
+SELECT precio FROM producto WHERE nombre LIKE '%24 LED%';
 -- 202
 ```
 
