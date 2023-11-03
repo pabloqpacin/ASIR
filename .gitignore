@@ -6,6 +6,7 @@ CLASES/
 *bak*
 *.zip
 *.pdf
+!*%.pdf
 *.todo
 canvas.log
 

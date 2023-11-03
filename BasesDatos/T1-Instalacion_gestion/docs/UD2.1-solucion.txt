@@ -1,0 +1,64 @@
+Pregunta: ¿Cuántos fabricantes hay en la base de datos?
+Respuesta: SELECT COUNT(*) FROM fabricante;
+
+Pregunta: ¿Cuál es el nombre del fabricante con ID 3?
+Respuesta: SELECT nombre FROM fabricante WHERE id = 3;
+
+Pregunta: ¿Cuál es el precio del "Monitor 24 LED Full HD"?
+Respuesta: SELECT precio FROM producto WHERE nombre = 'Monitor 24 LED Full HD';
+
+Pregunta: ¿Cuántos productos tienen un precio superior a $500?
+Respuesta: SELECT COUNT(*) FROM producto WHERE precio > 500;
+
+Pregunta: ¿Cuáles son los nombres de los productos fabricados por Asus?
+Respuesta: SELECT producto.nombre FROM producto JOIN fabricante ON producto.id_fabricante = fabricante.id WHERE fabricante.nombre = 'Asus';
+
+Pregunta: ¿Cuál es el fabricante del producto con ID 9?
+Respuesta: SELECT fabricante.nombre FROM producto JOIN fabricante ON producto.id_fabricante = fabricante.id WHERE producto.id = 9;
+
+Pregunta: ¿Cuál es el producto más caro en la base de datos?
+Respuesta: SELECT nombre, precio FROM producto ORDER BY precio DESC LIMIT 1;
+
+Pregunta: ¿Cuál es el promedio de precios de los productos?
+Respuesta: SELECT AVG(precio) FROM producto;
+
+Pregunta: ¿Cuántos productos cuestan menos de $100?
+Respuesta: SELECT COUNT(*) FROM producto WHERE precio < 100;
+
+Pregunta: ¿Cuáles son los nombres de los fabricantes en orden alfabético?
+Respuesta: SELECT nombre FROM fabricante ORDER BY nombre;
+
+Pregunta: ¿Cuál es el producto más barato fabricado por Lenovo?
+Respuesta: SELECT nombre, precio FROM producto JOIN fabricante ON producto.id_fabricante = fabricante.id WHERE fabricante.nombre = 'Lenovo' ORDER BY precio ASC LIMIT 1;
+
+Pregunta: ¿Cuántos productos tiene un nombre que contiene la palabra "Portátil"?
+Respuesta: SELECT COUNT(*) FROM producto WHERE nombre LIKE '%Portátil%';
+
+Pregunta: ¿Cuál es el fabricante más antiguo en la base de datos (con el ID más bajo)?
+Respuesta: SELECT nombre FROM fabricante ORDER BY id ASC LIMIT 1;
+
+Pregunta: ¿Cuál es el nombre del producto con el precio más cercano a $200?
+Respuesta: SELECT nombre, precio FROM producto ORDER BY ABS(precio - 200) LIMIT 1;
+
+Pregunta: ¿Cuántos productos tiene un precio entre $100 y $300?
+Respuesta: SELECT COUNT(*) FROM producto WHERE precio BETWEEN 100 AND 300;
+
+
+UPDATE:
+Pregunta: ¿Cómo puedo actualizar el nombre del fabricante con ID 8 a "Honor"?
+Respuesta:
+UPDATE fabricante SET nombre = 'Honor' WHERE id = 8;
+Pregunta: ¿Cómo puedo incrementar el precio del producto con ID 2 en $10?
+Respuesta:
+UPDATE producto SET precio = precio + 10 WHERE id = 2;
+Pregunta: ¿Cómo puedo cambiar el fabricante del producto con ID 9 a "Dell" (ID de fabricante 10)?
+Respuesta:
+UPDATE producto SET id_fabricante = 10 WHERE id = 9;
+
+DELETE:
+Pregunta: ¿Cómo puedo eliminar el producto con nombre "Impresora HP Deskjet 3720"?
+Respuesta:
+DELETE FROM producto WHERE nombre = 'Impresora HP Deskjet 3720';
+Pregunta: ¿Cómo puedo eliminar el fabricante con ID 11 (Apple)?
+Respuesta:
+DELETE FROM fabricante WHERE id = 11;
