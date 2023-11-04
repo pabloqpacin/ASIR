@@ -1,7 +1,5 @@
 # Unidad 1 McGrawHill <br> Servicio de Configuración Automática de Red (DHCP)
 
- > UDP
-
 ```md
 # Objetivos
 1. Reconocer el funcionamiento de los mecanismos automatizados de configuración de los parámetros de red.
@@ -26,7 +24,8 @@
       - [3.2.1 Tipos de declaraciones](#321-tipos-de-declaraciones)
       - [3.2.2 Tipos de parámetros](#322-tipos-de-parámetros)
   - [4. Servidores autorizados. Seguridad del servicio DHCP](#4-servidores-autorizados-seguridad-del-servicio-dhcp)
-
+    - [4.1 Servidores Autorizados](#41-servidores-autorizados)
+    - [4.2 Seguridad del servicio DHCP](#42-seguridad-del-servicio-dhcp)
 
 
 ## 1. Configuración de los parámetros de red
@@ -247,3 +246,21 @@ group nombre {
 
 ## 4. Servidores autorizados. Seguridad del servicio DHCP
 
+```md
+La posibilidad de que en la red puedan existir varios servidores DHCP sirviendo parámetros de red crea problemas importantes en el funcionamiento del servicio. Aparte de los derivados en el aspecto de la seguridad que puede acarrear esta situación, están los derivados de las situaciones de «confusión» dentro de la red.
+Los mensajes enviados por los clientes para solicitar los parámetros de red son de broadcast. Todos los servidores DHCP de la red reciben estos mensajes, y el primero que responde es el que proporcionará dichos parámetros.
+Para solucionar esta situación, se creó el concepto de servidor autorizado, y será el único que podrá realizar la tarea de asignación de parámetros de red.
+```
+
+### 4.1 Servidores Autorizados
+
+- Varios servidores DHCP (routeres con config por defecto, posible ataque...) ocasionan conflictos y problemas
+- Necesidad **autorización** == `authoritative;` (en Windows, según Controlador de Dominio)
+
+### 4.2 Seguridad del servicio DHCP
+
+- Protocolo HCP no autenticado: no requiere credenciales recibir direccionamiento
+- Ataque habitual: configurar servidor DHCP malicioso para proporcionar/controlar tráfico en red (*spoofing*)
+- Ataques avanzados (*rogue DHCP server*): DdoS, man-in-the-middle (*DNS*)
+- Defensa: *DHCP snooping* en switches para bloquear OFFER y ACK en puertos no autorizados para DHCP
+- Recomendaciones: control de acceso a la red, auditoría para todos los servidores autorizados, configuración DHCP estática (prevenir redirecciones de tráfico)
