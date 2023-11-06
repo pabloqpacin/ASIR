@@ -1,10 +1,10 @@
-# Redes UD 1: DHCP
+# Redes UD1: DHCP
 
 <!-- > VM: PopOS_22.04-Client
 >
 > `tshark` -->
 
-- [Redes UD 1: DHCP](#redes-ud-1-dhcp)
+- [Redes UD1: DHCP](#redes-ud1-dhcp)
   - [teoría](#teoría)
     - [apuntes](#apuntes)
   - [prácticas](#prácticas)
