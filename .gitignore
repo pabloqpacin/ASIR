@@ -4,10 +4,10 @@ CLASES/
 *mock*
 *test*
 *bak*
-*.zip
 *.pdf
 !*%.pdf
 *.todo
+# *.zip
 canvas.log
 
 # Ignore Office suite

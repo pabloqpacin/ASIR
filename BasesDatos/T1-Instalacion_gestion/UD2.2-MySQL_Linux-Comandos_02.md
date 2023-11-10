@@ -2,13 +2,12 @@
 
 ## 1. Instalación MySQL en Linux (Ubuntu)
 
-```bash
-# sudo apt update && sudo apt upgrade -y
-# sudo apt install build-essential && sudo bash /media/$USER/VBox/autorun.sh
+- En local
 
-sudo apt install mysql-server   # v8.0.35
-    # less /var/log/mysql/error.log
+```bash
+sudo apt install mysql-server   # v8.0.35    # ls /var/log/mysql/error.log
 systemctl status mysql
+
 sudo mysql -e "alter user root@localhost' identified with mysql_native_password BY 'changeme';"
 sudo mysql_secure_installation
     # Validate password component:  y
@@ -21,17 +20,30 @@ sudo mysql_secure_installation
 
 sudo mysql -p -e "CREATE USER $USER@localhost IDENTIFIED BY 'changeme';"
 mysql -u root -p -e "GRANT ALL PRIVILEGES ON *.* TO $USER@localhost;"
+# echo -e '[mysql]\nprompt = "[\R:\m]\_\U\_(\d\T)>\_"' \
+#   | sudo tee /etc/mysql/mysql.conf.d/mysql.cnf
 
-echo -e '[mysql]\nprompt = "[\R:\m]\_\U\_(\d\T)>\_"\n; pager = "bat"' | sudo tee /etc/mysql/mysql.conf.d/mysql.cnf
-
-cd $HOME/Downloads
 mysql -p -e "source empleados.sql"
-
 mysql -p -D empresa
 ```
 
+- Docker
 
+```bash
+sudo apt-get update && sudo apt-get install mysql-client
+# https://github.com/pabloqpacin/dotfiles/blob/main/scripts/setup/docker-PopUbu.sh << instalación de Docker
 
+mkdir -p $HOME/Docker_vs/asir_mysql
+docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=changeme -d -p 3306:3306 -v $HOME/Docker_vs/asir_mysql:/var/lib/mysql mysql
+
+mysql -h 127.0.0.1 -u root -p -e "source empleados.sql"
+mysql -h 127.0.0.1 -u root -p -D empresa
+```
+
+<br>
+<br>
+<br>
+<br>
 ---
 
 
@@ -121,31 +133,72 @@ WHERE e.id_departamento = 1;
 10. ¿Cuál es el nombre y el presupuesto de los departamentos donde los gastos son más del 70% del presupuesto?
 
 ```sql
+SELECT nombre,presupuesto FROM departamento WHERE gastos > presupuesto * 0.7;
 ```
 
 11. ¿Cuál es el nombre y apellido de los empleados que no están asignados a ningún departamento?
 
 ```sql
+SELECT nombre,apellido1 FROM empleado WHERE id_departamento IS NULL;
 ```
 
 12. ¿Cuál es el nombre del departamento con un presupuesto superior al promedio de presupuestos de todos los departamentos?
 
 ```sql
+SELECT nombre FROM departamento WHERE presupuesto > (
+    SELECT AVG(presupuesto) FROM departamento
+);
 ```
 
-13. ¿Cuál es el nombre y el salario de los empleados que ganan más que el promedio de salarios en su departamento?
+13. Nombre y salario de los empleados que ganan más que el promedio de salarios en su departamento.
 
 ```sql
+SELECT e.nombre, e.salario
+FROM empleado e
+JOIN (
+    SELECT id_departamento, AVG(salario) AS salario_promedio
+    FROM empleado
+    GROUP BY id_departamento
+) dept_avg ON e.id_departamento = dept_avg.id_departamento
+WHERE e.salario > dept_avg.salario_promedio;
 ```
 
 14. ¿Cuál es el nombre del departamento que tiene más empleados?
 
 ```sql
+SELECT d.nombre FROM departamento d
+JOIN empleado e ON d.id = e.id_departamento
+GROUP BY d.nombre
+HAVING COUNT(e.id) = (
+    SELECT MAX(num_empleados)
+    FROM (
+        SELECT COUNT(id) AS num_empleados
+        FROM empleado
+        GROUP BY id_departamento
+    ) AS max_num_empleados
+)
+ORDER BY COUNT(e.id) DESC;
+
+SELECT
+    d.nombre AS nombre_departamento,
+    COUNT(e.id) AS num_empleados
+FROM departamento d
+JOIN empleado e ON d.id = e.id_departamento
+GROUP BY d.nombre
+HAVING COUNT(e.id) = (
+    SELECT MAX(num_empleados)
+    FROM (
+        SELECT COUNT(id) AS num_empleados
+        FROM empleado
+        GROUP BY id_departamento
+    ) AS max_num_empleados
+)
+ORDER BY num_empleados DESC;
 ```
 
 15. ¿Cuál es el nombre y apellido de los empleados que comparten el mismo departamento?
 
 ```sql
+SELECT d.nombre,e.nombre,e.apellido1 FROM departamento d
+JOIN empleado e ON d.id = e.id_departamento;
 ```
-
-

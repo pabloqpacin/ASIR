@@ -56,32 +56,77 @@ Desde la parte de administración de un sitio web WordPress se gestionan los con
 
 ### 2.1 Carpetas y archivos de WordPress
 
+> /srv/www/wordpress
 
-
-| foo           | bar
-| ---           | ---
-| wp-admin      | 
-| wp-content    | 
-| wp-content    | 
-| wp-content    | 
-| wp-content    | 
-| wp-includes   | 
-| wp-config.php | 
-| wp-login.php  | 
-| .htaccess     | 
+| foo                   | bar
+| ---                   | ---
+| wp-admin              | Carpeta con archivos para hacer funcionar el backend
+| wp-content/languages  | Carpeta con traducciones de archivos a varios idiomas
+| wp-content/plugins    | Plugins
+| wp-content/themes     | TEmas
+| wp-content/uploads    | Imágenes, vídeos etc. includios en entradas o páginas
+| wp-includes           | Archivos core
+| wp-config.php         | Info conexión BBDD **(!)**
+| wp-login.php          | Usuario y contraseña para backend
+| .htaccess             | Config de seguridad, redirecciones, URL amigables
 
 ### 2.2 Escritorio (Dashboard)
+
+- Presentación herramientas distribuidas en bloques en función de la configuración y de los plugins instalados
+- Primeros pasos, personalizar; siguientes pasos, administrar entradas páginas; más acciones, widgets menús comentarios
+
 ### 2.2 Ajustes
 
 #### A. Ajustes generales
+
+- *Título del sitio* y *Descripción corta*: siempre se pueden cambiar, visibles en la parte superior de todas las páginas
+- *Dirección de WP* y *del Sitio* (URL): pueden coincidir o no dependiendo de la ubicación de los archivos en el servidor...
+- *Cualquiera puede registrarse*: según 'Perfil por defecto'
+- *Idioma del sitio*: ...
+- *Zona horaria, formato fecha, etc*: importante para organización entradas
+
 #### B. Ajustes de escritura
+
+- Opciones de publicación generales: *Categoría por defecto*, *Formato entrada por defecto*, *Publicar por email* (POP3), *Servicios de actualización* (aviso nuevas publicaciones)...
+
+> TODO: Markdown
+
 #### C. Ajustes de lectura
+
+- *Tu página de inicio*, *Número máximo de entradas a mostrar*, *Feeds RSS*, *Visibilidad en los motores de búsqueda*...
+
 #### D. Ajustes de los enlaces permanentes
+
+- 'Un enlace permanente es la URL que enlaza las páginas, entradas, categorías y etiquetas. Para cada uno de estos elementos la URL debe ser siempre igual, por eso se le llama permanente'
+- Opción recomendada: **Nombre de la entrada** // personalización
+
 #### E. Ajustes de privacidad
 
+- Aplicar legislación sobre colección de datos personales: **página** informando de la política de privacidad (WP borrador por defecto)
+
+
 ## 3. Personalización
-### 3.1 foo
-### 3.2 foo
+
+```md
+La personalización de un sitio web realizado con WordPress se realiza a través de la instalación de un tema, de la definición y ubicación de uno o varios menús, de la incorporación de widgets y de la instalación de plugins.
+Un tema da estilo a WordPress a nivel de estructura y de diseño, la estructura es la ubicación de los elementos y el diseño es lo que da formato a los elementos. 
+Los menús contienen los enlaces a las distintas secciones y en WordPress se pueden crear todos los que se quieran, pero sus ubicaciones dependen del tema instalado.
+A través de los widgets, cuyas posibles ubicaciones también vendrán determinadas por el tema que está instalado, se pueden añadir al sitio web pequeños bloques de contenido como pueden ser textos, imágenes, enlaces, categorías, calendarios, etc.
+Por último, los plugins añaden funcionalidades extra a la base de WordPress como, por ejemplo: sliders de imágenes, conexión con redes sociales, porfolios, testimonios, equipo, funcionalidades para crear una tienda on-line, etc.
+```
+
+### 3.1 Usuarios
+### 3.2 Menús
+### 3.2 Widgets
+### 3.2 Temas
+#### A. Añadir temas
+#### B. Cambiar el tema
+#### A. Eliminar un tema
+### 3.5 Personalizar
+### 3.6 Fondo
+### 3.7 Editor de temas
+### 3.8 Plugins
+### 3.9 El plugin WooCommerce
 
 ## 4. Contenidos
 ### 4.1 foo
