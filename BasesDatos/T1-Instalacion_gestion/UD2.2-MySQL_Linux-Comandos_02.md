@@ -50,7 +50,7 @@ mysql -h 127.0.0.1 -u root -p -D empresa
 ## 2.- Primeros ejercicios sobre la Base de Datos
 
 
-Tenemos el siguiente Modelo ER: [...](#). Restauramos la copia de seguridad [empleados.sql](/BasesDatos/T1-Instalacion_gestion/sql/UT2.2-empleados.sql) que contiene los datos con los que vamos a operar. Realiza las siguientes consultas de manera adecuada:
+Tenemos el siguiente Modelo ER: [...](#). Restauramos la copia de seguridad [empleados.sql](/BasesDatos/T1-Instalacion_gestion/sql/UD2.2-empleados.sql) que contiene los datos con los que vamos a operar. Realiza las siguientes consultas de manera adecuada:
 
 
 

@@ -1,12 +1,14 @@
 #!/bin/bash
 
 echo -e "\n----################################################################----"
-echo -e "#########~~~~~{     UD1-DHCP.sh v0.3  by @pabloqpacin    }~~~~~#########"
+echo -e "#########~~~~~{     UD1-DHCP.sh v0.4  by @pabloqpacin    }~~~~~#########"
 echo -e "----################################################################----"
 
 ### Probado con éxito en Ubuntu Server 22.04.3 LTS (VirtualBox)
 ### CONFIGURACION DE RED: NAT/Bridged --> instalación paquete
 ### CONFIGURACION DE RED: Red Interna --> configuración DHCP
+
+## TODO: dhcp server address VS default gateway address (internal network)
 
 ########## VARIABLES ##########
 
@@ -15,10 +17,10 @@ dir_ip=$(hostname -I | awk -F ' ' '{print $1}')
 estado_conexion=''
 
 netplan_configfile='/etc/netplan/00-installer-config.yaml'
-netplan_estado_dhcp=$(grep -s dhcp4 $netplan_configfile | awk -F ': ' '{print $2}')   # true OR false
+netplan_estado_dhcp=$(grep -s dhcp4 $netplan_configfile | awk -F ': ' '{print $2}')     # true OR false
 tmplog_netplanapply='/tmp/log-netplan_apply.log'
 
-interfaz=$(ip -o link show | grep -v 'lo' | awk -F ': ' '{print $2}')       # enp0s3
+interfaz=$(ip -o link show | grep -v 'lo' | awk -F ': ' '{print $2}' | head -n1)        # enp0s3
 iscdhcp_configfile='/etc/default/isc-dhcp-server'
 dhcpd_configfile='/etc/dhcp/dhcpd.conf'
 
@@ -34,7 +36,7 @@ YELLOW='\e[33m'
 config_estado_red_VBox() {
     echo -e "Dirección IPv4 asignada ---> ${YELLOW}$dir_ip${RESET}"
     case $dir_ip in
-        '192.168.1.254') estado_conexion='OK'
+        '192.168.1.65') estado_conexion='OK'
         echo -e "Configuración de red actual: ${YELLOW}interna gestionada${RESET}" ;;
         '') estado_conexion='READY'
         echo -e "Configuración de red actual: ${YELLOW}interna ${RED}NO${YELLOW} gestionada${RESET}" ;;
@@ -48,7 +50,9 @@ install_dhcp_server_pkg() {
     if [ ! -e "/etc/apt/apt.conf.d/99show-versions" ]; then
         echo 'APT::Get::Show-Versions "true";' | sudo tee /etc/apt/apt.conf.d/99show-versions
     fi
-    sudo apt-get update && sudo apt-get install isc-dhcp-server    # grc nmap -y
+    sudo apt-get update && sudo apt-get install isc-dhcp-server dhcping nmap grc -y      # python3-isc-dhcp-leases
+    # echo -e "\n${YELLOW}########## Instalando otros paquetes -- di YES a wireshark ##########${RESET}"
+    # sudo apt-get install grc nmap tshark -y && sudo usermod -aG wireshark $USER
     echo -e "\n${YELLOW}########## Cambia la configuración de la VM a '${RED}${BOLD}red interna${RESET}${YELLOW}' para poder continuar ##########${RESET}"
 }
 
@@ -64,9 +68,9 @@ network:
     version: 2
     renderer: networkd
     ethernets:
-        enp0s3:
+        $interfaz:
             dhcp4: false
-            addresses: [192.168.1.254/24]
+            addresses: [192.168.1.65/26]
             gateway4: 192.168.1.1
             nameservers:
                 addresses: [8.8.8.8, 8.8.4.4]" | sudo tee $netplan_configfile && \
@@ -99,11 +103,15 @@ edit_subnet_dhcpd_configfile() {
         echo -e "\n${YELLOW}########## Actualizando '${RED}${BOLD}$dhcpd_configfile${RESET}${YELLOW}' ##########${RESET}"
         echo -e "\n${YELLOW}###${RESET} Añadiendo ${BOLD}subnet 192.168.x.x${RESET} al final" && \
             tail -n5 $dhcpd_configfile && \
-            echo -e "subnet 192.168.1.0 netmask 255.255.255.0 {\n\trange 192.168.1.180 192.168.1.200;\n}" \
-                | sudo tee -a $dhcpd_configfile
+            echo "
+subnet 192.168.1.64 netmask 255.255.255.192 {
+    range 192.168.1.66 192.168.1.126;
+    option subnet-mask 255.255.255.192;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+}" | sudo tee -a $dhcpd_configfile
         echo -e "\n${YELLOW}###${RESET} Reiniciando el servicio ${BOLD}DHCP${RESET}" && \
             sudo systemctl restart isc-dhcp-server && sleep 3 && \
-            echo "systemctl status isc-dhcp-server" && eval $_ | grep Active
+            echo "systemctl status isc-dhcp-server" | grep Active
     elif grep -qs "192.168" $dhcpd_configfile ]; then
         echo -e "\n${YELLOW}########## '${GREEN}${BOLD}$dhcpd_configfile${RESET}${YELLOW}' ya contiene la subnet '${RED}${BOLD}192.168.x.x${RESET}${YELLOW}' ##########${RESET}"
     else
@@ -120,8 +128,8 @@ encourage_client_config() {
     echo -e "${CYAN}-${RESET} grep dhcpd /var/log/syslog"
     echo -e "${CYAN}Verificación en los CLIENTES:${RESET}"
     echo -e "${CYAN}-${RESET} ip route"
-    echo -e "${CYAN}-${RESET} ping -c4 192.168.1.254"
-    echo -e "${CYAN}-${RESET} grc nmap 192.168.1.0/24\n"
+    echo -e "${CYAN}-${RESET} ping -c4 192.168.1.65"
+    echo -e "${CYAN}-${RESET} grc nmap 192.168.1.64/26\n"
     # OJO: ufw (puertos 67 68 ...)
 }
 
