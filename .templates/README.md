@@ -12,9 +12,11 @@
 ### bar
 ### McGrawHill
 
+#### x
+
 #### Caso práctico x -- foo
 #### Ponte a prueba x -- foo
-#### Estudio de caso x -- foo
+#### Estudio de caso -- foo
 #### Ejercicios x -- test
 
 1. foo

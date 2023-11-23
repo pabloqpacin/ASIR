@@ -1,4 +1,4 @@
-# UD1.1 - DHCP con servidor 
+# UD1.1 - DHCP en UbuntuServer
 
 Instala el servicio DHCP en un servidor UBUNTU SERVER para dar la configuración de todos los parámetros a un cliente windows y un cliente linux.
 
@@ -6,7 +6,7 @@ Crea subredes para poder meter 60 equipos en cada subred. De las subredes obteni
 
 Debes de hacer un manual de instalación y configuración de los servicios y, también, demostración en los clientes de que funciona correctamente.
 
-- [UD1.1 - DHCP con servidor](#ud11---dhcp-con-servidor)
+- [UD1.1 - DHCP en UbuntuServer](#ud11---dhcp-en-ubuntuserver)
   - [0. Subnetting: 192.168.1.64/26](#0-subnetting-19216816426)
   - [1. Instalación del servicio DHCP](#1-instalación-del-servicio-dhcp)
   - [2. Asignación IP estática para servidor en Red Interna: netplan](#2-asignación-ip-estática-para-servidor-en-red-interna-netplan)
