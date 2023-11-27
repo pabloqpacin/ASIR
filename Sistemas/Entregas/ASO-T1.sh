@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo -e "\n------######################################################################------"
-echo -e "##############~~~~~~~{     ASO-T1 v0.1.1 de @pabloqpacin    }~~~~~~~##############"
+echo -e "##############~~~~~~~{     ASO-T1 v0.1.2 de @pabloqpacin    }~~~~~~~##############"
 echo -e "------######################################################################------\n"
 
 
@@ -27,6 +27,7 @@ YELLOW='\e[33m'
 
 # 2. Script que muestre cuantos usuarios hay conectados y lo escriba en un archivo que será pasado al script como parámetro
 2_guardar_usuarios_conectados_en_param() {
+    if [[ ! $1 ]]; then echo "Proporciona parámetro \$1..." && return 1; fi
     if [[ -f $1 || ! -e $1 ]]
         then date >> $1 && who | tee -a $1 && echo -e "" >> $1
         else echo "Error: '$1' no es un archivo válido"
@@ -83,7 +84,6 @@ YELLOW='\e[33m'
 }
 
 # 8. Script que ordene el contenido de todos los archivos que se le pasen como parámetro (salvo el ultimo) y una su contenido en otro archivo (que es el ultimo parámetro pasado al script).
-
     # ORDENAR EL CONTENIDO? == líneas alfabéticamente ?
 
 # 9. Script que dada una ruta como primer parámetro, busque todos los tipos de fichero con permisos 0774 que sean pertenecientes a un usuario dado como segundo parámetro y los muestre por pantalla.
@@ -107,7 +107,6 @@ YELLOW='\e[33m'
         # i. Otros: lectura y ejecución on; escritura off
         # ii. Grupo: lectura on, escritura y ejecucion: off
         # iii. Usuario: todo on
-
 10_crear_usuarios_grupo() {
     local group_name='suspensos'
     local user_names=('usu1' 'usu2')
@@ -222,7 +221,7 @@ YELLOW='\e[33m'
         echo "- Nombre completo usuario: $(grep $1 /etc/passwd | awk -F ':' '{print $5}')"
         echo "- Directorio home: $(grep $1 /etc/passwd | awk -F ':' '{print $6}')"
         echo "- Shell que utiliza: $(grep $1 /etc/passwd | awk -F ':' '{print $7}')"
-        echo "- Número de sistemas actualmente abiertas: $(echo foo)"
+        echo "- Número de sesiones actualmente abiertas: $(echo foo)"
     }
 
     p_informacion_procesos() {

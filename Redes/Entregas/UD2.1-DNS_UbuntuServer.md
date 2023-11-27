@@ -9,12 +9,11 @@ El dominio se llamará `asir.com` y dentro tienes que tener los host `www` y `ft
 
 
 - [UD2.1 - DNS en UbuntuServer](#ud21---dns-en-ubuntuserver)
-  - [0. Subnetting: 192.168.100.128/27](#0-subnetting-19216810012827)
-  - [1. Instalación de servicios DHCP y DNS](#1-instalación-de-servicios-dhcp-y-dns)
-  - [2. Configuración de servicio DHCP](#2-configuración-de-servicio-dhcp)
-  - [3. Configuración de servicio DNS](#3-configuración-de-servicio-dns)
-  - [4. Reiniciar y verificar server](#4-reiniciar-y-verificar-server)
-  - [5. Demostración con clientes](#5-demostración-con-clientes)
+  - [1. Subnetting: 192.168.100.128/27](#1-subnetting-19216810012827)
+  - [2. Instalación de servicios DHCP y DNS](#2-instalación-de-servicios-dhcp-y-dns)
+  - [3. Configuración de servicio DHCP](#3-configuración-de-servicio-dhcp)
+  - [4. Configuración de servicio DNS](#4-configuración-de-servicio-dns)
+  - [5. Reiniciar y verificar servicios](#5-reiniciar-y-verificar-servicios)
 
 
 > **NOTA 1**: el siguiente comando imprimirá la dirección IP privada asignada a la máquina
@@ -29,7 +28,7 @@ ip -o link show | grep -v 'lo' | awk -F ': ' '{print $2}' | head -n1
 ```
 
 
-## 0. Subnetting: 192.168.100.128/27
+## 1. Subnetting: 192.168.100.128/27
 
 - Cálculo
 
@@ -51,7 +50,7 @@ ip -o link show | grep -v 'lo' | awk -F ': ' '{print $2}' | head -n1
     # 192.168.100.-111-00000        # 8: 192.168.100.224/27
 ```
 
-- Última subred de 5 para servicio DHCP
+- Última subred de 5 para servicios DHCP/DNS
 
 ```yaml
 Direccion red:  192.168.100.128/27
@@ -60,7 +59,7 @@ Ultimo host:    192.168.100.158
 Broadcast:      192.168.100.159
 ```
 
-## 1. Instalación de servicios DHCP y DNS
+## 2. Instalación de servicios DHCP y DNS
 
 > **Configuración de red** de la máquina virtual (VM) Ubuntu Server: *NAT o Bridged*
 
@@ -77,10 +76,10 @@ sudo apt install isc-dhcp-server -y
 sudo apt install bind9 -y
 
 # Instalación de otros paquetes
-sudo apt install dig grc nmap nslookup whois -y
+sudo apt install grc nmap whois -y      # dig nslookup
 ```
 
-## 2. Configuración de servicio DHCP
+## 3. Configuración de servicio DHCP
 
 > **Configuración de red** de la VM: *Red Interna*
 
@@ -158,7 +157,7 @@ host ftp_cliente_windows {
 ```
 
 
-## 3. Configuración de servicio DNS
+## 4. Configuración de servicio DNS
 
 - Primero 'forwarders'
 
@@ -211,24 +210,24 @@ sudo vim /etc/bind/db.asir.com
 ```
 ```conf
 $TTL    604800
-@       IN      SOA     ns.asir.com.   root.asir.com. (
-                                2        ; Serial
-                           604800        ; Refresh
-                            86400        ; Retry
-                          2419200        ; Expire
-                           604800 )      ; Negative Cache TTL
+@       IN      SOA     asir.com.   root.asir.com. (
+                              2        ; Serial
+                         604800        ; Refresh
+                          86400        ; Retry
+                        2419200        ; Expire
+                         604800 )      ; Negative Cache TTL
 ;     
-@       IN      NS        ns.asir.com.
-;@      IN      A         192.168.100.129
-;@      IN      AAAA      ::1
+@       IN      NS        asir.com.
+@       IN      A         192.168.100.129
+@       IN      AAAA      ::1
 
-www     IN      A         192.168.100.130   ; self
-web     IN      A         192.168.100.130   ; Arch
+ns      IN      A         192.168.100.129   ; self
+www     IN      A         192.168.100.130   ; Arch
 ftp     IN      A         192.168.100.131   ; Windows
 
-;Dns     IN      CNAME     ns.asir.com
-;Web     IN      CNAME     www.asir.com
-;Ftp     IN      CNAME     ftp.asir.com
+;Dns    IN      CNAME     ns.asir.com
+;Web    IN      CNAME     www.asir.com
+;Ftp    IN      CNAME     ftp.asir.com
 ```
 
 - Por último el de zona Inversa `db.asir.com`
@@ -239,23 +238,23 @@ sudo vim /etc/bind/db.192
 ```
 ```conf
 $TTL    604800
-@       IN      SOA  ns.asir.com.     root.asir.com. (
-                              1          ; Serial
-                         604800          ; Refresh
-                          86400          ; Retry
-                        2419200          ; Expire
-                         604800 )        ; Negative Cache TTL
+@       IN      SOA  asir.com.     root.asir.com. (
+                          1          ; Serial
+                     604800          ; Refresh
+                      86400          ; Retry
+                    2419200          ; Expire
+                     604800 )        ; Negative Cache TTL
 ;
 
-@        IN     NS      ns.asir.com.
+@        IN     NS      asir.com.
 129      IN     PTR     ns.asir.com.
 130      IN     PTR     www.asir.com.
 131      IN     PTR     ftp.asir.com.
 ```
 
-## 4. Reiniciar y verificar server
+## 5. Reiniciar y verificar servicios
 
-- Reinicar los servicios para aplicar la nueva configuración
+- Reiniciar los servicios para aplicar la nueva configuración
 
 ```bash
 # Reiniciar el servicio DHCP
@@ -264,39 +263,78 @@ sudo systemctl restart isc-dhcp-server
 # Reiniciar el servicio DNS
 sudo systemctl restart named
 ```
-- Verificar servicios en servidor
+
+> **Encender** máquinas virtuales de los **clientes**
+
+- Verificar servicios en servidor y cliente Linux (`ns.asir.com` y `www.asir.com`)
 
 ```bash
-# Verificar que DHCP está activo
-echo "systemctl status isc-dhcp-server" | grep Active
-
-# Verificar que DNS está activo
-echo "systemctl status named" | grep Active
-
-# Verificar que el DNS funciona correctamente
-dig www.asir.com
+# Verificar estado servicios en Ubuntu Server
+systemctl status named isc-dhcp-server
 resolvectl status
-nslookup ftp.asir.com
-nslookup 192.168.100.131
-ping -c4 www.asir.com
+
+# Otros comandos...
+nmap -sV 192.168.100.128/27
 curl www.asir.com
+nmap -Pn 192.168.100.131
+mysql -h ftp.asir.com -u root -p
 ```
 
-## 5. Demostración con clientes
+```bash
+# Verificar direccionamiento y resolución de nombres en servidor y cliente
+dominios=('asir.com' 'ns.asir.com' 'www.asir.com' 'ftp.asir.com')
+direcciones_ip=('192.168.100.129' '192.168.100.131' '192.168.100.131')
 
-> ...
+for nombre in ${dominios[@]}; do
+    echo "---"
+    nslookup $nombre
+    ping -c2 $nombre
+    # dig $nombre
+done
 
-- Windows (ftp.asir.com)
+    echo "-x-"
+
+for direccion in ${direcciones_ip[@]}; do
+    echo "---"
+    nslookup $direccion
+    ping -c2 $direccion
+done
+```
+
+- Verificar servicios en cliente Windows (`ftp.asir.com`)
 
 ```ps1
 New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 ipconfig /all
-ping ns.asir.com
+```
+
+```ps1
+$dominios=('asir.com', 'ns.asir.com', 'www.asir.com', 'ftp.asir.com')
+$direcciones_ip=('192.168.100.129', '192.168.100.131', '192.168.100.131')
+
+foreach ($nombre in $dominios) {
+    Write-Output "---"
+    nslookup $nombre
+    ping -n 2 $nombre
+}
+
+    Write-Output "-x-"
+
+foreach ($direccion in $direcciones_ip) {
+    Write-Output "---"
+    nslookup $direccion
+    ping -n 2 $direccion
+}
+```
+
+```ps1
+nmap -sV 192.168.100.128/27
+ssh ns.asir.com
 curl www.asir.com
+mysql -h www.asir.com -u root -p
 ```
 
-- Linux
+- Capturas de pantalla
 
-```bash
-ping ns.asir.com
-```
+> ...
+

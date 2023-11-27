@@ -90,7 +90,7 @@ where nif = 987654321;
 7. ¿Cómo eliminar el "Departamento Legal" (id = 10) de la tabla "departamento"?
 
 ```sql
-insert into departamento (id, nombre, presupuesto, gastos) values (1001, '(pendiente, 0, 0)');
+insert into departamento (id, nombre, presupuesto, gastos) values (1001, '(pendiente)', 0, 0);
 update empleado set id_departamento = 1001 where id_departamento = 10;
 delete from departamento where id = 10
 ```
@@ -130,8 +130,8 @@ and id_departamento = (
 
 ```sql
 select
-    d.nombre as nombre_departamento,
-    d.presupuesto,
+    -- d.nombre as nombre_departamento,
+    -- d.presupuesto,
     e.nombre as nombre_empleado,
     e.apellido1 as apellido_empleado
 from empleado e
