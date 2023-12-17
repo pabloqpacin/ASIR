@@ -73,7 +73,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install isc-dhcp-server -y
 
 # Instalación de paquetes para DNS
-sudo apt install bind9 -y
+sudo apt install bind9 bind9-utils -y
 
 # Instalación de otros paquetes
 sudo apt install grc nmap whois -y      # dig nslookup
@@ -205,7 +205,6 @@ named-checkconf
 
 ```bash
 sudo cp /etc/bind/db.local /etc/bind/db.asir.com
-# sed s/localhost/asir.com./g /etc/bind/db.asir.com
 sudo vim /etc/bind/db.asir.com
 ```
 ```conf
@@ -225,9 +224,9 @@ ns      IN      A         192.168.100.129   ; self
 www     IN      A         192.168.100.130   ; Arch
 ftp     IN      A         192.168.100.131   ; Windows
 
-;Dns    IN      CNAME     ns.asir.com
-;Web    IN      CNAME     www.asir.com
-;Ftp    IN      CNAME     ftp.asir.com
+;Dns    IN      CNAME     ns.asir.com.
+;Web    IN      CNAME     www.asir.com.
+;Ftp    IN      CNAME     ftp.asir.com.
 ```
 
 - Por último el de zona Inversa `db.asir.com`
@@ -332,6 +331,11 @@ nmap -sV 192.168.100.128/27
 ssh ns.asir.com
 curl www.asir.com
 mysql -h www.asir.com -u root -p
+
+ipconfig /release
+ipconfig /renew
+
+nslookup web.asir.com
 ```
 
 - Capturas de pantalla

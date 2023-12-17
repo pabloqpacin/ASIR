@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir_ip=$(hostname -I | awk -F ' ' '{print $1}')
-interfaz=$(ip -o link show | grep -v 'lo' | awk -F ': ' '{print $2}' | head -n1)        # enp0s3
+interfaz=$(ip -o link show | grep 'noop' | awk -F ': ' '{print $2}' | head -n1)        # enp0s8
 
 ########## FUNCIONES ##########
 
@@ -131,9 +131,9 @@ ns      IN      A         192.168.100.129   ; self
 www     IN      A         192.168.100.130   ; Arch
 ftp     IN      A         192.168.100.131   ; Windows
 
-;Dns    IN      CNAME     ns.asir.com
-;Web    IN      CNAME     www.asir.com
-;Ftp    IN      CNAME     ftp.asir.com
+;Dns    IN      CNAME     ns.asir.com.
+;Web    IN      CNAME     www.asir.com.
+;Ftp    IN      CNAME     ftp.asir.com.
 "   | sudo tee /etc/bind/db.asir.com
     else
         echo "== db.asir.com hecho =="
