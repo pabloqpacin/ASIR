@@ -37,6 +37,7 @@ function 2_adivinar_numero_maquina {
 function 3_adivinar_numero_maquina {
 
     $RandomNumber = Get-Random -Minimum 1 -Maximum 20
+    $RandomNumber += 1                                      # Because by default is between 0 and 19
     # Write-Host $RandomNumber
 
     while ($UserInput -ne $RandomNumber) {

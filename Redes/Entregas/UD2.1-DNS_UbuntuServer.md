@@ -169,7 +169,7 @@ options {
         directory "/var/cache/bind";
 
         forwarders {
-                192.168.100.129
+                192.168.100.129;
         };
 
         dnssec-validation auto;
