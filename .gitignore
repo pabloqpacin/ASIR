@@ -1,4 +1,5 @@
 # Ignore dirs and filetypes
+EXAMENES/
 private/
 CLASES/
 *mock*
