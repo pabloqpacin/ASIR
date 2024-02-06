@@ -170,7 +170,14 @@ docker stop mysql1 mysql2
 docker start mysql1 mysql2
 ```
 
-- Conectarnos al contenedor
+- Conectarnos al contenedor y a la BD
+
+```bash
+docker exec -it mysql1 bash
+# mysql -u root -pchangeme
+```
+
+- Conectarnos a la BD desde el anfitrión
 
 ```bash
 # Conectarse a localhost:3306 por defecto
@@ -185,6 +192,12 @@ mycli -u localhost -P 3307 -u root -pchangeme
 ```bash
 docker run -it --name ubuntu1 ubuntu
 # apt-get update && apt-get install neofetch --no-install-recommends && neofetch
+
+docker stop ubuntu1
+docker start1 ubuntu1
+
+docker exec -it ubuntu1 bash
+# neofetch
 ```
 
 ### apache
