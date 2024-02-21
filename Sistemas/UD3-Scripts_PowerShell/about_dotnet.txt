@@ -1,0 +1,13 @@
+.NET is a software framework developed by Microsoft that provides a comprehensive and consistent programming model for building and deploying applications. It was first introduced in the early 2000s and has since become a key technology for developing various types of software, including desktop applications, web applications, and server applications.
+
+Key components of .NET include:
+
+1. **Common Language Runtime (CLR):** The CLR is the runtime environment that manages the execution of .NET applications. It provides services such as memory management, security, and exception handling. One of the significant features of the CLR is its ability to execute code written in multiple languages, allowing developers to use the language of their choice within the .NET framework.
+
+2. **Base Class Library (BCL):** The BCL is a collection of pre-built classes, interfaces, and value types that provide a wide range of functionality, including file I/O, networking, data access, and more. This library simplifies common programming tasks and allows developers to build applications more efficiently.
+
+3. **Common Type System (CTS):** The CTS defines a set of data types and programming constructs that can be used across different programming languages supported by .NET. This enables seamless integration and interoperability between components written in different languages.
+
+4. **Intermediate Language (IL):** When a .NET application is compiled, it is translated into an intermediate language called IL or MSIL (Microsoft Intermediate Language). The IL code is platform-agnostic and can run on any system that has a compatible CLR.
+
+PowerShell, which is a task automation framework and scripting language developed by Microsoft, is built on top of the .NET framework. PowerShell allows administrators and developers to automate repetitive tasks and manage system configurations more efficiently. The integration with .NET enables PowerShell to leverage the capabilities of the framework, making it a powerful tool for managing Windows environments and interacting with various technologies. PowerShell scripts can utilize .NET classes and libraries, providing access to a wide range of functionality within the .NET framework.
