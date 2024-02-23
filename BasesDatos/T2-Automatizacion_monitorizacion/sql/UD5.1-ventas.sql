@@ -16,7 +16,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- I PQP had to add the next three lines for the oneliner 'mariadb -h 127.0.0.1 -P 3307 -u root -p -e "source UD5.1-ventas.sql"'
+-- I PQP had to add the next three lines for the oneliner 'mycli -P 3307 -u root -pchangeme -e "source UD5.1-ventas.sql"'
 --
 
 DROP DATABASE IF EXISTS ventas;
@@ -92,6 +92,7 @@ CREATE TABLE `pedido` (
   `fecha` date DEFAULT NULL,
   `id_cliente` int(10) unsigned NOT NULL,
   `id_comercial` int(10) unsigned NOT NULL,
+  -- `estado` varchar(20) DEFAULT 'Pendiente',    # HAS insert into p values FAIL
   PRIMARY KEY (`id`),
   KEY `id_cliente` (`id_cliente`),
   KEY `id_comercial` (`id_comercial`),
@@ -120,3 +121,11 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-11-14 10:08:46
+
+-- --
+-- -- REQUERIDO PARA LA ENTREGA EVALUABLE DEL T2
+-- --
+
+ALTER TABLE `pedido`
+  ADD COLUMN `estado` VARCHAR(20) DEFAULT 'Pendiente';
+
