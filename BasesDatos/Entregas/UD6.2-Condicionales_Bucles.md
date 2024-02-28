@@ -4,21 +4,23 @@
 
 ```bash
 # Creamos un contenedor de MariaDB
-docker run -d --name mysql2 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=changeme -e MYSQL_ROOT_HOST='%' mariadb
+docker run -d --name mariadb1 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=changeme -e MYSQL_ROOT_HOST='%' mariadb
 
     # -v ./foo/bar:/docker-entrypoint-initdb.d
 
-# $ docker stop mysql2
-# $ docker start mysql2
+# $ docker start mariadb1
 
 # A través del cliente mycli importamos el dump de la BD ventas
 yes | mycli -P 3307 -u root -pchangeme -e "source UD5.1-ventas.sql"
 
-# Modificamos la tabla 'pedido' según se solicita de forma declarativa
-mycli -P 3307 -u root -pchangeme -D ventas -e "ALTER TABLE pedido ADD COLUMN estado VARCHAR(20) DEFAULT 'Pendiente';"
+# # Modificamos la tabla 'pedido' según se solicita de forma declarativa
+# mycli -P 3307 -u root -pchangeme -D ventas -e "ALTER TABLE pedido ADD COLUMN estado VARCHAR(20) DEFAULT 'Pendiente';"
 
 # Nos conectamos mediante el cliente mycli al servidor de base de datos alojado en nuestro contenedor MariaDB
 mycli -P 3307 -u root -pchangeme -D ventas
+
+# $ docker stop mariadb1
+# $ docker rm mariadb1 -v
 ```
 
 
