@@ -44,7 +44,8 @@ CREATE TABLE `tblusuarios` (
   `compañia` varchar(20) DEFAULT NULL,
   `saldo` float DEFAULT NULL,
   `activo` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB ;
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `tblusuarios`
