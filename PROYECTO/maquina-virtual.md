@@ -1,5 +1,7 @@
 # Máquina Virtual para Desarrollo
 
+> [scripts](https://github.com/pabloqpacin/dotfiles/tree/main/scripts/autosetup)
+
 - [Máquina Virtual para Desarrollo](#máquina-virtual-para-desarrollo)
   - [1. Descargar ISO](#1-descargar-iso)
   - [2. Configurar Máquina Virtual (VM) en VirtualBox](#2-configurar-máquina-virtual-vm-en-virtualbox)
@@ -80,10 +82,12 @@ APAGAR VM
 ```bash
 # Instalar paquetes básicos
 sudo apt-get install \
-    code git grc mycli nmap openssh-server tldr tmux zsh
+    bat code git grc mycli nmap openssh-server tldr tmux zsh
 
 # Cambiar bash por zsh (con la configuración de https://ohmyz.sh) -- se recomienda instalar zsh-syntax-highlight & zsh-autosuggestions)
 yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sed -i 's/robbyrussell/random' ~/.zshrc
+sudo chsh -s $(which zsh) $USER
 
 # Crea un par de aliases
 echo "alias docker='grc docker'" >> $HOME/.zshrc
@@ -109,6 +113,27 @@ git clone --depth 1 https://github.com/neovim/neovim /tmp/neovim && \
 # Configurar neovim
 # ...
 ```
+
+```bash
+# Aplicar mis configs
+git clone --depth 1 https://github.com/pabloqpacin/dotfiles ~/dotfiles
+ln -s ~/dotfiles/.myclirc ~/
+ln -s ~/dotfiles/.config/bat ~/.config
+ln -s ~/dotfiles/.config/tmux ~/.config
+# ln -s ~/dotfiles/.config/lf ~/.config
+# ln -s ~/dotfiles/.vimrc ~/
+
+lf_pkg='lf-linux-amd64.tar.gz'
+wget -q https://github.com/gokcehan/lf/releases/download/r31/$lf_pkg && \
+    tar -zxvf $lf_pkg && \
+    sudo mv lf /usr/bin/lf && \
+    rm $lf_pkg
+
+echo "alias updeez='sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y'" >> $HOME/.zshrc
+sudo mv /usr/bin/batcat /usr/bin/bat
+```
+
+
 
 ## 5. Instalación de Docker y primeros contenedores
 
@@ -142,6 +167,12 @@ sudo systemctl enable --now docker
 sudo usermod -aG docker $USER   # && newgrp docker
 ```
 
+```bash
+# Reiniciar para volver a loguearse (y aplicar permisos docker + zsh)
+reboot
+```
+
+
 ### mysql
 
 - Levantar contenedor `mysql` siguiendo info de [DockerHub](https://hub.docker.com/_/mysql)
@@ -173,7 +204,7 @@ docker start mysql1 mysql2
 - Conectarnos al contenedor y a la BD
 
 ```bash
-docker exec -it mysql1 bash
+docker exec -it mysql1 -- bash
 # mysql -u root -pchangeme
 ```
 
@@ -184,7 +215,7 @@ docker exec -it mysql1 bash
 mycli -u root -pchangeme
 
 # Conectarse al servidor/contenedor que escucha en un puerto determinado
-mycli -u localhost -P 3307 -u root -pchangeme
+mycli -h localhost -P 3307 -u root -pchangeme
 ```
 
 ### ubuntu
@@ -194,7 +225,7 @@ docker run -it --name ubuntu1 ubuntu
 # apt-get update && apt-get install neofetch --no-install-recommends && neofetch
 
 docker stop ubuntu1
-docker start1 ubuntu1
+docker start ubuntu1
 
 docker exec -it ubuntu1 bash
 # neofetch
@@ -203,13 +234,19 @@ docker exec -it ubuntu1 bash
 ### apache
 
 ```bash
-docker run -d --name apache1 -p 9000:80 httpd
-xdg-open http://localhost:9000
+git clone --depth 1 https://github.com/pabloqpacin/ASIR /tmp/ASIR
+mv /tmp/ASIR/Redes/Entregas/web ~/
+```
+
+```bash
+docker run -d --name apache1 -p 80:80 -v ~/web:/usr/local/apache2/htdocs httpd
+xdg-open http://localhost
 ```
 
 ### nginx
 
 ```bash
+docker run -d --name nginx1 -p 8080:80 -v ~/web:/usr/share/nginx/html nginx
 docker run -d --name nginx1 -p 8080:80 nginx
 xdg-open http://localhost:8080
 ```
@@ -220,7 +257,7 @@ xdg-open http://localhost:8080
 docker run -it --name arch1 archlinux
 # pacman-key --init
 # pacman-key --populate archlinux
-# pacman -Syu neofetch && neofetch
+# pacman -S neofetch && neofetch
 ```
 
 ### Docker pa rato

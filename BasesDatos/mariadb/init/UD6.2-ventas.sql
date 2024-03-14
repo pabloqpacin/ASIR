@@ -129,3 +129,20 @@ UNLOCK TABLES;
 ALTER TABLE `pedido`
 ADD COLUMN `estado` VARCHAR(20) DEFAULT 'Pendiente';
 
+-- --
+-- -- REQUERIDO PARA LA ENTREGA 8.1
+-- --
+
+ALTER TABLE `cliente`
+ADD COLUMN `total_compras` FLOAT DEFAULT 0.0;
+
+CREATE TABLE auditoria (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_comercial INT,
+    id_cliente INT,
+    evento VARCHAR(255),
+    fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    comision_antigua FLOAT,
+    comision_nueva FLOAT,
+    mensaje VARCHAR(255)
+);

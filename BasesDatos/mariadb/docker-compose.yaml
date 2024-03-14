@@ -10,7 +10,7 @@ services:
       - 3306:3306
     volumes:
       - ./init:/docker-entrypoint-initdb.d/
-      - asir_data:/var/lib/mysql                  # $ sudo ls -la /var/lib/docker/volumes/proyecto_mysql_data/_data
+      - asir_data:/var/lib/mysql                  # $ sudo ls -la /var/lib/docker/volumes/mariadb_asir_data/_data
 
 volumes:
   asir_data:
