@@ -571,8 +571,225 @@ foreach ($hab as $localidad=>$habitantes){
 ```
 
 ## 4. Funciones
-### 4.1 foo
-### 4.2 foo
+
+```md
+Una función es un conjunto de instrucciones que se agrupan bajo un nombre con la finalidad de reutilizar código. Cuando se llama a una función, se ejecuta el conjunto de instrucciones que contiene y al finalizar se retoma el programa en la instrucción siguiente al punto de la llamada. 
+PHP dispone de muchísimas funciones predefinidas que cualquier programador puede utilizar. La documentación completa sobre todas las funciones predefinidas se encuentra en el sitio web php.net que puede ser consultado por cualquier usuario. En esta unidad se verán algunas de las funciones más comunes para el manejo de variables, de cadenas, de archivos y de fecha y hora. 
+PHP también permite definir funciones propias. En esta unidad se verá cómo se crean. Para ello se escribe el nombre de la función precedido de la palabra function, se indica si recibe datos, también llamados parámetros, y se escribe el conjunto de instrucciones que la forman.
+```
+
+- Hay funciones que devuelven un valor (ojo: asignación de variables, condición bucles...) o que no devuelven nada
+- [Al escribir una función,] si devuelve un valor se deberá indicar en una instrucción con la palabra return seguida del valor que devuelve
+
+### 4.1 Funciones predefinidas
+
+> https://www.php.net/manual/en/indexes.functions.php
+
+- Hemos visto hasta ahora: `echo` `settype` `gettype` `count` `define` `var_dump` `rand`
+
+#### A. Manejo de variables
+
+```php
+// isset: determina si una variable está definida y no es null
+
+for ($i=0; $i<=1; $i++){
+  if (!isset($num)){
+    echo 'La variable $num no existe'.'<br>';
+  } else {
+    echo 'La variable $num existe y vale '.$num.'<br>';
+  }
+  $num=7;
+}
+```
+```php
+// print_r: imprime información sobre una variable de forma legible
+
+$ejemplo = [
+  'x' => 'dato1',
+  'y' => 'dato2',
+  'z' => ['a','b','c']
+];
+print_r($ejemplo);
+
+```
+#### B. Manejo de cadenas
+
+```php
+// strtoupper: convierte un string a mayúsculas
+echo strtoupper('hola');
+
+// strtolower: convierte un string a minúsculas
+echo strtolower(strtoupper('hola'));
+
+// substr: devuelve substring o false si problema; se indica caracter de inicio y longitud
+echo substr('probando',1,3);
+```
+```php
+// strcomp: compara dos cadenas alfabéticamente (ASCII) - devuelve num negativo si la primera es menor, positivo si es mayor, 0 si iguales
+
+$cadena1 = 'foo';
+$cadena2 = 'FOO';
+
+if (strcmp($cadena1, $cadena2) != 0) {
+    echo 'Las cadenas no coinciden';
+}
+```
+```php
+// strpos: devuelve posición de la primera aparición del substring o false si no lo encuentra ('mixed type')
+$string = "Hello, world! This is a test string.";
+$pos = strpos($string, "world");
+
+if ($pos !== false) {
+    echo "Substring 'world' found at position: $pos";
+} else {
+    echo "Substring 'world' not found in the string.";
+}
+```
+
+#### C. Manejo de archivos
+
+```php
+// opendir: abre gestor de directorio
+// readdir: lee entrada desde directorio abierto con opendir
+// closedir:  cierra gestor de directorio
+
+// Directory path
+$dir_path = '.';
+
+// Open the directory
+$dir_handle = opendir($dir_path);
+
+// Check if directory opened successfully
+if ($dir_handle) {
+    echo "Directory opened successfully:<br>";
+
+    // Read directory entries
+    while (($file = readdir($dir_handle)) !== false) {
+        // Skip special entries '.' and '..'
+        if ($file != '.' && $file != '..') {
+            echo "File: $file<br>";
+        }
+    }
+
+    // Close the directory
+    closedir($dir_handle);
+    echo "Directory closed successfully.<br>";
+} else {
+    echo "Failed to open directory.<br>";
+}
+```
+
+#### D. Manejo de fecha y hora
+
+```php
+// time: devuelve fecha hora Unix
+echo time().'<br>';
+
+// date: https://www.php.net/manual/en/function.date.php
+echo date("Y-m-d H:i:s").'<br>';
+
+// checkdate: checkdate(int $month,int $day,int $year):bool -- In summary, echo checkdate(3, 21, 2022); will output 1 because March 21, 2022, is a valid date. If you were to provide an invalid date, such as echo checkdate(2, 30, 2022);, it would output 0 indicating that February 30, 2022, is not a valid date.
+if (checkdate(3, 21, 2022)) {
+    echo "March 21, 2022, is a valid date.";
+} else {
+    echo "March 21, 2022, is not a valid date.";
+}
+// strtotime: descripción hora a UNIX
+echo strtotime("10 March 1995");
+```
+```php
+// mktime: ...
+
+// Create a Unix timestamp for a specific date and time
+$timestamp = mktime(12, 30, 0, 3, 16, 2022);
+echo "Unix timestamp for March 16, 2022, 12:30 PM: $timestamp<br>";
+
+// Get the date and time components from a Unix timestamp
+$date = date('Y-m-d H:i:s', $timestamp);
+echo "Date and time from timestamp: $date<br>";
+
+// Get individual components of the date and time
+$year = date('Y', $timestamp);
+$month = date('m', $timestamp);
+$day = date('d', $timestamp);
+$hour = date('H', $timestamp);
+$minute = date('i', $timestamp);
+$second = date('s', $timestamp);
+
+echo "Year: $year, Month: $month, Day: $day, Hour: $hour, Minute: $minute, Second: $second\n";
+```
+
+
+### 4.2 Funciones de usuario
+
+> https://www.php.net/manual/en/functions.user-defined.php
+
+
+```php
+function suma_datos ($d1, $d2) {
+  $resultado = $d1 + $d2;
+  return $resultado;
+}
+
+$a = 1;
+$b = 2;
+$c = suma_datos($a,$b);
+echo $c;
+```
+```php
+function escribe_frase ($frase) {
+    echo $frase;
+}
+escribe_frase('hola mundo');
+```
+
+#### A. Ámbito de las variables en las funciones
+
+- Contexto o parte del código donde se peude utilizar:
+  - Global: variable definida fuera de cualquier función; puede utilizarse en funciones indicando `global`
+  - Local: la variable 'se pierde' al acabar la ejecución de la función, a no ser que se use `static` (para mantener su valor entre distintas llamadas)
+
+```php
+$x = 1;
+$y = 2;
+
+function suma_datos(){
+  global $x, $y, $z;
+  $z = $x + $y;
+}
+
+suma_datos();
+echo $z;
+```
+```php
+$x = 1;
+
+function prueba ($y) {
+  $x = $y + 3;
+  echo 'Dentro de función: '.$x.'<br>';
+}
+echo 'Fuera de función: '.$x.'<br>';        // 1
+prueba($x);                                 // 4
+echo 'Fuera de función: '.$x.'<br>';        // 1
+prueba($x);                                 // 4
+echo 'Fuera de función: '.$x.'<br>';        // 1
+```
+```php
+$x = 1;
+
+function prueba() {
+  static $x = 0;
+  $x += 3;
+  echo 'Dentro de función: '.$x.'<br>';
+}
+echo 'Fuera de función: '.$x.'<br>';        // 1
+prueba($x);                                 // 3
+echo 'Fuera de función: '.$x.'<br>';        // 1
+prueba($x);                                 // 6
+echo 'Fuera de función: '.$x.'<br>';        // 1
+```
+
+
 
 ## 5. Usuarios y sesiones
 

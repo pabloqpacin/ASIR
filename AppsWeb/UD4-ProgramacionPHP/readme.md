@@ -352,6 +352,153 @@ for (_______ $i <= 30; _______) {
 4. En un bucle for, en la misma línea se escribe primero la inicialización, luego la condición y por último el incremento o decremento. **Verdadero.**
 5. Un bucle do - while funciona igual que un bucle while, aunque la condición se evalúa después de ejecutar el bloque de instrucciones. **Verdadero**
 
+#### 4
+
+##### Caso práctico 4 -- `rand`
+
+```php
+// Función rand
+// Ya has visto en el apartado de teoría la función rand(). Utilízala en un programa para generar dos números aleatorios entre el 1 y el 10. Después muestra por pantalla la suma de ambos números.
+
+$x = rand(1,10);
+$y= rand(1,10);
+echo $x + $y;
+```
+
+##### Ponte a prueba 4 -- leer directorio
+
+```md
+**Leer contenido de un directorio**
+Tu jefa está optimizando el servidor donde los trabajadores de la empresa almacenan los documentos y te ha pedido que averigües cuántos archivos hay en una carpeta y cuanto es su peso total. Te ha pedido que lo hagas en PHP porque luego quiere utilizar el script para explorar otras carpetas.
+- Recuerda que para acceder al contenido de una carpeta debes utilizar la función opendir.
+- Ten en cuenta que la lectura del contenido de la carpeta te dará . y .. como resultados.
+- Puedes utilizar una variable para contar los archivos y otra para ir acumulando el peso.
+- La función filesize es la que debes utilizar para obtener el tamaño o peso de un fichero (busca información sobre cómo utilizarla en php.net).
+``` 
+
+```php
+$dir_path = '.';
+$contador = 0;
+$peso = 0;
+
+$dir_handle = opendir($dir_path);
+
+if ($dir_handle) {
+    echo "Directory opened successfully:<br>";
+
+    while (($file = readdir($dir_handle)) !== false) {
+        if ($file != '.' && $file != '..') {
+            // ...
+
+            global $contador, $peso;
+            $peso += filesize($file);
+            $contador++;
+
+            // ...
+        }
+    }
+    closedir($dir_handle);
+    echo "Directory closed successfully.<br>";
+} else {
+    echo "Failed to open directory.<br>";
+}
+echo '<hr>';
+echo 'Número de archivos: '.$contador.'<br>';
+echo 'Peso total: '.$peso.'KB<br>';
+```
+
+
+##### Estudio de caso 4 -- Función/array/tabla
+
+<!-- ```php
+$array = [
+    [1,2,3,4,5],
+    ['a','b','c']
+];
+
+// print_r($array);
+
+function foo ($input) {
+    echo '<table border="1" width="200">';
+    foreach ($input[0] as $i){
+        echo '<tr>';
+        foreach ($input[1] as $j){
+            echo "<td>$i-$j</td>";
+        }
+        echo '</tr>';
+    }
+    echo '</table>';
+}
+
+foo($array);
+``` -->
+```php
+function array_tabla ($arr) {
+    echo '<table border="1"><body>';
+    for ($i=0; $i<sizeof($arr); $i++){
+        echo '<tr>';
+        for ($j=0; $j<sizeof($arr[$i]); $j++){
+            echo '<td>'.$arr[$i][$j].'</td>';
+        }
+        echo '</tr>';
+    }
+    echo '</tbody></table>';
+}
+
+$pmenu = [
+    ['', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+    ['Desayuno', 'Cereales', 'Café', 'Yogur', 'Leche', 'Tostadas', 'Fruta', 'Té'],
+    ['Comida', 'Macarrones', 'Pollo', 'Ensalada', 'Paella', 'Lenguado', 'Pizza', 'Lentejas'],
+    ['Cena', 'Calabaza', 'Patatas', 'Merluza', 'Judías', 'Ternera', 'Huevo', 'Queso']
+];
+
+
+// $menu[0][0] = '';
+// $menu[0][1] = '<strong>Lunes</strong>';
+// $menu[0][2] = '<strong>Martes</strong>';
+// $menu[0][3] = '<strong>Miércoles</strong>';
+// $menu[0][4] = '<strong>Jueves</strong>';
+// $menu[0][5] = '<strong>Viernes</strong>';
+// $menu[0][6] = '<strong>Sábado</strong>';
+// $menu[0][7] = '<strong>Domingo</strong>';
+// $menu[1][0] = '<strong>Desayuno</strong>';
+// $menu[1][1] = 'Cereales';
+// $menu[1][2] = 'Café';
+// $menu[1][3] = 'Yogur';
+// $menu[1][4] = 'Leche';
+// $menu[1][5] = 'Tostadas';
+// $menu[1][6] = 'Fruta';
+// $menu[1][7] = 'Té';
+// $menu[2][0] = '<strong>Comida</strong>';
+// $menu[2][1] = 'Macarrones';
+// $menu[2][2] = 'Pollo';
+// $menu[2][3] = 'Ensalada';
+// $menu[2][4] = 'Paella';
+// $menu[2][5] = 'Lenguado';
+// $menu[2][6] = 'Pizza';
+// $menu[2][7] = 'Lentejas';
+// $menu[3][0] = '<strong>Cena</strong>';
+// $menu[3][1] = 'Calabaza';
+// $menu[3][2] = 'Patatas';
+// $menu[3][3] = 'Merluza';
+// $menu[3][4] = 'Judías';
+// $menu[3][5] = 'Ternera';
+// $menu[3][6] = 'Huevo';
+// $menu[3][7] = 'Queso';
+
+// array_tabla($menu);
+array_tabla($pmenu);
+```
+
+##### Ejercicios 4 -- test
+
+1. La función de PHP strcmp: **Compara dos cadenas de caracteres y distingue mayúsculas de minúsculas.**
+2. Si hoy es 31 de marzo de 2022, echo date("d-m-Y") mostrará: **31-03-2022**
+3. La función de PHP rand: **Genera un número entero aleatorio.**
+4. Todas las funciones definidas por el usuario deben devolver un valor. **Falso**
+5. Las funciones predefinidas de PHP se pueden utilizar dentro de las funciones definidas por el usuario. **Verdadero**
+
+
 #### x
 
 ##### Caso práctico x -- foo
