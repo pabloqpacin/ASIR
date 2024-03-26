@@ -32,6 +32,7 @@
       - [C. Kubernetes](#c-kubernetes)
         - [Instalación](#instalación)
         - [PRUEBA 1: nginx para buenardas](#prueba-1-nginx-para-buenardas)
+        - [PRUEBA 2: php-apache para webapp](#prueba-2-php-apache-para-webapp)
   - [4. NFS en /dev/sda](#4-nfs-en-devsda)
 
 ## 0. Hardware
@@ -1047,15 +1048,27 @@ nvim webapp.yaml
 ##### Instalación
 
 ```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/pabloqpacin/k8s-bs/main/scripts/INSTALL.sh)"
+sudo systemctl enable --now containerd
 {
   echo 'net.bridge.bridge-nf-call-iptables = 1'
   echo 'net.ipv4.ip_forward = 1'
 } | tee -a /etc/sysctl.conf
 sudo sysctl -p
-
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/pabloqpacin/k8s-bs/main/scripts/INSTALL.sh)"
+
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 ```
+```bash
+mkdir -p ~/k8s/metrics && cd $_
+wget -q https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+sed -i $'/secure-port/a\\ \ \ \ \ \ \ \ \- --kubelet-insecure-tls' components.yaml
+kubectl apply -f components.yaml
+watch kubectl -n kube-system get pods -o wide
+kubectl top nodes
+kubectl top pod <pod>
+```
+
 
 ##### PRUEBA 1: nginx para buenardas
 
@@ -1139,8 +1152,193 @@ kubectl apply -f foo.yaml
 # Desde otro ordenador en la red
 xdg-open http://192.168.1.221:30080
 ```
+
+
+##### PRUEBA 2: php-apache para webapp
+
+```bash
+sudo git clone https://github.com/pabloqpacin/lamp_docker /mnt/PROYECTO
+
+mkdir ~/k8s/webapp && cd $_
+nvim pv-pvc.yaml
+```
+```yaml
+###########################
+# VOLUMES: local, no NFS #
+#########################
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-apachephp
+spec:
+  storageClassName: apachephp
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /mnt/PROYECTO/helpdesk-core-php
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-apachephp
+spec:
+  storageClassName: apachephp
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-mysql
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: mysql
+  hostPath:
+    path: /mnt/PROYECTO/helpdesk-core-php/database
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-mysql
+spec:
+  storageClassName: mysql
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+```
+```bash
+kubectl apply -f pv-pvc.yaml
+kubectl get pv && kubectl get pvc
+
+nvim mysql.yaml
+```
+```yaml
+###########################
+# ConfigMap VS Secret... #
+#########################
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: datos-mysql-env
+  namespace: default
+data:
+  MYSQL_USER: admin
+  MYSQL_PASSWORD: password
+  MYSQL_ROOT_PASSWORD: password
+  MYSQL_DATABASE: helpdesk_core_php
+  MYSQL_ROOT_HOST: '%'
+  TZ: Europe/Madrid
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  labels:
+    app: webapp
+spec:
+  ports:
+    - port: 3306
+      targetPort: 3306
+      nodePort: 30306
+  selector:
+    app: webapp
+    tier: mysql
+  # clusterIP: None
+  type: NodePort
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: webapp
+spec:
+  selector:
+    matchLabels:
+      app: webapp
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: webapp
+        tier: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0.35
+        envFrom:
+        - configMapRef:
+            name: datos-mysql-env
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          # mountPath: /var/lib/mysql
+          mountPath: /docker-entrypoint-initdb.d
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "100m"
+          limits:
+            memory: "1Gi"
+            cpu: "200m"
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: pvc-mysql
+```
+<!-- ```log
+[pabloqpacin:~]$ kc logs mysql-fd694c5c4-hqzvx
+2024-03-23 21:43:43+01:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.35-1.el8 started.
+2024-03-23 21:43:44+01:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+2024-03-23 21:43:44+01:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.35-1.el8 started.
+2024-03-23 21:43:46+01:00 [Note] [Entrypoint]: Initializing database files
+2024-03-23T20:43:46.553552Z 0 [Warning] [MY-011068] [Server] The syntax '--skip-host-cache' is deprecated and will be removed in a future release. Please use SET GLOBAL host_cache_size=0 instead.
+2024-03-23T20:43:46.553763Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.0.35) initializing of server in progress as process 79
+2024-03-23T20:43:46.556033Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2024-03-23T20:43:46.556044Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2024-03-23T20:43:46.556135Z 0 [ERROR] [MY-010119] [Server] Aborting
+2024-03-23T20:43:46.556392Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.35)  MySQL Community Server - GPL.
+``` -->
+
+```bash
+kubectl apply -f mysql.yaml
+kubectl get service
+mycli -h 192.168.1.221 -P 30306 -u root -ppassword
+
+nvim www.yaml
+```
+
+```yaml
+
+```
+
 ```bash
 ```
+
+
+```
+```
+
+
 
 ---
 
