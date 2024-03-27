@@ -2,15 +2,16 @@ version: '3.9'
 services:
   db:
     image: mariadb:10.6
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d/
+      - asir_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: changeme
       MYSQL_ROOT_HOST: '%'
       TZ: 'Europe/Madrid'
-    ports:
-      - 3306:3306
-    volumes:
-      - ./init:/docker-entrypoint-initdb.d/
-      - asir_data:/var/lib/mysql                  # $ sudo ls -la /var/lib/docker/volumes/mariadb_asir_data/_data
 
 volumes:
   asir_data:
+  # /var/lib/docker/volumes/mariadb_asir_data/_data/
