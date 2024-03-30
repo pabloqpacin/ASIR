@@ -6,18 +6,17 @@
 
 > apuntes.md
 
-## PRÁCTICA
+## PRÁCTICA (McGrawHill)
 
-### foo
-### bar
-### McGrawHill
+<!-- ### foo -->
+<!-- ### bar -->
 
-#### x
+### x
 
-##### Caso práctico x -- foo
-##### Ponte a prueba x -- foo
-##### Estudio de caso -- foo
-##### Ejercicios x -- test
+#### Caso práctico x -- foo
+#### Ponte a prueba x -- foo
+#### Estudio de caso -- foo
+#### Ejercicios x -- test
 
 1. foo
 2. foo
@@ -25,12 +24,12 @@
 4. foo
 5. foo
 
-#### x
+### x
 
-##### Caso práctico x -- foo
-##### Ponte a prueba x -- foo
-##### Estudio de caso -- foo
-##### Ejercicios x -- test
+#### Caso práctico x -- foo
+#### Ponte a prueba x -- foo
+#### Estudio de caso -- foo
+#### Ejercicios x -- test
 
 1. foo
 2. foo
