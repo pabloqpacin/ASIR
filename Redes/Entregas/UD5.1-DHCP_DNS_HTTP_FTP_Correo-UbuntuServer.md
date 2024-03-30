@@ -1,6 +1,6 @@
-# Redes T3
+# Redes UD5.1
 
-- [Redes T3](#redes-t3)
+- [Redes UD5.1](#redes-ud51)
   - [Enunciado](#enunciado)
   - [Resolución](#resolución)
     - [0. Misc](#0-misc)
@@ -19,22 +19,17 @@
 
 ## Enunciado
 
-Crea un servidor con Ubuntu Server donde instales los servicios DHCP, DNS, HTTP, FTP y CORREO. Debes de comprobar que funcionan correctamente en ambos clientes.
-
-> Dada la dirección IP 192.168.100.0 crear 10 subredes. Quedaros con la tercera subred para asignar rango. Haz una reserva a un cliente windows.
-
-- DHCP: Podéis usar la red que queráis. Tenéis que hacer una reserva para el cliente Linux.
-- DNS: El nombre de la zona será `universidad.com`
-- HTTP: Debe cargar una web creada por vosotros, me da igual el contenido.
-- FTP: Crea tres usuarios, Javier, David y Alicia. Debes mostrar que accedes con dichos usuarios correctamente en ambos clientes con Filezilla o cualquier otro software que consideres oportuno.
-- CORREO: Debes dar de alta sólo a dos usuarios, los que quieras. Uno de ellos se da de alta en el cliente Linux y el otro en el cliente Windows. Debes de mostrar cómo se manda un correo de un usuario al otro y se responde a ese mismo.
+- Dada la dirección IP 192.168.100.0 crear 10 subredes. Quedaros con la tercera subred para asignar rango. Haz una reserva a un cliente windows.
+- Crea el dominio nombre.net. Crea el host y alias de los servicios web, ftp y correo.
+- Crea un servidor web para dar gestión a la página web
+- Crea dos usuarias, Ana y María para darles acceso a sus carpetas personales con el servidor FTP. Cada una tendrá acceso a su carpeta.
+- Crea sus correos electrónicos y prueba que funciona correctamente.
+- Deben funcionar todos los servicios desde ambos clientes.
 
 ## Resolución
 
 <!-- 
 resolvectl status
-- [ ] https://phoenixnap.com/kb/postfix-smtp
-- [ ] https://serverfault.com/questions/969671/postfixdovecot-case-sensitive-email-address
 -->
 
 
@@ -114,8 +109,8 @@ sudo sed -i 's/INTERFACESv4=.*/INTERFACESv4="enp0s8"/' /etc/default/isc-dhcp-ser
 - Configuración servicio DHCP
 
 ```bash
-sudo sed -i 's/^option domain-name "example.org";/option domain-name "universidad.com";/' /etc/dhcp/dhcpd.conf
-sudo sed -i 's/^option domain-name-servers .*/option domain-name-servers ns.universidad.com;/' /etc/dhcp/dhcpd.conf
+sudo sed -i 's/^option domain-name "example.org";/option domain-name "nombre.net";/' /etc/dhcp/dhcpd.conf
+sudo sed -i 's/^option domain-name-servers .*/option domain-name-servers ns.nombre.net;/' /etc/dhcp/dhcpd.conf
 
 cat<<EOF | sudo tee -a /etc/dhcp/dhcpd.conf
 
@@ -124,7 +119,7 @@ subnet 192.168.100.32 netmask 255.255.255.240 {
   option subnet-mask 255.255.255.240;
   option routers 192.168.100.33;
   option domain-name-servers 192.168.100.33;
-  option domain-name "universidad.com";
+  option domain-name "nombre.net";
 }
 
 host cliente_linux {
@@ -160,9 +155,9 @@ sudo apt update && sudo apt install -y \
 cat<<EOF | sudo tee -a /etc/bind/named.conf.local
 
 // Resolución Directa
-zone "universidad.com" {
+zone "nombre.net" {
         type master;
-        file "/etc/bind/db.universidad.com";
+        file "/etc/bind/db.nombre.net";
 };
 
 // Resolución Inversa
@@ -177,30 +172,30 @@ EOF
 - Configuración de zona directa
 
 ```bash
-cat<<EOF | sudo tee /etc/bind/db.universidad.com
+cat<<EOF | sudo tee /etc/bind/db.nombre.net
 
 \$TTL    604800
-@       IN      SOA     universidad.com.   root.universidad.com. (
+@       IN      SOA     nombre.net.   root.nombre.net. (
                               2        ; Serial
                          604800        ; Refresh
                           86400        ; Retry
                         2419200        ; Expire
                          604800 )      ; Negative Cache TTL
 ;     
-@       IN      NS        universidad.com.
+@       IN      NS        nombre.net.
 @       IN      A         192.168.100.33
 @       IN      AAAA      ::1
-@       IN      MX 10     correo.universidad.com.
+@       IN      MX 10     correo.nombre.net.
 
 ns      IN      A         192.168.100.33
 www     IN      A         192.168.100.33
 ftp     IN      A         192.168.100.33
 correo  IN      A         192.168.100.33
 
-Dns     IN      CNAME     ns.universidad.com.
-Web     IN      CNAME     www.universidad.com.
-Nas     IN      CNAME     ftp.universidad.com.
-Mail    IN      CNAME     correo.universidad.com.
+Dns     IN      CNAME     ns.nombre.net.
+Web     IN      CNAME     www.nombre.net.
+Nas     IN      CNAME     ftp.nombre.net.
+Mail    IN      CNAME     correo.nombre.net.
 
 EOF
 ```
@@ -211,7 +206,7 @@ EOF
 cat<<EOF | sudo tee /etc/bind/db.192
 
 \$TTL    604800
-@       IN      SOA  universidad.com.     root.universidad.com. (
+@       IN      SOA  nombre.net.     root.nombre.net. (
                           1          ; Serial
                      604800          ; Refresh
                       86400          ; Retry
@@ -219,11 +214,11 @@ cat<<EOF | sudo tee /etc/bind/db.192
                      604800 )        ; Negative Cache TTL
 ;
 
-@        IN     NS      universidad.com.
-33       IN     PTR     ns.universidad.com.
-33       IN     PTR     www.universidad.com.
-33       IN     PTR     ftp.universidad.com.
-33       IN     PTR     correo.universidad.com.
+@        IN     NS      nombre.net.
+33       IN     PTR     ns.nombre.net.
+33       IN     PTR     www.nombre.net.
+33       IN     PTR     ftp.nombre.net.
+33       IN     PTR     correo.nombre.net.
 
 EOF
 ```
@@ -231,7 +226,7 @@ EOF
 ```bash
 # Verificar sintaxis configuración
 named-checkconf
-named-checkzone universidad.com /etc/bind/db.universidad.com
+named-checkzone nombre.net /etc/bind/db.nombre.net
 named-checkzone 100.168.192.in-addr.arpa. /etc/bind/db.192
 ```
 
@@ -278,7 +273,7 @@ sudo sed -i 's/#chroot_list_file=.*/chroot_list_file=\/etc\/vsftpd.chroot_list/'
 cat<<EOF | tee ~/usuarios.sh
 #!/usr/bin/env bash
 
-new_users=('javier' 'david' 'alicia')
+new_users=('Ana' 'Maria')
 user_list=/etc/vsftpd.chroot_list
 
 for user in \${new_users[@]}; do
@@ -307,7 +302,7 @@ sudo systemctl restart vsftpd
 - Previamente hemos definido el recurso MX en el DNS
 
 ```bash
-grep 'MX 10' /etc/bind/db.universidad.com
+grep 'MX 10' /etc/bind/db.nombre.net
 ```
 
 - Instalación de postfix (MTA)
@@ -315,20 +310,21 @@ grep 'MX 10' /etc/bind/db.universidad.com
 ```bash
 sudo apt install -y \
   postfix
-  # Internet site: universidad.com
+  # Internet site: nombre.net
 ```
 
 - Configuración del servicio postfix
 
 ```bash
-echo 'universidad.com' | sudo tee /etc/mailname
+echo 'nombre.net' | sudo tee /etc/mailname
 ```
+
 ```bash
 sudo cp /etc/postfix/main.cf{,.bak}
 sudo vim /etc/postfix/main.cf
 ```
 ```c
-myhostname = correo.universidad.com
+myhostname = correo.nombre.net
 mynetworks = 192.168.100.32/28 ...
 // home_mailbox = Maildir/      // NO!!!
 ```
@@ -403,35 +399,29 @@ Responder a todos:
 tail -f /var/log/mail.log
 
 sudo less /home/david/mail/Sent
+  # From david@ubuntu-server  Sat Mar 30 00:23:59 2024
+  # Message-ID: <da4d2999-ecfe-44a4-8117-3e9a3df9115a@universidad.com>
+  # Date: Sat, 30 Mar 2024 01:23:57 +0100
+  # MIME-Version: 1.0
+  # User-Agent: Mozilla Thunderbird
+  # Content-Language: en-US
+  # To: alicia@universidad.com
+  # Cc: pabloqpacin@universidad.com
+  # From: david <david@universidad.com>
+  # Subject: prueba
+  # Content-Type: text/plain; charset=UTF-8; format=flowed
+  # Content-Transfer-Encoding: 8bit
+  # X-IMAPbase: 1711757691 0000000001
+  # X-UID: 1
+  # Status: RO
+  # X-Keywords:
+  # Content-Length: 9
 
-for file in /var/mail/*; do
-  sudo bat $file;
-done
+  # ¡hola!
+
+
+  # /home/david/mail/Sent (END)
 ```
-
-<!-- ```txt
-  From david@ubuntu-server  Sat Mar 30 00:23:59 2024
-  Message-ID: <da4d2999-ecfe-44a4-8117-3e9a3df9115a@universidad.com>
-  Date: Sat, 30 Mar 2024 01:23:57 +0100
-  MIME-Version: 1.0
-  User-Agent: Mozilla Thunderbird
-  Content-Language: en-US
-  To: alicia@universidad.com
-  Cc: pabloqpacin@universidad.com
-  From: david <david@universidad.com>
-  Subject: prueba
-  Content-Type: text/plain; charset=UTF-8; format=flowed
-  Content-Transfer-Encoding: 8bit
-  X-IMAPbase: 1711757691 0000000001
-  X-UID: 1
-  Status: RO
-  X-Keywords:
-  Content-Length: 9
-
-  ¡hola!
-
-  /home/david/mail/Sent (END)
-``` -->
 <!-- ```bash
 sudo apt install -y mailutils
 mail
