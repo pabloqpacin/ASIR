@@ -21,3 +21,11 @@
 
 
 ## 4. Gestión de cuentas de usuarios y permisos
+
+...
+
+---
+<!-- 
+# andandan las variables k yo las vea
+
+> variables globales o de estado del servidro -->

@@ -59,7 +59,62 @@ En este apartado, nos vamos a centrar en las tareas de automatización del SGBD.
 - Herramientas de los SBGD: rutinas almacenadas o scripts: procedimientos, funciones, disparadores, cursores, eventos.
 
 ### 1.2 Tipos de datos en MariaDB
+
+<!-- <details> -->
+
+> Modificadores: `signed` (números con signo), `unsigned` (no permite números negativos)
+
+- Tipos numéricos enteros
+
+| Datatype              | Tamaño    | Rango de valores
+| ---                   | ---       | ---
+| BIT BOOLEAN TINYINT   | 1 bit     | 0-1
+| UNSIGNED TINYINT INT1 | 1 byte    | 0-255
+| SMALLINT INT2         | 1,2 bytes | 0-65535
+| MEDIUMINT INT3        | 3 bytes   | 0-16,777,215
+| INT INT4              | 4 bytes   | ...
+| BIGINT INT8           | 8 bytes   | ...
+
+- Tipos numéricos decimales
+
+| Datatype                          | Descripción
+| ---                               | ---
+| DECIMAL/NUMERIC/FIXED/DEC (M,D)   | ...
+| FLOAT (M,D)                       | ...
+| DOUBLE/REAL (M,D)                 | ...
+
+- Tipos de carácter o cadenas de caracteres
+
+| Datatype                  | Descripción
+| ---                       | ---
+| CHAR(N)                   | 1 byte, valor máximo 255; 1 si no N
+| VARCHAR(N)                | valor máximo 65532
+| BINARY(N)/CHAR BYTE (N)   | ...
+| VARBINARY                 | ...
+| BLOB                      | ... binario grande
+| TEXT                      | max 2^16 - 1
+| MEDIUMTEXT                | max 2^24 - 1
+| LONGTEXT/JSON             | max 2^32 - 1
+
+- Tipos de fecha
+
+| Datatype  | Descripción
+| ---       | ---
+| DATETIME  | -
+| TIMESTAMP | grabar fecha del sistema en registro (YYYY-MM-DD HH:MM:SS.ffffff)
+| DATE      | YYYY-MM-DD
+| TIME      | HH:MM:SS.ffffff
+
+
 ### 1.3 Variables definidas por el usuario en MariaDB
+
+- Intro
+  - Declararlas antes poder usarlas en scripts (eg. `...`)
+  - Fuera de scripts, se inicializan directamente (eg. `...`)
+  - Generalmente, son variables locales o de sesión, o pueden ser globales
+
+
+
 ### 1.4 Funciones
 ### 1.5 Estructuras de control y bucles
 ### 1.6 Copias de seguridad
