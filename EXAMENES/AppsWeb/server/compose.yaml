@@ -1,0 +1,22 @@
+services:
+
+  www:
+    image: pabloqpacin/php_mysqli:v1
+    ports:
+      - "80:80"
+    volumes:
+      - ./php:/var/www/html
+
+  # db:
+  #   image: mariadb:10.6
+  #   ports:
+  #     - "3306:3306"
+  #   volumes:
+  #     - ./mysql/init:/docker-entrypoint-initdb.d
+  #     - mysql_data:/var/lib/mysql
+  #   # command: --default-authentication-plugin=caching_sha2_password
+  #   env_file: mysql.properties
+
+# volumes:
+#   mysql_data:
+  
