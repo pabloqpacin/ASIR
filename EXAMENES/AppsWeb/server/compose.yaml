@@ -1,11 +1,12 @@
+name: examen_iaw
 services:
-
   www:
     image: pabloqpacin/php_mysqli:v1
     ports:
       - "80:80"
     volumes:
       - ./php:/var/www/html
+
 
   # db:
   #   image: mariadb:10.6

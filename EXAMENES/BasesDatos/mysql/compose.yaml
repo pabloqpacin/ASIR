@@ -1,0 +1,17 @@
+name: examen_db
+services:
+  db:
+    image: mariadb:10.6
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d/
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: changeme
+      MYSQL_ROOT_HOST: '%'
+      TZ: 'Europe/Madrid'
+
+volumes:
+  db_data:
+  # /var/lib/docker/volumes/examen_db_db_data/_data/
