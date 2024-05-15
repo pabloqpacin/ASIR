@@ -394,7 +394,7 @@ EOF
 sudo ldapadd -xD cn=admin,dc=asir,dc=local -Wf ~/ldap_ads/ou.ldif
 ```
 
-- Crear grupo y definir miembros
+- Crear grupo y definir miembros (con `memberUid`)
 
 ```bash
 cat <<EOF | tee ~/ldap_ads/grupo.ldif
@@ -627,105 +627,20 @@ foo
 
 2. Crea en apache directory studio dos unidades organizativas, Usuarios y Grupos; dentro de Usuarios crear 3 usuarios con los miembros de tu grupo de proyecto y dentro de la uo Grupos, crear un grupo llamado proyecto. Introducir los usuarios dentro del grupo dentro del proceso de creación y configuración. Explicar brevemente el proceso realizado (0,5 puntos) NOTA: Si por lo que sea no has cursado el proyecto, invéntate los nombres.
 
-<details>
-<summary>Instalación...</summary>
+```md
+1. Instalación de LDAP en ubuntu server en red interna (+ DHCP)
+2. Conexión con Apache Directory Studio desde cliente GUI en red interna
+3. LDAP: New Entry: FOO
 
-```ps1
-function install_ldap_ads {
-    $pkg = 'OpenLDAPforWindows_x64'
-    Invoke-WebRequest `
-        -Uri "https://www.maxcrc.de/wp-content/uploads/2020/04/$pkg.zip" `
-        -OutFile "$pkg.zip"
-    Expand-Archive -Path "$pkg.zip" -DestinationPath "$pkg"
-    Start-Process "$pkg\$pkg.exe" -Wait
-    # Remove-Item "$pkg"
-    
-    winget install oracle.jdk.22 apache.directorystudio
-    # C:\Program Files\Common Files\Oracle\Java\javapath
-}
+---
 
-install_ldap_ads
+Usuarios: posixAccount + inetOrgPerson
 ```
-```yaml
-# maxcrc GmbH: Bootstrapper OpenLDAP for Windows
-Setup:
-    Licence: Agree
-    Destination Folder: C:\OpenLDAP
-    Features:
-        - OpenLDAP Client Tools
-        - OpenLDAP Server:
-            - OpenLDAP BDB Backend Tools
-            - OpenLDAP Service
-            - OpenLDAP MDB Backend Tools
-        - DejaVu Sans Mono Font for Windows Console
-    Settings:
-        - Server name / IP Address: WIN11PROES
-        - Dynamic configuration backend: No
-        - Port: 389
-        - SSL Port: 636
-        - Listen on all interfaces: Yes
-        - Password: secret
-    Database Backend: LDIF
-    LDIF Root password: secret
-```
-
-```yaml
-# Apache Directory Studio
-Menu:
-    LDAP: New Connection:
-        Network:
-            Connection name: test01
-            Hostname: localhost                             # Win11ProES
-            Port: 389
-        Authentication:
-            Bind NDS or user: cn=Manager,dc=maxcrc,dc=com   # select-string 'rootdn' C:\OpenLDAP\slapd.conf
-            Bind password: secret
-
-```
-
-</details>
-
-```yaml
-LDAP Browser:
-    DIT: Root DSE:
-        dc=maxcrc,dc=com:
-            New: New Entry...:
-                Entry creation method: Create entry from scratch
-                Object Classes: organizationalUnit
-                Distinguished Name:
-                    - Parent: dc=maxcrc,dc=com
-                    - RDN: ou=Usuarios
-            New: New Entry...:
-                Entry creation method: Create entry from scratch
-                Object Classes: organizationalUnit
-                Distinguished Name:
-                    - Parent: dc=maxcrc,dc=com
-                    - RDN: ou=Grupos
-```
-
-
-
-
 
 
 ---
 
 ### DESARROLLO 3
-3.a.i:la primera
-3.a.ii:
-
-```sh
-if [ ! -d /tmp/Seguridad ]; then
-    mkdir /tmp/Seguridad
-fi
-
-for arg in $*; do
-    if [ -f $arg ]; then
-        cp $arg /tmp/Seguridad
-    fi
-done
-```
-
 
 #### a) Bash
 
@@ -755,7 +670,9 @@ if [ ! -d Seguridad ]; then
 fi
 
 for arg in $*; do
-    mv $arg Seguridad/
+    if [ -f $arg ]; then
+        cp $arg Seguridad/
+    fi
 done
 
 # USO: bash script.sh foo bar
@@ -766,6 +683,31 @@ done
 1. Crear un script que nos solicite las notas de varios exámenes consecutivos. Después de cada nota nos preguntará si queremos continuar Si contestamos con una S pedirá otra nota. Si contestamos N mostrará el número de notas que hemos introducido y la nota media. (0,5 puntos)
 
 ```ps1
+$notas = @()
+$continuar = $true
+
+while ($continuar) {
+    $nota = Read-Host "Introduce la nota del examen"
+    if ($nota -as [double] -ge 0 -and $nota -as [double] -le 10) {
+        $notas += $nota
+    } else {
+        Write-Host "La nota debe ser un número válido entre 0 y 10"
+        continue
+    }
+
+    $respuesta = Read-Host "¿Quieres continuar? (S/N)"
+    if ($respuesta -eq "N") {
+        $continuar = $false
+    } elseif ($respuesta -ne "S") {
+        Write-Host "Respuesta no válida, continuaremos ingresando notas."
+    }
+}
+
+$totalNotas = $notas.Count
+$notaMedia = ($notas | Measure-Object -Average).Average
+
+Write-Host "Número de notas introducidas: $totalNotas"
+Write-Host "Nota media: $notaMedia"
 ```
 
 2. En la máquina virtual de Windows Server, realizar las siguientes operaciones mediante powershell, en un menú con 5 opciones: (0,75 puntos)
@@ -775,7 +717,81 @@ done
     - Creación de un grupo llamado gSimu
     - Añade el usuario userADSimu al grupo proyecto
 
+<!-- ```ps1
+# DONE
+Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
+Install-ADDSForest `
+    -DomainName "asir.com" -DomainNetbiosName "asir" `
+    -SafeModeAdministratorPassword (ConvertTo-SecureString "aso2024." -AsPlainText -Force) `
+    -DomainMode "WinThreshold" -ForestMode "WinThreshold" -InstallDNS -Confirm:$false
+# Restart-Computer -Force
+# Stop-Computer -Force
+``` -->
+
+
 ```ps1
+function Mostrar-Menu {
+    # Clear-Host
+    Write-Host "`nMenú de Operaciones"
+    Write-Host "1. Crear usuario userADSimu"
+    Write-Host "2. Modificar contraseña de userADSimu"
+    Write-Host "3. Crear Unidad Organizativa UOSimu"
+    Write-Host "4. Crear grupo gSimu"
+    Write-Host "5. Añadir userADSimu al grupo gSimu"
+    Write-Host "0. Salir"
+}
+
+do {
+    Mostrar-Menu
+    $opcion = Read-Host "Selecciona una opción"
+
+    switch ($opcion) {
+        1 {
+            # Crear usuario userADSimu
+            New-ADUser -Name "userADSimu" -SamAccountName "userADSimu" -AccountPassword (ConvertTo-SecureString "Password1234" -AsPlainText -Force) -Enabled $true
+            Write-Host "Usuario userADSimu creado correctamente"
+        }
+        2 {
+            # Modificar contraseña de userADSimu
+            Set-ADAccountPassword -Identity "userADSimu" -Reset -NewPassword (ConvertTo-SecureString "NuevaContraseña1234" -AsPlainText -Force)
+            Write-Host "Contraseña de userADSimu modificada correctamente"
+        }
+        3 {
+            # Crear Unidad Organizativa UOSimu
+            New-ADOrganizationalUnit -Name "UOSimu"
+            Write-Host "Unidad Organizativa UOSimu creada correctamente"
+        }
+        4 {
+            # Crear grupo gSimu
+            New-ADGroup -Name "gSimu" -GroupScope Global
+            Write-Host "Grupo gSimu creado correctamente"
+        }
+        5 {
+            # Añadir userADSimu al grupo gSimu
+            Add-ADGroupMember -Identity "gSimu" -Members "userADSimu"
+            Write-Host "Usuario userADSimu añadido al grupo gSimu correctamente"
+        }
+        0 {
+            Write-Host "Saliendo del menú"
+        }
+        default {
+            Write-Host "Opción no válida, por favor selecciona una opción válida"
+        }
+    }
+} while ($opcion -ne 0)
+```
+
+```ps1
+Get-ADUser -Filter {SamAccountName -like "*Simu*"}
+# Get-ADUser -Filter {Department -eq "IT"}
+Get-ADUser -Filter {Name -like "*Simu*"}
+
+Get-ADGroup -Filter {Name -like "*Simu*"}
+Get-ADGroup -Filter {GroupScope -eq "Global"}
+
+Get-ADGroupMember -Identity "gSimu"
+Get-ADPrincipalGroupMembership -Identity "userADSimu"
+Get-ADPrincipalGroupMembership -Identity "userADSimu" | Select-Object -ExpandProperty Name
 ```
 
 #### c) LDAP

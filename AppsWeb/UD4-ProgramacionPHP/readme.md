@@ -19,6 +19,11 @@
         - [Ponte a prueba 3 -- bucles](#ponte-a-prueba-3----bucles)
         - [Estudio de caso -- tablas de multiplicar](#estudio-de-caso----tablas-de-multiplicar)
         - [Ejercicios 3 -- test](#ejercicios-3----test)
+      - [4](#4)
+        - [Caso práctico 4 -- `rand`](#caso-práctico-4----rand)
+        - [Ponte a prueba 4 -- leer directorio](#ponte-a-prueba-4----leer-directorio)
+        - [Estudio de caso 4 -- Función/array/tabla](#estudio-de-caso-4----funciónarraytabla)
+        - [Ejercicios 4 -- test](#ejercicios-4----test)
       - [x](#x)
         - [Caso práctico x -- foo](#caso-práctico-x----foo)
         - [Ponte a prueba x -- foo](#ponte-a-prueba-x----foo)
@@ -511,7 +516,6 @@ array_tabla($pmenu);
 3. foo
 4. foo
 5. foo
-
 
 
 ## QUIZ

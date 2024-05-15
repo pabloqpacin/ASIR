@@ -99,7 +99,7 @@ network:
       dhcp4: false
       addresses: [192.168.100.33/28]
       nameservers:
-        addresses: [192.168.100.33]
+        addresses: [192.168.100.66]
   version: 2
 ```
 ```bash
@@ -187,10 +187,10 @@ cat<<EOF | sudo tee /etc/bind/db.universidad.com
                         2419200        ; Expire
                          604800 )      ; Negative Cache TTL
 ;     
-@       IN      NS        ns.universidad.com.
+@       IN      NS        universidad.com.
 @       IN      A         192.168.100.33
 @       IN      AAAA      ::1
-@       IN      MX  10    correo.universidad.com.
+@       IN      MX 10     correo.universidad.com.
 
 ns      IN      A         192.168.100.33
 www     IN      A         192.168.100.33

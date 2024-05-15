@@ -1,5 +1,5 @@
 # Ignore dirs and filetypes
-EXAMENES/
+# EXAMENES/
 private/
 CLASES/
 *mock*
@@ -10,6 +10,7 @@ CLASES/
 *.todo
 # *.zip
 canvas.log
+*zip
 
 # Ignore Office suite
 *.odp
@@ -26,3 +27,6 @@ canvas.log
 
 # Allow exceptions
 !EXC*
+
+# ...
+PROYECTO/

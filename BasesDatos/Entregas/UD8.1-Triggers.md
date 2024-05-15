@@ -185,3 +185,10 @@ delete from cliente where id in (3,4);
 Yo propondría crear otra tabla, `pedidoClientesEliminados`, mover allí los pedidos de los clientes eliminados y así poder borrar esas entradas de `pedido`. Así se respeta la integridad referencial en todo momento. Esas tablas podrían ser exportadas y eliminadas pasado un tiempo prudencial.
 
 > https://stackoverflow.com/questions/78163130/mariadb-1442-create-user-foo-if-not-exists-and-update-some-fk-to-foos-id
+
+---
+
+## Corrección
+
+Pablo, el problema de tu trigger son las claves ajenas. La solución que te da stackoverflow es una trampa peligrosa por que nos saltamos todo el modelo relacional de la BBDD. Una de las soluciones es la que has puesto al final, podría estar bien. Otra solución es preguntar al quien nos ha mandado el trigger la necesidad de tener esa clave ajena... por que es la que no nos deja hacerlo. Tu reflexión está bien hecha y las posibles soluciones también.
+

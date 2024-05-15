@@ -1,5 +1,24 @@
 # [🐧Instalar y configurar OpenLDAP en SERVIDOR y CLIENTE en Ubuntu Server & Desktop 22.04](https://www.youtube.com/watch?v=Rl032gHFu88)
 
+- [🐧Instalar y configurar OpenLDAP en SERVIDOR y CLIENTE en Ubuntu Server \& Desktop 22.04](#instalar-y-configurar-openldap-en-servidor-y-cliente-en-ubuntu-server--desktop-2204)
+  - [Intro](#intro)
+  - [Servidor](#servidor)
+    - [Instalación](#instalación)
+    - [Configuración](#configuración)
+      - [Crear unidad organizativa](#crear-unidad-organizativa)
+      - [Crear grupo](#crear-grupo)
+      - [Crear usuario](#crear-usuario)
+      - [Buscar en el directorio](#buscar-en-el-directorio)
+      - [Modificar usuario](#modificar-usuario)
+      - [Eliminar usuario](#eliminar-usuario)
+  - [Clientes](#clientes)
+    - [Instalación](#instalación-1)
+    - [Configuración](#configuración-1)
+  - [Conexión](#conexión)
+  - [Apache Directory Studio (desde cliente)](#apache-directory-studio-desde-cliente)
+- [Windows BS](#windows-bs)
+
+
 ## Intro
 
 - Ubuntu Server con 2 interfaces de red: bridged y red interna
@@ -381,3 +400,60 @@ EOF
 ```
 
 
+---
+
+# Windows BS
+
+
+```ps1
+function install_ldap_ads {
+    $pkg = 'OpenLDAPforWindows_x64'
+    Invoke-WebRequest `
+        -Uri "https://www.maxcrc.de/wp-content/uploads/2020/04/$pkg.zip" `
+        -OutFile "$pkg.zip"
+    Expand-Archive -Path "$pkg.zip" -DestinationPath "$pkg"
+    Start-Process "$pkg\$pkg.exe" -Wait
+    # Remove-Item "$pkg"
+    
+    winget install oracle.jdk.22 apache.directorystudio
+    # C:\Program Files\Common Files\Oracle\Java\javapath
+}
+
+install_ldap_ads
+```
+
+```yaml
+# maxcrc GmbH: Bootstrapper OpenLDAP for Windows
+Setup:
+    Licence: Agree
+    Destination Folder: C:\OpenLDAP
+    Features:
+        - OpenLDAP Client Tools
+        - OpenLDAP Server:
+            - OpenLDAP BDB Backend Tools
+            - OpenLDAP Service
+            - OpenLDAP MDB Backend Tools
+        - DejaVu Sans Mono Font for Windows Console
+    Settings:
+        - Server name / IP Address: WIN11PROES
+        - Dynamic configuration backend: No
+        - Port: 389
+        - SSL Port: 636
+        - Listen on all interfaces: Yes
+        - Password: secret
+    Database Backend: LDIF
+    LDIF Root password: secret
+```
+
+```yaml
+# Apache Directory Studio
+Menu:
+    LDAP: New Connection:
+        Network:
+            Connection name: test01
+            Hostname: localhost                             # Win11ProES
+            Port: 389
+        Authentication:
+            Bind NDS or user: cn=Manager,dc=maxcrc,dc=com   # select-string 'rootdn' C:\OpenLDAP\slapd.conf
+            Bind password: secret
+```

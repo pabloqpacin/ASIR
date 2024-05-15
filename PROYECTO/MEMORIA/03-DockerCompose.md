@@ -183,7 +183,7 @@ $ sudo tree -L 2 /var/lib/docker/volumes/proyecto_mysql_data
 ```
 
 - El comando `--default-authentication-plugin=caching_sha2_password` se añade para evitar un error que impediría la correcta integración del servidor de base de datos con el intérprete Php a través del módulo de Php `mysqli_connect()`.
-- La instrucción `env_file` permite definir varios parámetros necesarios fuera del propio `docker-compose.yaml`, algo positivo para la limpieza del código en el repositorio. En este caso es preciso indicar la contraseña para root, un usuario que no sea root y su contraseña, la base de datos predefinida y la zona horaria para que el servidor de base de datos trabaje con la hora española (el parámetro `MYSQL_ROOT_HOST` existe para permitir conexiones desde fuera del contenedor con herramientas como `mycli`).
+- La instrucción `env_file` permite definir varios parámetros necesarios fuera del propio `docker-compose.yaml`, algo positivo para la limpieza del código en el repositorio. En este caso es preciso indicar la contraseña para root, un usuario que no sea root y su contraseña, la base de datos predefinida y la zona horaria para que el servidor de base de datos trabaje con la hora española (el parámetro `MYSQL_ROOT_HOST` existe para permitir conexiones desde fuera del contenedor con herramientas como `mycli`).<br> Comentar que la contraseña la cambiaríamos y usaríamos un gestor de contraseñas a nivel corporativo pa to esto.
 
 ```c
 MYSQL_USER='admin'

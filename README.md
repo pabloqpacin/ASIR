@@ -1,5 +1,10 @@
 # ASIR - Administración de Sistemas Informáticos en Red
 
+<!--
+> https://aso.tinaja.es/
+> https://github.com/josedom24
+-->
+
 <!-- - English version [hereo](/readme_en.md) -->
 
 ## Primer Curso (ITEP)

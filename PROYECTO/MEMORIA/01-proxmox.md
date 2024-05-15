@@ -1376,3 +1376,15 @@ sdb                            8:16   0 447.1G  0 disk
 - Utilidad: NFS
 
 > https://github.com/pabloqpacin/k8s-bs/blob/main/docs/curso-parte2.md#ejemplo-con-nfs-aplicaci%C3%B3n-wordpress-con-mysql
+
+
+---
+
+
+<!-- 
+()
+  WARNING: You have not turned on protection against thin pools running out of space.
+  WARNING: Set activation/thin_pool_autoextend_threshold below 100 to trigger automatic extension of thin pools before they get full.
+  Logical volume "snap_vm-109-disk-0_Fresh_Install" created.
+  WARNING: Sum of all thin volume sizes (<336.52 GiB) exceeds the size of thin pool pve/data and the amount of free space in volume group (16.00 GiB).
+TASK OK -->

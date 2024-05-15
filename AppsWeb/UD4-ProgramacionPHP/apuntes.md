@@ -49,9 +49,16 @@
       - [B. Do - While](#b-do---while)
       - [C. For](#c-for)
   - [4. Funciones](#4-funciones)
-    - [4.1 foo](#41-foo)
-    - [4.2 foo](#42-foo)
+    - [4.1 Funciones predefinidas](#41-funciones-predefinidas)
+      - [A. Manejo de variables](#a-manejo-de-variables)
+      - [B. Manejo de cadenas](#b-manejo-de-cadenas)
+      - [C. Manejo de archivos](#c-manejo-de-archivos)
+      - [D. Manejo de fecha y hora](#d-manejo-de-fecha-y-hora)
+    - [4.2 Funciones de usuario](#42-funciones-de-usuario)
+      - [A. Ámbito de las variables en las funciones](#a-ámbito-de-las-variables-en-las-funciones)
   - [5. Usuarios y sesiones](#5-usuarios-y-sesiones)
+    - [5.1 Cookies](#51-cookies)
+    - [5.1 Manejo de sesiones](#51-manejo-de-sesiones)
 
 
 ## 1. Lenguaje PHP
@@ -790,10 +797,81 @@ echo 'Fuera de función: '.$x.'<br>';        // 1
 ```
 
 
-
 ## 5. Usuarios y sesiones
 
+```md
+Como el protocolo HTTP no tiene estado, las peticiones no tienen relación entre ellas. Así pues, para que un programa PHP haga el seguimiento de la actividad de un usuario es necesario utilizar elementos complementarios como las cookies o las sesiones. De esta manera el programa guarda información adicional que le permite, por ejemplo, saber qué acciones puede hacer un determinado usuario o cuáles son sus preferencias de visualización.
+Estos elementos complementarios pueden ser de dos tipos: cookies o sesiones. Ambas son mecanismos a través de los cuales el servidor almacena información. La diferencia entre ellas es que las cookies se almacenan en el equipo cliente y las sesiones en el servidor. En esta unidad se verán las principales funciones para gestionar tanto cookies como sesiones por parte de PHP
+```
 
+- Protocolo HTTP: **stateless**
+  - Seguimiento actividad usuario: cookies (cliente) VS sesiones (server)
+
+### 5.1 Cookies
+
+- Ojo headers... (usar antes que cualquier HTML)
+- Pueden ser usadas por otros archivos en el mismo servidor
+
+```php
+setcookie('color', false);
+setcookie('forma', false);
+setcookie('foo', false);
+
+if (!isset($_COOKIE['color'])) {
+    setcookie('color','rojo', time() +300);     // expires in 10 min.
+    setcookie('forma','cuadrado');              // expires when session ends (browser is closed)
+    setcookie('foo','bar', time() -0);          // expires automatically
+    echo 'Recarga la página para ver las características de la figura';
+} else {
+    echo 'La figura es un '.$_COOKIE['forma'].' de color '.$_COOKIE['color'];
+}
+
+echo '<hr>';
+print_r($_COOKIE);
+```
+```php
+$cookieSize = strlen($_COOKIE['cookie_name']);
+echo "Size of cookie data: $cookieSize bytes";
+echo '<hr>';
+
+$cookieContents = json_decode($_COOKIE['cookie_name'], true);
+echo "Contents of cookie: ";
+print_r($cookieContents);
+echo '<hr>';
+
+$expiryTime = $_COOKIE['cookie_name'] ? date('Y-m-d H:i:s', $_COOKIE['cookie_name']) : 'Cookie not set';
+echo "Expiry time of cookie: $expiryTime";
+echo '<hr>';
+
+echo "All cookies set in this session: <br>";
+print_r($_COOKIE);
+echo '<hr>';
+
+echo "Cookie domain: " . $_SERVER['HTTP_HOST'] . "<br>";
+echo "Cookie path: " . $_SERVER['REQUEST_URI'];
+echo '<hr>';
+
+echo "User's IP Address: " . $_SERVER['REMOTE_ADDR'] . "<br>";
+echo "User Agent: " . $_SERVER['HTTP_USER_AGENT'];
+echo '<hr>';
+```
+
+
+### 5.1 Manejo de sesiones
+
+```php
+session_start();
+$_SESSION['color'] = 'azul';
+$_SESSION['forma'] = 'triángulo';
+echo 'El id es: '.session_id().'<br>';
+echo 'El nombre de sesión es: '.session_name().'<br>';
+echo 'La forma es un '.$_SESSION['forma'].' de color '.$_SESSION['color'].'<br>';
+unset($_SESSION['color']);
+echo 'La forma es un '.$_SESSION['forma'].' de color... '.$_SESSION['color'].'<br>';
+session_write_close();
+```
+```php
+```
 ---
 
 ```php
