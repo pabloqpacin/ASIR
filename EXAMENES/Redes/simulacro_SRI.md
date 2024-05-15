@@ -1,5 +1,22 @@
 # REDES - SIMULACRO 2
 
+- [REDES - SIMULACRO 2](#redes---simulacro-2)
+  - [TEST](#test)
+  - [Desarrollo](#desarrollo)
+    - [Desarrollo 1](#desarrollo-1)
+      - [0. Misc](#0-misc)
+      - [1. Subnetting](#1-subnetting)
+      - [2. DHCP](#2-dhcp)
+      - [3. DNS](#3-dns)
+      - [4. HTTP](#4-http)
+    - [Desarrollo 2](#desarrollo-2)
+      - [5. FTP](#5-ftp)
+    - [Desarrollo 3](#desarrollo-3)
+      - [6. Correo](#6-correo)
+        - [Servidor](#servidor)
+        - [Clientes](#clientes)
+
+
 > - NOTA 1: EXAMEN: se entregarán los dos ejercicios prácticos en un solo documento
 > - NOTA 2: misma subred & dominio para todos los ejercicios
 
