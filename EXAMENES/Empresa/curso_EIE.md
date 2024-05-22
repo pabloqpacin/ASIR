@@ -12,6 +12,7 @@
     - [Test UD7 - Trámites para la puesta en marcha de la empresa](#test-ud7---trámites-para-la-puesta-en-marcha-de-la-empresa)
     - [Test UD8 - Procesos administrativos de la empresa](#test-ud8---procesos-administrativos-de-la-empresa)
   - [Actividades (UDs 1-8)](#actividades-uds-1-8)
+    - [UD2: Modelo CANVA](#ud2-modelo-canva)
     - [UD5: Cuenta de resultados (pérdidas y ganancias)](#ud5-cuenta-de-resultados-pérdidas-y-ganancias)
     - [UD5: Punto de equilibrio](#ud5-punto-de-equilibrio)
     - [UD6: Personalidades jurídicas](#ud6-personalidades-jurídicas)
@@ -453,6 +454,21 @@
 
 ## Actividades (UDs 1-8)
 
+### UD2: Modelo CANVA
+
+```md
+- Socios clave: ...
+- Actividades clave: ...
+- Recursos clave: ...
+- Propuesta de valor: ...
+- Relación con el cliente: ...
+- Canales: ...
+- Segmentos de clientes: ...
+- Estructura de costos: ...
+- Fuentes de ingresos: ...
+```
+
+
 ### UD5: Cuenta de resultados (pérdidas y ganancias)
 
 ```md
@@ -469,28 +485,66 @@ Candy Software se dedica a la producción de softwares y presenta en su contabil
 Confeccionar la cuenta de Pérdidas y Ganancias de la empresa para el ejercicio pasado y determinar el resultado obtenido conociendo que el tipo aplicable por impuesto de beneficios es del 25%
 ```
 
-Foo
+| Nº cta    | Cuenta                                    | (DEBE) HABER
+| ---       | ---                                       | ---
+| 700       | Venta de mercaderías                      | 250.000
+| (600)     | Compra de mercaderías                     | (20.500)
+| (640)     | Sueldos y Salarios                        | (112.220)
+| (642)     | Seguridad social a cargo de la empresa    | (42.000)
+| (628)     | Suministros                               | (11.700)
+| (681)     | Amortización del inmovilizado material    | (15.600)
+|           | <b>Beneficios de explotación</b>          | (47.980)
+| 769       | Otros ingresos financieros                | 215
+| (662)     | Intereses de deudas                       | (830)
+|           | <b>Resultados financieros</b>             | (615)
+|           | <b>Resultados antes de impuestos</b>      | 47.365
+| (630)     | Impuesto sobre beneficios                 | (11.841,25)
+|           | <b>Resultado del ejercicio</b>            | 35.523,75
+
+```md
+> NOTAS
+- __Beneficios de explotación__: Se calcula la diferencia entre los ingresos totales (Venta de mercaderías) y los gastos totales (Compra de mercaderías + Sueldos y Salarios + Seguridad social a cargo de la empresa + Suministros + Amortización del inmovilizado material). La resta es de 47.980 euros.
+- __Resultados financieros__: Se calcula la diferencia entre los otros ingresos financieros y los intereses de deudas. La resta es de 615 euros.
+- __Resultado antes de impuestos__: Se calcula la suma del beneficio de explotación y los resultados financieros. La suma es de 47.365 euros.
+- __Impuesto sobre beneficios__: Se calcula el impuesto sobre beneficios aplicando el tipo impositivo del 25% al resultado antes de impuestos. La operación es 47.365 euros * 25% = 11.841,25 euros.
+- __Resultado del ejercicio__: Se calcula restando el impuesto sobre beneficios al resultado antes de impuestos. La resta es de 35.523,75 euros.
+```
 
 
 ### UD5: Punto de equilibrio
 
-```md
-1.
-Una empresa de telefonía móvil se plantea subcontratar el servicio de reparaciones, ya que el empleado que hasta ahora realizaba esta función está a punto de jubilarse.
-El coste fijo del empleado es de 30 000 € y el coste variable unitario del empleado por reparar cada aparato es de 4 €.
-Subcontratando el servicio a una empresa especializada, el precio que nos costaría por cada reparación sería 100 €.
-Calcula:
-- ¿A partir de qué cantidad de aparatos reparados sería preferible contratar otro empleado dentro de la empresa para seguir prestando el servicio?
-- Si el número de aparatos a reparar fuera de 250 al año,
-    - ¿Cuál sería el coste de reparación con empleado propio?
-    - ¿Y con la empresa especializada en reparaciones?
+1. Una empresa de telefonía móvil se plantea subcontratar el servicio de reparaciones, ya que el empleado que hasta ahora realizaba esta función está a punto de jubilarse.<br>El coste fijo del empleado es de 30 000 € y el coste variable unitario del empleado por reparar cada aparato es de 4 €.<br>Subcontratando el servicio a una empresa especializada, el precio que nos costaría por cada reparación sería 100 €.<br>Calcula:
+   1. ¿A partir de qué cantidad de aparatos reparados sería preferible contratar otro empleado dentro de la empresa para seguir prestando el servicio?
 
-2.
-Una empresa de softwares tiene la siguiente estructura de costes: Coste fijo mensual de 10.000 euros, que incluye el alquiler del local, servicios públicos y salarios de empleados a tiempo completo. Coste variable por software es de 50 euros, que incluye materiales y mano de obra directa. Vende cada software a 200 euros.
-Calcula el número de unidades de software que se deben de vender para cubrir los costes fijos y variables.
+```md
+- __PM = Costes fijos / (Precio – Coste variable unitario)__
+- _PM = 30000 / 100 – 4 = 312,5 móviles_
+El resultado en este caso se interpretaría del siguiente modo: si la empresa va a reparar menos de 312,5 móviles al año, es preferible que externalice el servicio, mientras que, si repara más de esa cantidad, sería más rentable que ella misma llevara a cabo las reparaciones.
 ```
 
-Foo
+1. 2. Si el número de aparatos a reparar fuera de 250 al año,
+      1. ¿Cuál sería el coste de reparación con empleado propio?
+
+```md
+- Coste de suministrar el servicio la propia empresa: 250 × 4 (coste variable de reparar cada unidad) + 30000 (costes fijos) = 31000 €.
+```
+
+1. 2. 2. ¿Y con la empresa especializada en reparaciones?
+
+```md
+- Coste de externalizar: 250 × 100 (precio que la empresa especializada cobraría por cada reparación) = 25000 €.
+Como puede apreciarse, es más barato para la empresa subcontratar la reparación que prestar ella misma el servicio.
+Puesto que 250 es un número inferior al PM hallado en el apartado a, ya sabemos que sería preferible externalizar el servicio. ~~Vamos a demostrarlo calculando los costes de cada opción:~~
+```
+
+2. Una empresa de softwares tiene la siguiente estructura de costes: Coste fijo mensual de 10.000 euros, que incluye el alquiler del local, servicios públicos y salarios de empleados a tiempo completo. Coste variable por software es de 50 euros, que incluye materiales y mano de obra directa. Vende cada software a 200 euros.<br>Calcula el número de unidades de software que se deben de vender para cubrir los costes fijos y variables.
+
+```md
+PM=CF/P-Cvunitario
+CF=10.000€
+Cvunitario=200€
+PM=10.000€/(200€-50€)=66,66 softwares-> 67 softwares aproximados hace falta que venda.
+```
 
 ### UD6: Personalidades jurídicas
 
@@ -506,7 +560,9 @@ Foo
 
 2. Marcos es autónomo y tiene una pastelería; Lumeki. Durante los primeros años, el negocio ha ido muy bien, no obstante, los últimos meses ha ido generando una deuda muy alta, llegando a deber a día de hoy 230.000€. Tiene un patrimonio de 450.000€, correspondiente a 50.000€ de coche y 400.000€ de casa. El efectivo del negocio es de 60.000€, la maquinaria y mobiliario de la pastelería asciende a 35.000€. ¿Cómo sería el procedimiento que se seguirá para que salde su deuda? ¿Se vería afectado su patrimonio para saldar la deuda? ¿Si en vez de ser autónomo hubiera sido una SL, como habría sido el procedimiento de saldo de deuda?
 
-Foo
+Para saldar la deuda, Marcos como autónomo puede optar por diferentes opciones, como renegociar el pago con los acreedores, vender activos no esenciales (como el coche o parte de su vivienda), obtener financiamiento adicional a través de préstamos o líneas de crédito, o buscar inversionistas que puedan inyectar capital en el negocio. Su patrimonio personal podría verse afectado si decide vender activos para pagar la deuda o si asume responsabilidad personal por la deuda.
+
+Si Lumeki fuera una Sociedad de Responsabilidad Limitada (SL), el procedimiento para saldar la deuda podría ser similar en términos generales, pero la responsabilidad de los socios estaría limitada al capital aportado a la empresa. En este caso, la SL podría buscar financiamiento adicional, reestructurar la deuda o incluso considerar la posibilidad de declararse en quiebra si la situación financiera no permite pagar la deuda de manera efectiva.
 
 ### UD6: Mapa formas jurídicas
 
